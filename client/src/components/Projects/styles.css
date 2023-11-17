@@ -33,3 +33,53 @@
 	color: var(--accent);
 	text-align: left; /* Align the title to the left */
 }
+
+.project-card {
+	/* Setting the background color */
+	background-color: var(--dark);
+
+	/* Setting the border properties */
+	border-style: solid;
+	border-color: var(--dark-alt);
+	border-width: 2px;
+	border-radius: 10px;
+
+	/* Setting the padding and maximum dimensions */
+	padding: 20px;
+	max-width: 650px; /* Limit the maximum width */
+	margin: auto; /* Center the element */
+	margin-bottom: 10px;
+
+	/* Using flexbox for layout */
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.project h3 {
+	/* Setting the font properties */
+	font-weight: 400;
+	color: var(--accent-alt);
+	margin-right: 10px; /* Add some space between the image and the title */
+}
+
+.project-title-container {
+	display: flex;
+	align-items: center;
+	margin-bottom: 1rem;
+}
+
+.project-title-decoration {
+	height: 1.5em; /* Adjust as needed */
+	width: 1.5em; /* Adjust as needed */
+	margin-right: 10px; /* Add some space between the image and the title */
+}
+
+.project-bold {
+	color: var(--accent-alt2);
+}
+
+.project-description {
+	margin-left: 1.5rem; /* Adjust as needed */
+}

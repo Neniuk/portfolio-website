@@ -8,7 +8,11 @@
 	--light-alt: #e6e6e6;
 	--dark: #00001a;
 	--dark-alt: #2d2d2d;
-	--accent: #ffcc00;
+	--accent: #ff66cc;
+	/* --accent: #ffcc00; */
+	/*A blue that goes well with the main accent color*/
+	--accent-alt: #ff66cc;
+	--accent-alt2: #00ccff;
 }
 
 * {
@@ -16,6 +20,7 @@
 	padding: 0;
 	box-sizing: border-box;
 	font-family: "Roboto Mono", monospace; /* Use Roboto Mono for all elements */
+	font-size: 12px; /* Adjust the base font size */
 }
 
 body {

@@ -96,7 +96,7 @@
 /* The .profile-description class styles the profile description */
 .profile-description {
 	/* Setting the font properties and text alignment */
-	font-size: 0.8rem; /* Adjust the font size */
+	font-size: 0.7rem; /* Adjust the font size */
 	color: var(--light);
 	text-align: left;
 
