@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./styles.css";
 import profilePicture from "../../assets/profile-picture.png";
+import githubLogo from "../../assets/github-logo.png";
 
 const profileName = "Mattias";
 const profileDescription =
@@ -25,6 +26,19 @@ class MyProfile extends Component {
 							</div>
 							<div className="profile-description">
 								<p>{profileDescription}</p>
+							</div>
+							<div className="social-links">
+								<a
+									href="https://github.com/Neniuk"
+									target="_blank"
+									rel="noopener noreferrer"
+								>
+									<img
+										className="social-logo"
+										src={githubLogo}
+										alt="Github logo"
+									/>
+								</a>
 							</div>
 						</div>
 					</div>
