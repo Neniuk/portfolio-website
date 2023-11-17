@@ -1,0 +1,115 @@
+/* The .profile class styles the overall profile container */
+.profile {
+	/* Setting the background color */
+	background-color: var(--primary);
+
+	/* Setting the border properties */
+	border-style: solid;
+	border-color: var(--dark-alt);
+	border-width: 2px;
+	border-radius: 10px;
+
+	/* Setting the padding and maximum dimensions */
+	padding: 20px;
+	max-width: 650px; /* Limit the maximum width */
+	margin: auto; /* Center the element */
+
+	/* Using flexbox for layout */
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+/* The .profile-picture-container class styles the container for the profile picture */
+.profile-picture-container {
+	/* Setting the dimensions and hiding overflow to maintain a circular shape */
+	width: 200px;
+	height: 200px;
+	overflow: hidden;
+
+	/* Adjusting the border-radius to create a rounded square */
+	border-radius: 10%; /* Adjust this value to get the desired roundness */
+
+	/* Applying a border to the container */
+	border-style: solid;
+	border-color: var(--accent);
+	border-width: 2px;
+
+	/* Adding a vignette effect */
+	position: relative;
+}
+
+.profile-picture-container::after {
+	/* Creating a pseudo-element */
+	content: "";
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+
+	/* Applying a radial gradient to create the vignette */
+	background: radial-gradient(circle at center, transparent, black 80%);
+	opacity: 0.3;
+}
+
+/* The .profile-picture class styles the profile picture itself */
+.profile-picture {
+	/* Setting the dimensions and object-fit property to cover the entire content box */
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+
+	/* Applying a filter for visual effect */
+	filter: contrast(0.8) saturate(1.5) sepia(0.3) brightness(0.7);
+}
+
+/* The .profile-picture class styles the profile picture itself */
+.profile-picture {
+	/* Setting the dimensions and object-fit property to cover the entire content box */
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+
+	/* Adjusting the border-radius to create a rounded square */
+	border-radius: 10%; /* Adjust this value to get the desired roundness */
+
+	/* Applying a filter for visual effect */
+	filter: contrast(0.9) saturate(1.7) sepia(0.3) brightness(0.7);
+}
+
+.name-description-container {
+	/* Setting the margins */
+	margin-left: 20px;
+}
+
+/* The .profile-name h1 class styles the profile name */
+.profile-name h1 {
+	/* Setting the font properties and text alignment */
+	font-weight: bold;
+	font-size: 50px;
+	color: var(--accent);
+	text-align: left;
+}
+
+/* The .profile-description class styles the profile description */
+.profile-description {
+	/* Setting the font properties and text alignment */
+	font-size: 0.8rem; /* Adjust the font size */
+	color: var(--light);
+	text-align: left;
+
+	/* Setting the width and word-wrap properties */
+	max-width: 400px; /* Adjust the maximum width */
+	word-wrap: break-word;
+}
+
+/* The .profile-content class styles the profile content */
+.profile-content {
+	/* Using flexbox for layout */
+	display: flex;
+	flex-direction: row;
+	padding-left: 5px;
+	padding-right: 5px;
+}

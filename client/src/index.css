@@ -1,0 +1,62 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap");
+
+:root {
+	--primary: #000000;
+	--secondary: #00001a;
+	--light: #f2f2f2;
+	--light-alt: #e6e6e6;
+	--dark: #00001a;
+	--dark-alt: #2d2d2d;
+	--accent: #ffcc00;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Roboto Mono", monospace; /* Use Roboto Mono for all elements */
+}
+
+body {
+	background-color: var(--primary);
+	color: var(--light);
+}
+
+.App {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+h1 {
+	font-size: 1.5rem; /* Adjust the font size */
+	font-weight: 400; /* Adjust the font weight */
+	margin-bottom: 1rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: "Press Start 2P", cursive; /* Use Press Start 2P for headers */
+}
+
+.page-title {
+	font-size: 2rem; /* Adjust the font size */
+	font-weight: 400; /* Adjust the font weight */
+	margin-bottom: 1rem;
+	margin-top: 1rem;
+
+	/* Centering the text */
+	text-align: center;
+}
+
+.card {
+	/* Other styles... */
+
+	/* Add space between cards */
+	margin-bottom: 20px; /* Adjust as needed */
+}

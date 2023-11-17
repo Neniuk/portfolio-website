@@ -1,0 +1,35 @@
+.projects {
+	/* Setting the background color */
+	background-color: var(--primary);
+
+	/* Setting the border properties */
+	border-style: solid;
+	border-color: var(--dark-alt);
+	border-width: 2px;
+	border-radius: 10px;
+
+	/* Setting the padding and maximum dimensions */
+	padding: 20px;
+	max-width: 650px; /* Limit the maximum width */
+	margin: auto; /* Center the element */
+
+	/* Using flexbox for layout */
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.projects-title-container {
+	width: 100%; /* Ensure the container takes up the full width */
+	text-align: left; /* Align content to the left */
+}
+
+.projects-title {
+	/* Setting the font properties */
+	font-size: 1.5rem;
+	font-weight: 400;
+	margin-bottom: 1rem;
+	color: var(--accent);
+	text-align: left; /* Align the title to the left */
+}
