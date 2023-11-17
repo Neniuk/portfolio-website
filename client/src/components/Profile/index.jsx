@@ -9,21 +9,23 @@ const profileDescription =
 class MyProfile extends Component {
 	render() {
 		return (
-			<div className="profile card">
-				<div className="profile-content">
-					<div className="profile-picture-container">
-						<img
-							className="profile-picture"
-							src={profilePicture}
-							alt="Profile picture"
-						/>
-					</div>
-					<div className="name-description-container">
-						<div className="profile-name">
-							<h1>{profileName}</h1>
+			<div className="card">
+				<div className="profile">
+					<div className="profile-content">
+						<div className="profile-picture-container">
+							<img
+								className="profile-picture"
+								src={profilePicture}
+								alt="Profile picture"
+							/>
 						</div>
-						<div className="profile-description">
-							<p>{profileDescription}</p>
+						<div className="name-description-container">
+							<div className="profile-name">
+								<h1>{profileName}</h1>
+							</div>
+							<div className="profile-description">
+								<p>{profileDescription}</p>
+							</div>
 						</div>
 					</div>
 				</div>
