@@ -120,4 +120,4 @@ class MyProjects extends Component {
 	}
 }
 
-export default MyProjects;
+export default React.memo(MyProjects);

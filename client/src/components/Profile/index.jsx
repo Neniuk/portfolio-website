@@ -72,4 +72,4 @@ class MyProfile extends Component {
 	}
 }
 
-export default MyProfile;
+export default React.memo(MyProfile);

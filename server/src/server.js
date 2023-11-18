@@ -3,6 +3,7 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const createError = require("http-errors");
 const path = require("path");
+const socketIo = require("socket.io");
 
 const indexRouter = require("./routes/index");
 
@@ -10,13 +11,21 @@ const indexRouter = require("./routes/index");
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT || 8000;
+const server = require("http").createServer(app);
+const io = socketIo(server, {
+	cors: {
+		origin: "http://localhost:3000",
+	},
+});
+
+const port = process.env.PORT || 8080;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 // console.log(path.join(__dirname, "../../client/public"));
 app.use(express.static(path.join(__dirname, "../../client/public")));
+// app.use(express.static(path.join(__dirname, "./public")));
 
 // Routes
 app.use("/", indexRouter);
@@ -37,6 +46,34 @@ app.use((err, req, res, next) => {
 	res.send("error");
 });
 
-app.listen(port, () => {
-	console.log(`Server is running at http://localhost:${port}`);
+// app.listen(port, () => {
+// 	console.log(`Server is running at http://localhost:${port}`);
+// });
+
+// Socket.io
+
+let connectedUsers = new Set();
+
+io.on("connection", (socket) => {
+	// console.log("A user connected");
+	connectedUsers.add(socket.id);
+	io.emit("users", connectedUsers.size);
+
+	socket.on("disconnect", (reason) => {
+		// console.log("A user disconnected: " + reason);
+		connectedUsers.delete(socket.id);
+		io.emit("users", connectedUsers.size);
+	});
+
+	socket.on("chat", (msg) => {
+		console.log("Sender: " + msg.sender);
+		console.log("Message: " + msg.message);
+		msg.sender = "ANONYMOUS";
+		socket.broadcast.emit("chat", msg);
+	});
+});
+
+server.listen(port, (err) => {
+	if (err) console.log(err);
+	console.log(`Listening on port http://localhost:${port}`);
 });

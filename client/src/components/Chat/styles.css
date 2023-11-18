@@ -28,10 +28,18 @@
 .chat-connection-indicator {
 	/* Display chat connection indicator on the right side of the chat header */
 	margin-left: auto;
+	margin-bottom: 20px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
 }
 
-.chat-connection-indicator-text {
-	color: var(--connected-color);
+.chat-connection-indicator-dot {
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background-color: var(--connected-color);
+	margin-right: 20px;
 }
 
 .chat-content-container {
@@ -128,4 +136,13 @@
 .chat-send-icon {
 	width: 16px;
 	height: 16px;
+}
+
+.connected-users-container {
+	display: flex;
+	flex-direction: row;
+}
+
+.chat-connection-count-text {
+	margin-right: 5px;
 }
