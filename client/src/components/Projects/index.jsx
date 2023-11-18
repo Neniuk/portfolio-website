@@ -98,7 +98,7 @@ const arcadeLink = "https://github.com/Neniuk/arcade";
 const ArcadeDescription = () => (
 	<ul>
 		<li>
-			The games are built using technologies such as{" "}
+			Collection of games built using technologies such as{" "}
 			<strong className="project-bold">Phaser.io</strong>,{" "}
 			<strong className="project-bold">WebGL</strong> and{" "}
 			<strong className="project-bold">Web Workers</strong>.

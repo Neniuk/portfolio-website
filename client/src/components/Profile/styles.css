@@ -5,7 +5,7 @@
 
 	/* Setting the border properties */
 	border-style: solid;
-	border-color: var(--dark-alt);
+	border-color: var(--outer-border-color);
 	border-width: 2px;
 	border-radius: var(--border-radius);
 

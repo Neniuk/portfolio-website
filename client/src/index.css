@@ -9,6 +9,8 @@
 	--dark: #00001a;
 	--dark-alt: #2d2d2d;
 	--accent: #ff66cc;
+	/* Somewhere between dark-alt and light-alt */
+	--outer-border-color: #4d4d4d;
 	/* --accent: #ffcc00; */
 	/*A blue that goes well with the main accent color*/
 	--accent-alt: #ff66cc;
