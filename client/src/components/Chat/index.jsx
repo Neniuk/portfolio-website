@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./styles.css";
-import arrow from "../../assets/arrow.png";
+// import arrow from "../../assets/arrow.png";
 import BannedWords from "./bannedWords.js";
 
 const submitStyleDelay = 100; // ms
@@ -96,40 +96,42 @@ class MyChat extends Component {
 		button.classList.add("clicked");
 		setTimeout(() => button.classList.remove("clicked"), submitStyleDelay); // Remove the class after 2 seconds
 
-		if (this.state.chatMessage.message.trim().length === 0) {
-			this.setState({ chatMessage: { sender: senderName, message: "" } }); // Clear chat input field
+		let message = this.state.chatMessage.message.trim();
+
+		// If the message is empty, clear the chat input field and return
+		if (message.length === 0) {
+			this.setState({ chatMessage: { sender: senderName, message: "" } });
 			return;
 		}
 
-		if (!validChatMessage(this.state.chatMessage.message)) {
-			this.setState({ chatMessage: { sender: senderName, message: "" } }); // Clear chat input field
+		// If the message is not valid, clear the chat input field and return
+		if (!validChatMessage(message)) {
+			this.setState({ chatMessage: { sender: senderName, message: "" } });
 			return;
 		}
 
 		// Limit the message length to 250 characters
-		this.state.chatMessage.message =
-			this.state.chatMessage.message.substring(0, 250);
+		message = message.substring(0, 250);
 
 		// Avoid harmful payloads in message
-		this.state.chatMessage.message = this.state.chatMessage.message
-			.replace(/</g, "&lt;")
-			.replace(/>/g, "&gt;");
-		// Convert to utf8
-		this.state.chatMessage.message = decodeURIComponent(
-			this.state.chatMessage.message
-		);
+		message = message.replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
-		// console.log("Chat submitted: " + this.state.message);
-		// console.log(this.props.messages);
+		// Convert to utf8
+		message = decodeURIComponent(message);
+
+		// Build new sanitized message object
+		const sanitizedMessage = {
+			sender: senderName,
+			message: message,
+		};
 
 		// Send the message to the server
-		console.log(this.state.chatMessage);
-		this.props.socket.emit("chat", this.state.chatMessage);
+		this.props.socket.emit("chat", sanitizedMessage);
 
 		// Add the message to the messages state
 		this.props.setMessages((prevMessages) => [
 			...prevMessages,
-			this.state.chatMessage,
+			sanitizedMessage,
 		]);
 
 		// Clear chat input field

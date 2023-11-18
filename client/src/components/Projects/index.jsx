@@ -69,11 +69,22 @@ const PortfolioDescription = () => (
 		</li>
 		<br />
 		<li>
-			The <strong className="project-bold">chat</strong> works by
-			establishing a{" "}
-			<strong className="project-bold">TCP connection</strong> to the
-			server, through which the client can send messages, that the server
-			then broadcasts to all connected clients.
+			The <strong className="project-bold">chat</strong> works through{" "}
+			<strong className="project-bold">WebSockets</strong> using{" "}
+			<strong className="project-bold">Socket.io</strong>. The sent
+			messages are filtered and then broadcasted to all connected clients.
+		</li>
+	</ul>
+);
+
+const arcadeLink = "https://github.com/Neniuk/arcade";
+const ArcadeDescription = () => (
+	<ul>
+		<li>
+			The games are built using technologies such as{" "}
+			<strong className="project-bold">Phaser.io</strong>,{" "}
+			<strong className="project-bold">WebGL</strong> and{" "}
+			<strong className="project-bold">Web Workers</strong>.
 		</li>
 	</ul>
 );
@@ -98,12 +109,9 @@ class MyProjects extends Component {
 							description={<PortfolioDescription />}
 						/>
 						<Project
-							title="Project 3"
-							description="Lorem ipsum dolor sit amet, consectetur
-                                adipiscing elit. Nulla accumsan, metus ultrices
-                                eleifend gravida, nulla nunc varius lorem, vitae
-                                rutrum nisi dolor eget odio. Nullam mollis. Ut
-                                justo. Suspendisse potenti."
+							title="Arcade (Under construction)"
+							link={arcadeLink}
+							description={<ArcadeDescription />}
 						/>
 						<Project
 							title="Project 4"

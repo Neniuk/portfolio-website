@@ -9,23 +9,30 @@ const BannedWords = require("./models/bannedWords");
 const indexRouter = require("./routes/index");
 
 //For env File
-dotenv.config();
+dotenv.config({ path: "./.env.local" });
+
+// Environment Variables
+const SERVER_PORT = process.env.SERVER_PORT || 3001;
+const CLIENT_PORT = process.env.CLIENT_PORT || 3000;
+const DEV_ADDRESS = process.env.DEV_ADDRESS || "http://localhost:";
+const PROD_ADDRESS = process.env.PROD_ADDRESS || "http://localhost:";
+const NODE_ENV = process.env.NODE_ENV || "development";
+
+const CLIENT_ADDRESS = DEV_ADDRESS + CLIENT_PORT;
 
 const app = express();
 const server = require("http").createServer(app);
 const io = socketIo(server, {
 	cors: {
-		origin: "http://localhost:3000",
+		origin: CLIENT_ADDRESS,
 	},
 });
-
-const port = process.env.PORT || 8080;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 // console.log(path.join(__dirname, "../../client/public"));
-app.use(express.static(path.join(__dirname, "../../client/public")));
+// app.use(express.static(path.join(__dirname, "../../client/public")));
 // app.use(express.static(path.join(__dirname, "./public")));
 
 // Routes
@@ -102,7 +109,11 @@ io.on("connection", (socket) => {
 	});
 });
 
-server.listen(port, (err) => {
+server.listen(SERVER_PORT, (err) => {
 	if (err) console.log(err);
-	console.log(`Listening on port http://localhost:${port}`);
+	console.log(
+		NODE_ENV === "production"
+			? `The server is running in ${NODE_ENV} mode on ${PROD_ADDRESS}${SERVER_PORT}`
+			: `The server is running in ${NODE_ENV} mode on ${DEV_ADDRESS}${SERVER_PORT}`
+	);
 });
