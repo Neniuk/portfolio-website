@@ -13,6 +13,12 @@
 	/*A blue that goes well with the main accent color*/
 	--accent-alt: #ff66cc;
 	--accent-alt2: #00ccff;
+	--accent-alt3: #ffcc00;
+
+	--connected-color: #00ff00;
+	--disconnected-color: #ff0000;
+
+	--border-radius: 5px;
 }
 
 * {
@@ -34,12 +40,6 @@ body {
 	min-height: 100vh;
 }
 
-h1 {
-	font-size: 1.5rem; /* Adjust the font size */
-	font-weight: 400; /* Adjust the font weight */
-	margin-bottom: 1rem;
-}
-
 h1,
 h2,
 h3,
@@ -47,6 +47,14 @@ h4,
 h5,
 h6 {
 	font-family: "Press Start 2P", cursive; /* Use Press Start 2P for headers */
+	color: var(--accent);
+}
+
+h1 {
+	font-size: 1.5rem; /* Adjust the font size */
+	font-weight: 400; /* Adjust the font weight */
+	margin-bottom: 1rem;
+	color: var(--accent-alt);
 }
 
 .page-title {
@@ -57,6 +65,8 @@ h6 {
 
 	/* Centering the text */
 	text-align: center;
+
+	color: var(--accent-alt2);
 }
 
 .card {
@@ -64,4 +74,24 @@ h6 {
 
 	/* Add space between cards */
 	margin-bottom: 20px; /* Adjust as needed */
+}
+
+.page-content-table {
+	/* Display columns next to each other, while keeping the main-column centered */
+	display: flex;
+	justify-content: center;
+}
+
+.right-side-column {
+	/* Other styles... */
+
+	/* Add space between the columns */
+	margin-left: 20px; /* Adjust as needed */
+}
+
+.left-side-column {
+	/* Other styles... */
+
+	/* Add space between the columns */
+	margin-right: 20px; /* Adjust as needed */
 }

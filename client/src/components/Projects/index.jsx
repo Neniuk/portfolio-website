@@ -25,6 +25,7 @@ const Project = (props) => (
 	</div>
 );
 
+const hackathonLink = "https://github.com/Neniuk/junction-hackathon-2023";
 const HackathonDescription = () => (
 	<ul>
 		<li>
@@ -52,6 +53,31 @@ const HackathonDescription = () => (
 	</ul>
 );
 
+const portfolioLink = "https://github.com/Neniuk/portfolio-website";
+const PortfolioDescription = () => (
+	<ul>
+		<li>
+			Built using <strong className="project-bold">React.js</strong>,{" "}
+			<strong className="project-bold">Node.js</strong> and{" "}
+			<strong className="project-bold">Express.js</strong>.
+		</li>
+		<br />
+		<li>
+			The backend uses the Express server and contains{" "}
+			<strong className="project-bold">API endpoints</strong> for sending
+			chat messages and for signing the guestbook.
+		</li>
+		<br />
+		<li>
+			The <strong className="project-bold">chat</strong> works by
+			establishing a{" "}
+			<strong className="project-bold">TCP connection</strong> to the
+			server, through which the client can send messages, that the server
+			then broadcasts to all connected clients.
+		</li>
+	</ul>
+);
+
 class MyProjects extends Component {
 	render() {
 		return (
@@ -63,16 +89,13 @@ class MyProjects extends Component {
 					<div className="projects-container">
 						<Project
 							title="Hackathon - Junction 2023"
-							link="https://github.com/Neniuk/junction-hackathon-2023"
+							link={hackathonLink}
 							description={<HackathonDescription />}
 						/>
 						<Project
-							title="Project 2"
-							description="Lorem ipsum dolor sit amet, consectetur
-                                adipiscing elit. Nulla accumsan, metus ultrices
-                                eleifend gravida, nulla nunc varius lorem, vitae
-                                rutrum nisi dolor eget odio. Nullam mollis. Ut
-                                justo. Suspendisse potenti."
+							title="Portfolio Website"
+							link={portfolioLink}
+							description={<PortfolioDescription />}
 						/>
 						<Project
 							title="Project 3"
