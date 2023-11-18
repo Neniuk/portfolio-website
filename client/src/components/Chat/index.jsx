@@ -12,7 +12,9 @@ const ChatHeader = (props) => (
 		</div>
 		<div className="chat-connection-indicator">
 			<div
-				className="chat-connection-indicator-dot"
+				className={`chat-connection-indicator-dot ${
+					props.isConnected ? "connected" : "disconnected"
+				}`}
 				title="Chat connection"
 			></div>
 			<div className="connected-users-container">
@@ -150,7 +152,10 @@ class MyChat extends Component {
 		return (
 			<div className="card">
 				<div className="chat">
-					<ChatHeader connectedUsers={this.props.connectedUsers} />
+					<ChatHeader
+						connectedUsers={this.props.connectedUsers}
+						isConnected={this.props.isConnected}
+					/>
 					<ChatContent messages={messages} />
 					<ChatInput
 						onSubmit={this.handleChatSubmit}

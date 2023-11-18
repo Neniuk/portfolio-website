@@ -19,6 +19,7 @@ function App() {
 	// State for number of connected users
 	const [connectedUsers, setConnectedUsers] = React.useState(0);
 	const [messages, setMessages] = React.useState([]);
+	const [isConnected, setIsConnected] = React.useState(false);
 
 	const handleConnectError = React.useCallback(() => {
 		if (!socket.connected) {
@@ -27,14 +28,22 @@ function App() {
 	}, []);
 
 	React.useEffect(() => {
+		const handleBeforeUnload = () => {
+			socket.close();
+		};
+
+		window.addEventListener("beforeunload", handleBeforeUnload);
+
 		socket.on("connect", () => {
 			console.log("Connected to server");
+			setIsConnected(true);
 		});
 
 		socket.on("connect_error", handleConnectError);
 
 		socket.on("disconnect", (reason) => {
 			console.log("Disconnected from server");
+			setIsConnected(false);
 
 			if (reason === "io server disconnect") {
 				// the disconnection was initiated by the server, you need to reconnect manually
@@ -54,6 +63,8 @@ function App() {
 
 		// This will run when the component is unmounted
 		return () => {
+			window.removeEventListener("beforeunload", handleBeforeUnload);
+
 			socket.off("connect");
 			socket.off("connect_error");
 			socket.off("disconnect");
@@ -79,6 +90,7 @@ function App() {
 						connectedUsers={connectedUsers}
 						messages={messages}
 						setMessages={setMessages}
+						isConnected={isConnected}
 					/>
 				</div>
 			</div>

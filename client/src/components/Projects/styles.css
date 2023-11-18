@@ -65,6 +65,7 @@
 
 .project-title-container {
 	display: flex;
+	flex-direction: row;
 	align-items: center;
 	margin-bottom: 1rem;
 }
@@ -81,4 +82,51 @@
 
 .project-description {
 	margin-left: 1.5rem; /* Adjust as needed */
+}
+
+.project-suggestions-card {
+	/* Setting the background color */
+	background-color: var(--dark);
+
+	/* Setting the border properties */
+	border-style: solid;
+	border-color: var(--dark-alt);
+	border-width: 2px;
+	border-radius: var(--border-radius);
+
+	/* Setting the padding and maximum dimensions */
+	padding: 20px;
+	max-width: 650px; /* Limit the maximum width */
+	margin: auto; /* Center the element */
+	margin-bottom: 10px;
+
+	/* Using flexbox for layout */
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.project-suggestions-title-container {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
+
+.project-suggestions-title {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-left: 1.5rem; /* Adjust as needed */
+	margin-right: 1.5rem; /* Adjust as needed */
+}
+
+.project-suggestions-title h3 {
+	color: var(--accent-alt2);
+}
+
+.project-suggestions-main-title {
+	margin-bottom: 0.5rem;
 }

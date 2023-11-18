@@ -25,6 +25,23 @@ const Project = (props) => (
 	</div>
 );
 
+const ProjectSuggestions = () => (
+	<div className="project-suggestions-card">
+		<div className="project-suggestions">
+			<div className="project-suggestions-title-container">
+				<TitleDecoration />
+				<div className="project-suggestions-title">
+					<h3 className="project-suggestions-main-title">
+						Click to suggest project ideas
+					</h3>
+					<h3>(Under construction)</h3>
+				</div>
+				<TitleDecoration />
+			</div>
+		</div>
+	</div>
+);
+
 const hackathonLink = "https://github.com/Neniuk/junction-hackathon-2023";
 const HackathonDescription = () => (
 	<ul>
@@ -121,6 +138,7 @@ class MyProjects extends Component {
                                 rutrum nisi dolor eget odio. Nullam mollis. Ut
                                 justo. Suspendisse potenti."
 						/>
+						<ProjectSuggestions />
 					</div>
 				</div>
 			</div>

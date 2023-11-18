@@ -42,6 +42,14 @@
 	margin-right: 20px;
 }
 
+.chat-connection-indicator-dot.connected {
+	background-color: var(--connected-color);
+}
+
+.chat-connection-indicator-dot.disconnected {
+	background-color: var(--disconnected-color);
+}
+
 .chat-content-container {
 	/* Setting the background color */
 	background-color: var(--dark);
