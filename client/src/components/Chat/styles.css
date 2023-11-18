@@ -81,7 +81,11 @@
 	scrollbar-color: var(--accent-alt2) var(--dark);
 }
 
-.chat-bold {
+.chat-bold-me {
+	color: var(--accent-alt);
+}
+
+.chat-bold-anonymous {
 	color: var(--accent-alt2);
 }
 
@@ -128,15 +132,20 @@
 	color: var(--light);
 }
 
+.chat-send:hover {
+	border-color: var(--light);
+	/* color: var(--accent-alt); */
+}
+
 .chat-send.clicked {
 	border-color: var(--accent-alt2);
 	color: var(--accent-alt2);
 }
 
-.chat-send-icon {
+/* .chat-send-icon {
 	width: 16px;
 	height: 16px;
-}
+} */
 
 .connected-users-container {
 	display: flex;
@@ -145,4 +154,27 @@
 
 .chat-connection-count-text {
 	margin-right: 5px;
+}
+
+.input-max-length {
+	border-color: var(--disconnected-color);
+}
+
+/* This will affect the scrollbar in Chrome, Edge, and Safari */
+::-webkit-scrollbar {
+	width: 8px;
+}
+
+::-webkit-scrollbar-track {
+	background: var(--dark); /* Color of the track */
+}
+
+::-webkit-scrollbar-thumb {
+	background: var(--accent-alt2); /* Color of the scroll thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: var(
+		--accent-alt2
+	); /* Color of the scroll thumb when hovering */
 }

@@ -4,6 +4,7 @@ const dotenv = require("dotenv");
 const createError = require("http-errors");
 const path = require("path");
 const socketIo = require("socket.io");
+const BannedWords = require("./models/bannedWords");
 
 const indexRouter = require("./routes/index");
 
@@ -54,6 +55,22 @@ app.use((err, req, res, next) => {
 
 let connectedUsers = new Set();
 
+const validChatMessage = (msg) => {
+	if (msg.length > 250) {
+		return false;
+	}
+	// if (BannedWords.includes(msg.toLowerCase())) {
+	// 	return false;
+	// }
+	const words = msg.split(" ");
+	for (let i = 0; i < words.length; i++) {
+		if (BannedWords.includes(words[i].toLowerCase())) {
+			return false;
+		}
+	}
+	return true;
+};
+
 io.on("connection", (socket) => {
 	// console.log("A user connected");
 	connectedUsers.add(socket.id);
@@ -68,7 +85,19 @@ io.on("connection", (socket) => {
 	socket.on("chat", (msg) => {
 		console.log("Sender: " + msg.sender);
 		console.log("Message: " + msg.message);
+
+		if (!validChatMessage(msg.message)) {
+			console.log("Invalid message");
+			return;
+		}
+
 		msg.sender = "ANONYMOUS";
+
+		// Avoid harmful payloads in message
+		msg.message = msg.message.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+		// Convert to utf8
+		msg.message = decodeURIComponent(msg.message);
+
 		socket.broadcast.emit("chat", msg);
 	});
 });

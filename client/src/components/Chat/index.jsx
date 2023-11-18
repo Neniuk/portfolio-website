@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./styles.css";
 import arrow from "../../assets/arrow.png";
+import BannedWords from "./bannedWords.js";
 
 const submitStyleDelay = 100; // ms
 
@@ -10,7 +11,10 @@ const ChatHeader = (props) => (
 			<h1 className="chat-title">Chat</h1>
 		</div>
 		<div className="chat-connection-indicator">
-			<div className="chat-connection-indicator-dot"></div>
+			<div
+				className="chat-connection-indicator-dot"
+				title="Chat connection"
+			></div>
 			<div className="connected-users-container">
 				<p className="chat-connection-count-text">Users: </p>
 				<p className="chat-connection-count">{props.connectedUsers}</p>
@@ -24,7 +28,13 @@ const ChatContent = React.memo(({ messages }) => (
 		{messages.map((message, index) => (
 			<div key={index} className="chat-message-container">
 				<p className="chat-message-text">
-					<strong className="chat-bold">
+					<strong
+						className={
+							message.sender === "ME"
+								? "chat-bold-me"
+								: "chat-bold-anonymous"
+						}
+					>
 						{message.sender}
 						{" >"}
 					</strong>{" "}
@@ -36,18 +46,39 @@ const ChatContent = React.memo(({ messages }) => (
 ));
 
 const ChatInput = ({ onSubmit, message, onMessageChange }) => (
-	<div className="chat-input-container">
+	<form className="chat-input-container">
 		<input
-			className="chat-input"
+			type="text"
+			className={`chat-input ${
+				message.length === 250 ? "input-max-length" : ""
+			}`}
 			placeholder="Type a message..."
 			value={message}
 			onChange={onMessageChange}
+			maxLength={250}
 		/>
 		<button className="chat-send" onClick={onSubmit}>
 			Send
 		</button>
-	</div>
+	</form>
 );
+
+const validChatMessage = (msg) => {
+	// if (msg.length > 250) {
+	// 	return false;
+	// }
+	// if (BannedWords.includes(msg.toLowerCase())) {
+	// 	return false;
+	// }
+	// Check if any of the words in the message are in the banned words list
+	const words = msg.split(" ");
+	for (let i = 0; i < words.length; i++) {
+		if (BannedWords.includes(words[i].toLowerCase())) {
+			return false;
+		}
+	}
+	return true;
+};
 
 const senderName = "ME";
 class MyChat extends Component {
@@ -61,14 +92,32 @@ class MyChat extends Component {
 	handleChatSubmit = (e) => {
 		e.preventDefault();
 
+		const button = e.target;
+		button.classList.add("clicked");
+		setTimeout(() => button.classList.remove("clicked"), submitStyleDelay); // Remove the class after 2 seconds
+
 		if (this.state.chatMessage.message.trim().length === 0) {
 			this.setState({ chatMessage: { sender: senderName, message: "" } }); // Clear chat input field
 			return;
 		}
 
-		const button = e.target;
-		button.classList.add("clicked");
-		setTimeout(() => button.classList.remove("clicked"), submitStyleDelay); // Remove the class after 2 seconds
+		if (!validChatMessage(this.state.chatMessage.message)) {
+			this.setState({ chatMessage: { sender: senderName, message: "" } }); // Clear chat input field
+			return;
+		}
+
+		// Limit the message length to 250 characters
+		this.state.chatMessage.message =
+			this.state.chatMessage.message.substring(0, 250);
+
+		// Avoid harmful payloads in message
+		this.state.chatMessage.message = this.state.chatMessage.message
+			.replace(/</g, "&lt;")
+			.replace(/>/g, "&gt;");
+		// Convert to utf8
+		this.state.chatMessage.message = decodeURIComponent(
+			this.state.chatMessage.message
+		);
 
 		// console.log("Chat submitted: " + this.state.message);
 		// console.log(this.props.messages);
@@ -103,7 +152,7 @@ class MyChat extends Component {
 					<ChatContent messages={messages} />
 					<ChatInput
 						onSubmit={this.handleChatSubmit}
-						message={this.state.message}
+						message={this.state.chatMessage.message}
 						onMessageChange={this.handleMessageChange}
 					/>
 				</div>
