@@ -3,6 +3,8 @@ import MyProjects from "./components/Projects";
 import MyChat from "./components/Chat";
 import { io } from "socket.io-client";
 import React from "react";
+import mainTitleDecoration from "./assets/main-title-decoration.png";
+import mainTitleDecorationBlue from "./assets/main-title-decoration-blue.png";
 
 const SERVER_PORT = process.env.REACT_APP_SERVER_PORT || 3001;
 // const CLIENT_PORT = process.env.REACT_APP_CLIENT_PORT || 3000;
@@ -14,6 +16,14 @@ const SERVER_ADDRESS = DEV_ADDRESS + SERVER_PORT;
 // console.log("Server Address: " + SERVER_ADDRESS);
 
 const socket = io(SERVER_ADDRESS);
+
+const PageTitleDecoration = (props) => (
+	<img
+		className={"page-title-decoration " + props.decorationSide}
+		src={mainTitleDecorationBlue}
+		alt="Main title decoration"
+	/>
+);
 
 function App() {
 	// State for number of connected users
@@ -35,14 +45,14 @@ function App() {
 		window.addEventListener("beforeunload", handleBeforeUnload);
 
 		socket.on("connect", () => {
-			console.log("Connected to server");
+			console.log("Connected to chat server");
 			setIsConnected(true);
 		});
 
 		socket.on("connect_error", handleConnectError);
 
 		socket.on("disconnect", (reason) => {
-			console.log("Disconnected from server");
+			console.log("Disconnected from chat server");
 			setIsConnected(false);
 
 			if (reason === "io server disconnect") {
@@ -75,7 +85,11 @@ function App() {
 
 	return (
 		<div className="App">
-			<h1 className="page-title">NENIUK.DEV</h1>
+			<div className="page-title-container">
+				<PageTitleDecoration decorationSide="left" />
+				<h1 className="page-title">NENIUK.DEV</h1>
+				<PageTitleDecoration decorationSide="right" />
+			</div>
 			<div className="page-content-table">
 				<div className="left-side-column"></div>
 				<div className="main-column">

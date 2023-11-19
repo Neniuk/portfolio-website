@@ -6,7 +6,7 @@ const path = require("path");
 const socketIo = require("socket.io");
 const BannedWords = require("./models/bannedWords");
 
-const indexRouter = require("./routes/index");
+// const indexRouter = require("./routes/index");
 
 //For env File
 dotenv.config({ path: "./.env.local" });
@@ -15,7 +15,7 @@ dotenv.config({ path: "./.env.local" });
 const SERVER_PORT = process.env.SERVER_PORT || 3001;
 const CLIENT_PORT = process.env.CLIENT_PORT || 3000;
 const DEV_ADDRESS = process.env.DEV_ADDRESS || "http://localhost:";
-const PROD_ADDRESS = process.env.PROD_ADDRESS || "http://localhost:";
+const PROD_ADDRESS = process.env.PROD_ADDRESS || "http://127.0.0.1:";
 const NODE_ENV = process.env.NODE_ENV || "development";
 
 const CLIENT_ADDRESS = DEV_ADDRESS + CLIENT_PORT;
@@ -36,23 +36,23 @@ app.use(cors());
 // app.use(express.static(path.join(__dirname, "./public")));
 
 // Routes
-app.use("/", indexRouter);
+// app.use("/", indexRouter);
 
 // catch 404 and forward to error handler
-app.use(function (req, res, next) {
-	next(createError(404));
-});
+// app.use(function (req, res, next) {
+// 	next(createError(404));
+// });
 
 // error handler
-app.use((err, req, res, next) => {
-	// set locals, only providing error in development
-	res.locals.message = err.message;
-	res.locals.error = req.app.get("env") === "development" ? err : {};
+// app.use((err, req, res, next) => {
+// 	// set locals, only providing error in development
+// 	res.locals.message = err.message;
+// 	res.locals.error = req.app.get("env") === "development" ? err : {};
 
-	// render the error page
-	res.status(err.status || 500);
-	res.send("error");
-});
+// 	// render the error page
+// 	res.status(err.status || 500);
+// 	res.send("error");
+// });
 
 // app.listen(port, () => {
 // 	console.log(`Server is running at http://localhost:${port}`);
@@ -112,8 +112,8 @@ io.on("connection", (socket) => {
 server.listen(SERVER_PORT, (err) => {
 	if (err) console.log(err);
 	console.log(
-		NODE_ENV === "production"
-			? `The server is running in ${NODE_ENV} mode on ${PROD_ADDRESS}${SERVER_PORT}`
-			: `The server is running in ${NODE_ENV} mode on ${DEV_ADDRESS}${SERVER_PORT}`
+		`Server is running at ${
+			NODE_ENV === "production" ? PROD_ADDRESS : DEV_ADDRESS
+		}${SERVER_PORT}`
 	);
 });

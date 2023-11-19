@@ -97,3 +97,26 @@ h1 {
 	/* Add space between the columns */
 	margin-right: 20px; /* Adjust as needed */
 }
+
+.page-title-decoration {
+	width: 320px;
+	height: 32px;
+	filter: brightness(0.5);
+}
+
+.page-title-decoration.right {
+	/* Mirror image horizontally */
+	transform: scaleX(-1);
+}
+
+.page-title-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+.page-title {
+	margin-left: 20px;
+	margin-right: 20px;
+}
