@@ -78,12 +78,12 @@ const PortfolioDescription = () => (
 			<strong className="project-bold">Node.js</strong> and{" "}
 			<strong className="project-bold">Express.js</strong>.
 		</li>
-		<br />
+		{/* <br />
 		<li>
 			The backend uses the Express server and contains{" "}
 			<strong className="project-bold">API endpoints</strong> for sending
 			chat messages and for signing the guestbook.
-		</li>
+		</li> */}
 		<br />
 		<li>
 			The <strong className="project-bold">chat</strong> works through{" "}
