@@ -85,6 +85,7 @@ function App() {
 
 	return (
 		<div className="App">
+			<canvas className="snow" id="snowCanvas"></canvas>
 			<div className="page-title-container">
 				<PageTitleDecoration decorationSide="left" />
 				<h1 className="page-title">NENIUK.DEV</h1>

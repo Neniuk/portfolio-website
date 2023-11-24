@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import "./styles.css";
 import starAnimation from "../../assets/star-animation.gif";
+import projectInformation from "./projectInformation";
+
+const { exampleProject, hackathon, portfolio, arcade, spotifyDownloader } =
+	projectInformation;
 
 const TitleDecoration = () => (
 	<img
@@ -42,70 +46,6 @@ const ProjectSuggestions = () => (
 	</div>
 );
 
-const hackathonLink = "https://github.com/Neniuk/junction-hackathon-2023";
-const HackathonDescription = () => (
-	<ul>
-		<li>
-			We built a <strong className="project-bold">dashboard tool</strong>{" "}
-			with cards of varying information, from summarized news articles, to
-			graphed data, and a chatbot.
-		</li>
-		<br />
-		<li>
-			Built using <strong className="project-bold">Node.js</strong> and{" "}
-			<strong className="project-bold">Express.js</strong>, utilizing a
-			few different LLMs and tools for managing and running these models,
-			such as <strong className="project-bold">Ollama.ai</strong>.
-		</li>
-		<br />
-		<li>
-			Trustworthiness of the information provided by the LLM was one of
-			the key factors of this challenge, and as such we utilized
-			techniques such as{" "}
-			<strong className="project-bold">prompt engineering</strong> and{" "}
-			<strong className="project-bold">knowledge bases</strong> to help
-			ensure the accuracy of the information and to avoid hallucinations
-			(making up non-existent data) by the model.
-		</li>
-	</ul>
-);
-
-const portfolioLink = "https://github.com/Neniuk/portfolio-website";
-const PortfolioDescription = () => (
-	<ul>
-		<li>
-			Built using <strong className="project-bold">React.js</strong>,{" "}
-			<strong className="project-bold">Node.js</strong> and{" "}
-			<strong className="project-bold">Express.js</strong>.
-		</li>
-		{/* <br />
-		<li>
-			The backend uses the Express server and contains{" "}
-			<strong className="project-bold">API endpoints</strong> for sending
-			chat messages and for signing the guestbook.
-		</li> */}
-		<br />
-		<li>
-			The <strong className="project-bold">chat</strong> works through{" "}
-			<strong className="project-bold">WebSockets</strong> using{" "}
-			<strong className="project-bold">Socket.io</strong>. The sent
-			messages are filtered and then broadcasted to all connected clients.
-		</li>
-	</ul>
-);
-
-const arcadeLink = "https://github.com/Neniuk/arcade";
-const ArcadeDescription = () => (
-	<ul>
-		<li>
-			Collection of games built using technologies such as{" "}
-			<strong className="project-bold">Phaser.io</strong>,{" "}
-			<strong className="project-bold">WebGL</strong> and{" "}
-			<strong className="project-bold">Web Workers</strong>.
-		</li>
-	</ul>
-);
-
 class MyProjects extends Component {
 	render() {
 		return (
@@ -116,27 +56,29 @@ class MyProjects extends Component {
 					</div>
 					<div className="projects-container">
 						<Project
-							title="Hackathon - Junction 2023"
-							link={hackathonLink}
-							description={<HackathonDescription />}
+							title={hackathon.title}
+							link={hackathon.link}
+							description={hackathon.description}
 						/>
 						<Project
-							title="Portfolio Website"
-							link={portfolioLink}
-							description={<PortfolioDescription />}
+							title={portfolio.title}
+							link={portfolio.link}
+							description={portfolio.description}
 						/>
 						<Project
-							title="Arcade (Under construction)"
-							link={arcadeLink}
-							description={<ArcadeDescription />}
+							title={arcade.title}
+							link={arcade.link}
+							description={arcade.description}
 						/>
 						<Project
-							title="Project 4"
-							description="Lorem ipsum dolor sit amet, consectetur
-                                adipiscing elit. Nulla accumsan, metus ultrices
-                                eleifend gravida, nulla nunc varius lorem, vitae
-                                rutrum nisi dolor eget odio. Nullam mollis. Ut
-                                justo. Suspendisse potenti."
+							title={spotifyDownloader.title}
+							link={spotifyDownloader.link}
+							description={spotifyDownloader.description}
+						/>
+						<Project
+							title={exampleProject.title}
+							link={exampleProject.link}
+							description={exampleProject.description}
 						/>
 						<ProjectSuggestions />
 					</div>

@@ -130,3 +130,8 @@
 .project-suggestions-main-title {
 	margin-bottom: 0.5rem;
 }
+
+.inner-list {
+	margin-left: 2rem; /* Adjust as needed */
+	margin-right: 2rem; /* Adjust as needed */
+}

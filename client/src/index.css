@@ -31,6 +31,11 @@
 	font-size: 12px; /* Adjust the base font size */
 }
 
+body,
+html {
+	height: 100%;
+}
+
 body {
 	background-color: var(--primary);
 	color: var(--light);
@@ -119,4 +124,12 @@ h1 {
 .page-title {
 	margin-left: 20px;
 	margin-right: 20px;
+}
+
+.snow {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color: var(--accent);
+	z-index: -1;
 }
