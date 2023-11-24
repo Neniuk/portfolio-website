@@ -5,6 +5,7 @@ const createError = require("http-errors");
 const path = require("path");
 const socketIo = require("socket.io");
 const BannedWords = require("./models/bannedWords");
+const crypto = require("crypto");
 
 // const indexRouter = require("./routes/index");
 
@@ -80,11 +81,16 @@ const validChatMessage = (msg) => {
 
 io.on("connection", (socket) => {
 	// console.log("A user connected");
+	// TODO: Handle collisions and add usernames to connectedUsers, for example as a dictionary
+	const username = "User" + crypto.randomBytes(3).toString("hex");
+	socket.username = username;
+
 	connectedUsers.add(socket.id);
 	io.emit("users", connectedUsers.size);
 
 	socket.on("disconnect", (reason) => {
 		// console.log("A user disconnected: " + reason);
+		// TODO: Remove username from connectedUsers, release the socket.username
 		connectedUsers.delete(socket.id);
 		io.emit("users", connectedUsers.size);
 	});
