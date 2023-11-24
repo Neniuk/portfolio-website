@@ -44,10 +44,14 @@
 
 .chat-connection-indicator-dot.connected {
 	background-color: var(--connected-color);
+	/* Decrease the blur radius and spread radius to reduce the intensity of the glow */
+	box-shadow: 0 0 10px 1px var(--connected-color); /* Adjust color as needed */
 }
 
 .chat-connection-indicator-dot.disconnected {
 	background-color: var(--disconnected-color);
+	/* Decrease the blur radius and spread radius to reduce the intensity of the glow */
+	box-shadow: 0 0 10px 1px var(--disconnected-color); /* Adjust color as needed */
 }
 
 .chat-content-container {

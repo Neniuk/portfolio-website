@@ -5,6 +5,7 @@ import { io } from "socket.io-client";
 import React from "react";
 import mainTitleDecoration from "./assets/main-title-decoration.png";
 import mainTitleDecorationBlue from "./assets/main-title-decoration-blue.png";
+import MySnow from "./components/Snow";
 
 const SERVER_PORT = process.env.REACT_APP_SERVER_PORT || 3001;
 // const CLIENT_PORT = process.env.REACT_APP_CLIENT_PORT || 3000;
@@ -85,7 +86,7 @@ function App() {
 
 	return (
 		<div className="App">
-			<canvas className="snow" id="snowCanvas"></canvas>
+			<MySnow />
 			<div className="page-title-container">
 				<PageTitleDecoration decorationSide="left" />
 				<h1 className="page-title">NENIUK.DEV</h1>

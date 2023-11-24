@@ -90,7 +90,8 @@ io.on("connection", (socket) => {
 	});
 
 	socket.on("chat", (msg) => {
-		console.log("Sender: " + msg.sender);
+		// Log socket id
+		console.log("Sender: " + socket.id);
 		console.log("Message: " + msg.message);
 
 		if (!validChatMessage(msg.message)) {

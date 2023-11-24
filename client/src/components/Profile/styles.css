@@ -65,7 +65,7 @@
 	border-radius: 10%; /* Adjust this value to get the desired roundness */
 
 	/* Applying a filter for visual effect */
-	filter: contrast(0.9) saturate(1.5) sepia(0.3) brightness(0.8);
+	filter: contrast(0.9) saturate(1.5) sepia(0.3) brightness(0.9);
 }
 
 .profile-details-container {
