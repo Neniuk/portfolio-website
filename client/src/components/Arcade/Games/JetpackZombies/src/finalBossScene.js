@@ -1,5 +1,7 @@
 import Phaser from "phaser";
 
+const assetPath = "/gameAssets/JetpackZombies/";
+
 // const playerSpeed = 100;
 // const projectileSpeed = 200;
 // const projectileCooldown = 1500;

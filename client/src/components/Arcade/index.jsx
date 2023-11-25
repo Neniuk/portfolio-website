@@ -1,27 +1,32 @@
 import React, { Component } from "react";
+import Draggable from "react-draggable";
 import "./styles.css";
 import controllerImage from "../../assets/controller.png";
 import JetpackZombiesGame from "./Games/JetpackZombies";
+import PongGame from "./Games/Pong";
 
 class MyArcade extends Component {
-	state = {
-		gameActive: false,
-	};
+	constructor(props) {
+		super(props);
+		this.state = {
+			gameActive: false,
+		};
+		this.nodeRef = React.createRef();
+	}
 
-	// Handle arcade logo click
-	handleArcadeLogoClick = () => {
+	handleArcadeClick = () => {
 		this.setState({ gameActive: true });
 	};
 
 	// Add event listener to arcade logo & unmount event listener
 	componentDidMount() {
-		const arcadeLogo = document.querySelector(".arcade-logo");
-		arcadeLogo.addEventListener("click", this.handleArcadeLogoClick);
+		const arcadeButton = document.querySelector(".arcade");
+		arcadeButton.addEventListener("click", this.handleArcadeClick);
 	}
 
 	componentWillUnmount() {
-		const arcadeLogo = document.querySelector(".arcade-logo");
-		arcadeLogo.removeEventListener("click", this.handleArcadeLogoClick);
+		const arcadeButton = document.querySelector(".arcade");
+		arcadeButton.removeEventListener("click", this.handleArcadeClick);
 	}
 
 	render() {
@@ -35,11 +40,34 @@ class MyArcade extends Component {
 							src={controllerImage}
 							alt="Game controller"
 							className="arcade-logo"
-							onClick={this.handleArcadeLogoClick}
 						/>
 					</div>
 				</div>
-				{gameActive && <JetpackZombiesGame />}
+				{gameActive && (
+					<Draggable
+						handle=".game-navbar"
+						nodeRef={this.nodeRef}
+						positionOffset={{ x: "-50%", y: "-50%" }}
+					>
+						<div ref={this.nodeRef} className="game">
+							<div className="game-navbar">
+								<h1 className="game-navbar-title">Arcade</h1>
+								<div
+									className="game-navbar-close"
+									onClick={() =>
+										this.setState({ gameActive: false })
+									}
+								>
+									<h1 className="game-navbar-close-text">
+										X
+									</h1>
+								</div>
+							</div>
+							<JetpackZombiesGame />
+							{/* <PongGame /> */}
+						</div>
+					</Draggable>
+				)}
 			</div>
 		);
 	}

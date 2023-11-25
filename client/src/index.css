@@ -22,6 +22,10 @@
 
 	--border-radius: 5px;
 	--border-width: 2px;
+
+	/* Default 480px X 320px */
+	--game-canvas-width: 960px; /* 2x Default */
+	--game-canvas-height: 640px; /* 2x Default */
 }
 
 * {
@@ -132,5 +136,5 @@ h1 {
 	width: 100%;
 	height: 100%;
 	background-color: var(--accent);
-	z-index: -1;
+	z-index: -1000;
 }

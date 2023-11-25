@@ -6,6 +6,8 @@ const projectileCooldown = 1500;
 const defaultFrozen = true;
 const defaultFrozenShot = 0;
 
+const assetPath = "/gameAssets/JetpackZombies/";
+
 export default class LevelOneScene extends Phaser.Scene {
 	constructor() {
 		super("LevelOneScene");
@@ -31,29 +33,32 @@ export default class LevelOneScene extends Phaser.Scene {
 
 	preload() {
 		// Sprite Sheets
-		this.load.spritesheet("explosion", "assets/ExplosionBig2.png", {
+		this.load.spritesheet("explosion", assetPath + "ExplosionBig2.png", {
 			frameWidth: 64,
 			frameHeight: 64,
 		});
-		this.load.spritesheet("player", "assets/PlayerSheet2.png", {
+		this.load.spritesheet("player", assetPath + "PlayerSheet2.png", {
 			frameWidth: 22,
 			frameHeight: 28,
 		});
 
 		// Images
-		this.load.image("playerRight", "assets/PlayerRight.png");
-		this.load.image("projectile", "assets/GreenProjectileSmall.png");
-		this.load.image("innerbackground", "assets/InnerBackground.png");
-		this.load.image("outerbackground", "assets/OuterBackground.png");
-		this.load.image("topouter", "assets/TopOuter.png");
-		this.load.image("bottomouter", "assets/BottomOuter.png");
-		this.load.image("leftouter", "assets/LeftOuter.png");
-		this.load.image("rightouter", "assets/RightOuter.png");
-		this.load.image("amazingtron", "assets/amazingtron9001.png");
-		this.load.image("speechbox", "assets/speechbox.png");
+		this.load.image("playerRight", assetPath + "PlayerRight.png");
+		this.load.image("projectile", assetPath + "GreenProjectileSmall.png");
+		this.load.image("innerbackground", assetPath + "InnerBackground.png");
+		this.load.image("outerbackground", assetPath + "OuterBackground.png");
+		this.load.image("topouter", assetPath + "TopOuter.png");
+		this.load.image("bottomouter", assetPath + "BottomOuter.png");
+		this.load.image("leftouter", assetPath + "LeftOuter.png");
+		this.load.image("rightouter", assetPath + "RightOuter.png");
+		this.load.image("amazingtron", assetPath + "amazingtron9001.png");
+		this.load.image("speechbox", assetPath + "speechbox.png");
 
 		// Audio
-		this.load.audio("laserSound", ["assets/laser.mp3", "assets/laser.ogg"]);
+		this.load.audio("laserSound", [
+			assetPath + "laser.mp3",
+			assetPath + "laser.ogg",
+		]);
 	}
 
 	create() {

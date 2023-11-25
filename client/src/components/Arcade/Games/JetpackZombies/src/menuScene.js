@@ -1,5 +1,7 @@
 import Phaser from "phaser";
 
+const assetPath = "/gameAssets/JetpackZombies/";
+
 export default class MenuScene extends Phaser.Scene {
 	constructor() {
 		super("MenuScene");
@@ -60,12 +62,12 @@ export default class MenuScene extends Phaser.Scene {
 	}
 
 	preload() {
-		this.load.image("start", "./assets/StartPink.png");
-		this.load.image("tutorial", "./assets/Tutorial2.png");
-		this.load.image("notification", "./assets/Notification.png");
-		this.load.image("close", "./assets/Close.png");
-		this.load.audio("backgroundMusic", "./assets/background-music.mp3");
-		this.load.image("title", "./assets/jetpackZombies.png");
+		this.load.image("start", assetPath + "StartPink.png");
+		this.load.image("tutorial", assetPath + "Tutorial2.png");
+		this.load.image("notification", assetPath + "Notification.png");
+		this.load.image("close", assetPath + "Close.png");
+		this.load.audio("backgroundMusic", assetPath + "background-music.mp3");
+		this.load.image("title", assetPath + "jetpackZombies.png");
 	}
 
 	create() {

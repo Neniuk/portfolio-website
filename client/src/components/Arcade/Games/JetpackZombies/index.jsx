@@ -10,6 +10,7 @@ const JetpackZombiesGame = () => {
 
 		return () => {
 			game.destroy(true);
+			console.log("Jetpack Zombies game destroyed");
 		};
 	}, []);
 

@@ -6,8 +6,8 @@ export default class Pong extends Phaser.Scene {
 	}
 
 	preload() {
-		this.load.image("ball", "assets/pong/ball.png");
-		this.load.image("paddle", "assets/pong/paddle.png");
+		this.load.image("ball", "/gameAssets/Pong/pong-ball.png");
+		this.load.image("paddle", "/gameAssets/Pong/pong-paddle.png");
 	}
 
 	create() {
@@ -18,12 +18,14 @@ export default class Pong extends Phaser.Scene {
 				"ball"
 			)
 			.setCollideWorldBounds(true)
-			.setBounce(1);
+			.setBounce(1)
+			.setScale(0.1);
 
 		this.paddle1 = this.physics.add
 			.sprite(10, this.physics.world.bounds.centerY, "paddle")
 			.setCollideWorldBounds(true)
-			.setImmovable(true);
+			.setImmovable(true)
+			.setScale(0.1);
 
 		this.paddle2 = this.physics.add
 			.sprite(
@@ -32,7 +34,8 @@ export default class Pong extends Phaser.Scene {
 				"paddle"
 			)
 			.setCollideWorldBounds(true)
-			.setImmovable(true);
+			.setImmovable(true)
+			.setScale(0.1);
 
 		this.physics.add.collider(this.ball, this.paddle1);
 		this.physics.add.collider(this.ball, this.paddle2);

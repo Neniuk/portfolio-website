@@ -1,5 +1,7 @@
 import Phaser from "phaser";
 
+const assetPath = "/gameAssets/JetpackZombies/";
+
 const projectileSpeed = 200;
 
 export default class ShootingCutScene extends Phaser.Scene {
@@ -20,35 +22,39 @@ export default class ShootingCutScene extends Phaser.Scene {
 
 	preload() {
 		// Sprite sheets
-		this.load.spritesheet("explosion", "assets/ExplosionBig2.png", {
+		this.load.spritesheet("explosion", assetPath + "ExplosionBig2.png", {
 			frameWidth: 64,
 			frameHeight: 64,
 		});
-		this.load.spritesheet("innocentChild", "assets/InnocentChild2.png", {
-			frameWidth: 25,
-			frameHeight: 28,
-		});
-		this.load.spritesheet("player", "assets/PlayerSheet2.png", {
+		this.load.spritesheet(
+			"innocentChild",
+			assetPath + "InnocentChild2.png",
+			{
+				frameWidth: 25,
+				frameHeight: 28,
+			}
+		);
+		this.load.spritesheet("player", assetPath + "PlayerSheet2.png", {
 			frameWidth: 22,
 			frameHeight: 28,
 		});
 
 		// Images
-		this.load.image("projectile", "assets/GreenProjectileSmall.png");
-		this.load.image("background", "assets/Background.png");
-		this.load.image("innerbackground", "assets/InnerBackground.png");
-		this.load.image("outerbackground", "assets/OuterBackground.png");
-		this.load.image("topouter", "assets/TopOuter.png");
-		this.load.image("bottomouter", "assets/BottomOuter.png");
-		this.load.image("leftouter", "assets/LeftOuter.png");
-		this.load.image("rightouter", "assets/RightOuter.png");
-		this.load.image("blood", "assets/Blood.png");
-		this.load.image("amazingtron", "assets/amazingtron9001.png");
+		this.load.image("projectile", assetPath + "GreenProjectileSmall.png");
+		this.load.image("background", assetPath + "Background.png");
+		this.load.image("innerbackground", assetPath + "InnerBackground.png");
+		this.load.image("outerbackground", assetPath + "OuterBackground.png");
+		this.load.image("topouter", assetPath + "TopOuter.png");
+		this.load.image("bottomouter", assetPath + "BottomOuter.png");
+		this.load.image("leftouter", assetPath + "LeftOuter.png");
+		this.load.image("rightouter", assetPath + "RightOuter.png");
+		this.load.image("blood", assetPath + "Blood.png");
+		this.load.image("amazingtron", assetPath + "amazingtron9001.png");
 
 		// Audio
 		this.load.audio("explosionSound", [
-			"assets/explosion.mp3",
-			"assets/explosion.ogg",
+			assetPath + "explosion.mp3",
+			assetPath + "explosion.ogg",
 		]);
 	}
 
