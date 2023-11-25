@@ -29,6 +29,17 @@ class MyArcade extends Component {
 		arcadeButton.removeEventListener("click", this.handleArcadeClick);
 	}
 
+	// Centering draggable element
+	// Source: https://stackoverflow.com/a/70906585
+	//
+	// 	<Draggable positionOffset={{ x: '-50%', y: '-50%' }}}>
+	//   <div className='myElement'>
+	//     This is my draggable element
+	//   </div>
+	// </Draggable/>
+	//
+	// .myElement{z-index:999; position: absolute; top: 50%; left: 50%;}
+
 	render() {
 		const { gameActive } = this.state;
 
