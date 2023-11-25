@@ -101,7 +101,9 @@ const SpotifyDownloaderDescription = () => (
 		<li>
 			Fetches the user's playlists and the song names in the selected
 			playlist using the{" "}
-			<strong className="project-bold">Spotify API</strong>.
+			<strong className="project-bold">Spotify API</strong>. Finally all
+			the songs are downloaded and converted to mp3 using subprocess calls
+			to ffmpeg.
 		</li>
 		<br />
 		<li>

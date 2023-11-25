@@ -6,6 +6,7 @@ import React from "react";
 import mainTitleDecoration from "./assets/main-title-decoration.png";
 import mainTitleDecorationBlue from "./assets/main-title-decoration-blue.png";
 import MySnow from "./components/Snow";
+import MyArcade from "./components/Arcade";
 
 const SERVER_PORT = process.env.REACT_APP_SERVER_PORT || 3001;
 // const CLIENT_PORT = process.env.REACT_APP_CLIENT_PORT || 3000;
@@ -108,6 +109,7 @@ function App() {
 						setMessages={setMessages}
 						isConnected={isConnected}
 					/>
+					<MyArcade />
 				</div>
 			</div>
 		</div>
