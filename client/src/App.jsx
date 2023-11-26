@@ -9,13 +9,12 @@ import MySnow from "./components/Snow";
 import MyArcade from "./components/Arcade";
 
 const SERVER_PORT = 5000;
-const DEV_ADDRESS = "http://localhost:";
-const PROD_ADDRESS = "http://127.0.0.1:";
+const DEV_ADDRESS = "http://localhost:" + SERVER_PORT;
 
-const SERVER_ADDRESS = DEV_ADDRESS + SERVER_PORT;
+const PROD_ADDRESS = "https://www.neniuk.dev/";
 // console.log("Server Address: " + SERVER_ADDRESS);
 
-const socket = io(SERVER_ADDRESS, { transports: ["websocket"] });
+const socket = io(PROD_ADDRESS, { transports: ["websocket"] });
 
 const PageTitleDecoration = (props) => (
 	<img
