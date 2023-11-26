@@ -13,8 +13,7 @@ const crypto = require("crypto");
 dotenv.config({ path: "./.env.local" });
 
 // Environment Variables
-const SERVER_PORT = process.env.SERVER_PORT || 5000;
-const CLIENT_PORT = process.env.CLIENT_PORT || 3000;
+const PORT = process.env.PORT || 5000;
 const DEV_ADDRESS = process.env.DEV_ADDRESS || "http://localhost:";
 const PROD_ADDRESS = process.env.PROD_ADDRESS || "http://127.0.0.1:";
 const NODE_ENV = process.env.NODE_ENV || "development";
@@ -118,7 +117,7 @@ io.on("connection", (socket) => {
 	});
 });
 
-server.listen(SERVER_PORT, (err) => {
+server.listen(PORT, (err) => {
 	if (err) console.log(err);
-	console.log(`Server running on port ${SERVER_PORT}`);
+	console.log(`Server running on port ${PORT}`);
 });
