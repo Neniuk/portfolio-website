@@ -4,6 +4,7 @@
 	"private": true,
 	"proxy": "http://localhost:5000",
 	"dependencies": {
+		"@babel/plugin-proposal-private-property-in-object": "^7.21.11",
 		"@testing-library/jest-dom": "^5.17.0",
 		"@testing-library/react": "^13.4.0",
 		"@testing-library/user-event": "^13.5.0",
@@ -11,7 +12,7 @@
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
 		"react-draggable": "^4.4.6",
-		"react-scripts": "5.0.1",
+		"react-scripts": "^5.0.1",
 		"socket.io-client": "^4.7.2",
 		"web-vitals": "^2.1.4"
 	},
@@ -40,7 +41,7 @@
 		]
 	},
 	"devDependencies": {
-		"@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+		"@babel/preset-env": "^7.23.3",
 		"nodemon": "^3.0.1"
 	}
 }
