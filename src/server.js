@@ -18,7 +18,7 @@ const DEV_ADDRESS = process.env.DEV_ADDRESS || "http://localhost:";
 const PROD_ADDRESS = process.env.PROD_ADDRESS || "http://127.0.0.1:";
 const NODE_ENV = process.env.NODE_ENV || "development";
 
-const CLIENT_ADDRESS = DEV_ADDRESS + CLIENT_PORT;
+const CLIENT_ADDRESS = DEV_ADDRESS + PORT;
 
 const app = express();
 const server = require("http").createServer(app);
