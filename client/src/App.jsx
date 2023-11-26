@@ -8,13 +8,11 @@ import mainTitleDecorationBlue from "./assets/main-title-decoration-blue.png";
 import MySnow from "./components/Snow";
 import MyArcade from "./components/Arcade";
 
-const SERVER_PORT = process.env.REACT_APP_SERVER_PORT || 5000;
-// const CLIENT_PORT = process.env.REACT_APP_CLIENT_PORT || 3000;
+const SERVER_PORT = 5000;
+const DEV_ADDRESS = "http://localhost:";
+const PROD_ADDRESS = "http://127.0.0.1:";
 
-const DEV_ADDRESS = process.env.REACT_APP_DEV_ADDRESS || "http://localhost:";
-// const PROD_ADDRESS = process.env.REACT_APP_PROD_ADDRESS || "http://localhost:";
-
-const SERVER_ADDRESS = DEV_ADDRESS + SERVER_PORT;
+const SERVER_ADDRESS = PROD_ADDRESS + SERVER_PORT;
 // console.log("Server Address: " + SERVER_ADDRESS);
 
 const socket = io(SERVER_ADDRESS);
