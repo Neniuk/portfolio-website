@@ -120,9 +120,5 @@ io.on("connection", (socket) => {
 
 server.listen(SERVER_PORT, (err) => {
 	if (err) console.log(err);
-	console.log(
-		`Server is running at ${
-			NODE_ENV === "production" ? PROD_ADDRESS : DEV_ADDRESS
-		}${SERVER_PORT}`
-	);
+	console.log(`Server running on port ${SERVER_PORT}`);
 });

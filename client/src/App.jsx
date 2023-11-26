@@ -12,7 +12,7 @@ const SERVER_PORT = 5000;
 const DEV_ADDRESS = "http://localhost:";
 const PROD_ADDRESS = "http://127.0.0.1:";
 
-const SERVER_ADDRESS = PROD_ADDRESS + SERVER_PORT;
+const SERVER_ADDRESS = DEV_ADDRESS + SERVER_PORT;
 // console.log("Server Address: " + SERVER_ADDRESS);
 
 const socket = io(SERVER_ADDRESS);
