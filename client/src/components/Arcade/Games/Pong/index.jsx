@@ -11,7 +11,7 @@ const PongGame = () => {
 		return () => {
 			if (game) {
 				game.destroy(true);
-				console.log("Pong game destroyed");
+				console.log("Game closed");
 			}
 		};
 	}, []);
@@ -19,4 +19,4 @@ const PongGame = () => {
 	return <div id={gameConfig.parent} />;
 };
 
-export default PongGame;
+export default React.memo(PongGame);

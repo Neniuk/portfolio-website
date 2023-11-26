@@ -10,11 +10,11 @@ const JetpackZombiesGame = () => {
 
 		return () => {
 			game.destroy(true);
-			console.log("Jetpack Zombies game destroyed");
+			console.log("Game closed");
 		};
 	}, []);
 
 	return <div id={gameConfig.parent} />;
 };
 
-export default JetpackZombiesGame;
+export default React.memo(JetpackZombiesGame);

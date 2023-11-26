@@ -25,11 +25,11 @@ export default class LevelTwoScene extends Phaser.Scene {
 
 	init(data) {
 		this.highscore = data.score;
-		if (this.highscore == undefined) {
+		if (this.highscore === undefined) {
 			this.highscore = 0;
 		}
 		this.name = data.name;
-		if (this.name == undefined) {
+		if (this.name === undefined) {
 			this.name = "";
 		}
 	}
@@ -254,6 +254,9 @@ export default class LevelTwoScene extends Phaser.Scene {
 						randomX = spawnArea.right;
 						randomY = Phaser.Math.Between(0, 480);
 						break;
+					default:
+						console.log("Error");
+						break;
 				}
 
 				// let enemySpawnX = Phaser.Math.Between(spawnArea.x, spawnArea.width);
@@ -312,6 +315,9 @@ export default class LevelTwoScene extends Phaser.Scene {
 				case 3: // Right
 					randomX = spawnArea.right;
 					randomY = Phaser.Math.Between(0, 480);
+					break;
+				default:
+					console.log("Error");
 					break;
 			}
 
@@ -538,7 +544,7 @@ export default class LevelTwoScene extends Phaser.Scene {
 			hallowedShot8.setVelocityX(-holySpeed / 2);
 			hallowedShot8.setVelocityY(holySpeed / 2);
 
-			if (this.hallowedShotsLeft == 1) {
+			if (this.hallowedShotsLeft === 1) {
 				floorFallTimer = 0;
 			}
 

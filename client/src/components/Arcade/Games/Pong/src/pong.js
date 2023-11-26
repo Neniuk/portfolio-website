@@ -2,7 +2,9 @@ import Phaser from "phaser";
 
 const paddleSpeed = 200;
 const ballSpeed = 200;
-const ballBounceSpeed = 1.1;
+const ballBounceSpeed = 1.05;
+
+const scale = 0.2;
 
 export default class Pong extends Phaser.Scene {
 	constructor() {
@@ -18,8 +20,8 @@ export default class Pong extends Phaser.Scene {
 	}
 
 	preload() {
-		this.load.image("ball", "/gameAssets/Pong/pong-ball.png");
-		this.load.image("paddle", "/gameAssets/Pong/pong-paddle.png");
+		this.load.image("ball", "/gameAssets/Pong/pong-ball-2.png");
+		this.load.image("paddle", "/gameAssets/Pong/pong-paddle-2.png");
 	}
 
 	create() {
@@ -32,13 +34,13 @@ export default class Pong extends Phaser.Scene {
 			)
 			.setCollideWorldBounds(true)
 			.setBounce(ballBounceSpeed)
-			.setScale(0.1);
+			.setScale(scale);
 
 		this.paddleLeft = this.physics.add
 			.sprite(10, this.physics.world.bounds.centerY, "paddle")
 			.setCollideWorldBounds(true)
 			.setImmovable(true)
-			.setScale(0.1);
+			.setScale(scale);
 
 		this.paddleRight = this.physics.add
 			.sprite(
@@ -48,7 +50,7 @@ export default class Pong extends Phaser.Scene {
 			)
 			.setCollideWorldBounds(true)
 			.setImmovable(true)
-			.setScale(0.1);
+			.setScale(scale);
 
 		// Score Text
 		this.scoreLeftText = this.add
@@ -59,6 +61,7 @@ export default class Pong extends Phaser.Scene {
 				{
 					fontSize: "32px",
 					fill: "#808080",
+					fontFamily: "Courier",
 				}
 			)
 			.setOrigin(0.5);
@@ -71,6 +74,7 @@ export default class Pong extends Phaser.Scene {
 				{
 					fontSize: "32px",
 					fill: "#808080",
+					fontFamily: "Courier",
 				}
 			)
 			.setOrigin(0.5);
@@ -84,6 +88,7 @@ export default class Pong extends Phaser.Scene {
 				{
 					fontSize: "16px",
 					fill: "#808080",
+					fontFamily: "Courier",
 				}
 			)
 			.setOrigin(0.5);
@@ -96,6 +101,7 @@ export default class Pong extends Phaser.Scene {
 				{
 					fontSize: "16px",
 					fill: "#808080",
+					fontFamily: "Courier",
 				}
 			)
 			.setOrigin(0.5);

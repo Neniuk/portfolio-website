@@ -16,9 +16,9 @@ export default class LevelOneScene extends Phaser.Scene {
 	}
 
 	init(data) {
-		if (data.frozen != undefined) this.frozen = data.frozen;
+		if (data.frozen !== undefined) this.frozen = data.frozen;
 
-		if (data.score != undefined) {
+		if (data.score !== undefined) {
 			this.score = data.score;
 		} else {
 			this.score = 0;
@@ -26,7 +26,7 @@ export default class LevelOneScene extends Phaser.Scene {
 
 		this.name = data.name;
 
-		if (this.name == undefined) {
+		if (this.name === undefined) {
 			this.name = "";
 		}
 	}
@@ -204,7 +204,7 @@ export default class LevelOneScene extends Phaser.Scene {
 
 		this.shootProjectile = function (delta) {
 			if (this.frozen) {
-				if (this.frozenShot != 0) {
+				if (this.frozenShot !== 0) {
 					return;
 				}
 				let projectile = this.physics.add.sprite(

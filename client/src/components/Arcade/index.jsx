@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Draggable from "react-draggable";
 import "./styles.css";
 import controllerImage from "../../assets/controller.png";
-import JetpackZombiesGame from "./Games/JetpackZombies";
+// import JetpackZombiesGame from "./Games/JetpackZombies";
 import PongGame from "./Games/Pong";
 
 class MyArcade extends Component {
