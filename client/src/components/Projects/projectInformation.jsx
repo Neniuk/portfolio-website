@@ -138,7 +138,7 @@ const SpotifyDownloaderDescription = () => (
 );
 
 const spotifyDownloader = {
-	title: "Spotify Playlist Downloader (CLI)",
+	title: "Playlist Downloader (CLI)",
 	link: "https://github.com/Neniuk/download-playlist",
 	description: <SpotifyDownloaderDescription />,
 };

@@ -8,7 +8,7 @@ import mainTitleDecorationBlue from "./assets/main-title-decoration-blue.png";
 import MySnow from "./components/Snow";
 import MyArcade from "./components/Arcade";
 
-const SERVER_PORT = process.env.REACT_APP_SERVER_PORT || 3001;
+const SERVER_PORT = process.env.REACT_APP_SERVER_PORT || 5000;
 // const CLIENT_PORT = process.env.REACT_APP_CLIENT_PORT || 3000;
 
 const DEV_ADDRESS = process.env.REACT_APP_DEV_ADDRESS || "http://localhost:";

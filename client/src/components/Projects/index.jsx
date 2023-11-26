@@ -75,11 +75,11 @@ class MyProjects extends Component {
 							link={spotifyDownloader.link}
 							description={spotifyDownloader.description}
 						/>
-						<Project
+						{/* <Project
 							title={exampleProject.title}
 							link={exampleProject.link}
 							description={exampleProject.description}
-						/>
+						/> */}
 						<ProjectSuggestions />
 					</div>
 				</div>

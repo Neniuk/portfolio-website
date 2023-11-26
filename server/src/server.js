@@ -13,7 +13,7 @@ const crypto = require("crypto");
 dotenv.config({ path: "./.env.local" });
 
 // Environment Variables
-const SERVER_PORT = process.env.SERVER_PORT || 3001;
+const SERVER_PORT = process.env.SERVER_PORT || 5000;
 const CLIENT_PORT = process.env.CLIENT_PORT || 3000;
 const DEV_ADDRESS = process.env.DEV_ADDRESS || "http://localhost:";
 const PROD_ADDRESS = process.env.PROD_ADDRESS || "http://127.0.0.1:";
@@ -32,6 +32,12 @@ const io = socketIo(server, {
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
+app.use(express.static(path.join(__dirname, "client/build")));
+
+app.get("*", (req, res) => {
+	res.sendFile(path.join(__dirname + "/client/build/index.html"));
+});
+
 // console.log(path.join(__dirname, "../../client/public"));
 // app.use(express.static(path.join(__dirname, "../../client/public")));
 // app.use(express.static(path.join(__dirname, "./public")));
