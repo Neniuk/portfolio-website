@@ -74,8 +74,8 @@ class MyArcade extends Component {
 									</h1>
 								</div>
 							</div>
-							<JetpackZombiesGame />
-							{/* <PongGame /> */}
+							{/* <JetpackZombiesGame /> */}
+							<PongGame />
 						</div>
 					</Draggable>
 				)}
