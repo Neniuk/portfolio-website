@@ -17,9 +17,9 @@ const PORT = process.env.PORT || 5000;
 const ADDRESS = process.env.DEV_ADDRESS || "http://localhost:";
 const PROD_ADDRESS =
 	process.env.PROD_ADDRESS ||
-	"https://portfolio-website-45f1e0d390b7.herokuapp.com:";
+	"https://portfolio-website-45f1e0d390b7.herokuapp.com";
 
-const CLIENT_ADDRESS = PROD_ADDRESS + PORT;
+const CLIENT_ADDRESS = ADDRESS + PORT;
 
 const app = express();
 const server = require("http").createServer(app);

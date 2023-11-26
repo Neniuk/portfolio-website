@@ -15,7 +15,7 @@ const PROD_ADDRESS = "http://127.0.0.1:";
 const SERVER_ADDRESS = DEV_ADDRESS + SERVER_PORT;
 // console.log("Server Address: " + SERVER_ADDRESS);
 
-const socket = io(SERVER_ADDRESS);
+const socket = io(SERVER_ADDRESS, { transports: ["websocket"] });
 
 const PageTitleDecoration = (props) => (
 	<img
