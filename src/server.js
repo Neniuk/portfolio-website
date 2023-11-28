@@ -26,6 +26,7 @@ const server = require("http").createServer(app);
 const io = socketIo(server, {
 	allowRequest: (req, callback) => {
 		try {
+			console.log("Origin:", req.headers.origin);
 			const originIsAllowed = ALLOWED_ORIGINS.includes(
 				req.headers.origin
 			);
