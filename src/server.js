@@ -25,14 +25,19 @@ const app = express();
 const server = require("http").createServer(app);
 const io = socketIo(server, {
 	allowRequest: (req, callback) => {
-		const originIsAllowed = ALLOWED_ORIGINS.includes(req.headers.origin);
-		callback(null, originIsAllowed); // only allow requests from allowed origins
+		try {
+			const originIsAllowed = ALLOWED_ORIGINS.includes(
+				req.headers.origin
+			);
+			callback(null, originIsAllowed); // only allow requests from allowed origins
+		} catch (err) {
+			callback(err, false); // if an error occurs, don't allow the request
+		}
 	},
 });
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors({ origin: CLIENT_ADDRESS }));
 app.use(express.static(path.join(__dirname, "../client/build")));
 
 app.get("*", (req, res) => {
