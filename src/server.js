@@ -25,6 +25,7 @@ const server = require("http").createServer(app);
 const io = socketIo(server, {
 	cors: {
 		origin: CLIENT_ADDRESS,
+		methods: ["GET", "POST"],
 	},
 });
 
