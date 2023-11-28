@@ -26,7 +26,7 @@ const server = require("http").createServer(app);
 const io = socketIo(server, {
 	allowRequest: (req, callback) => {
 		try {
-			console.log("Origin:", req.headers.origin);
+			// console.log("Origin:", req.headers.origin);
 			const originIsAllowed = ALLOWED_ORIGINS.includes(
 				req.headers.origin
 			);
@@ -107,10 +107,10 @@ io.on("connection", (socket) => {
 
 		msg.sender = "ANONYMOUS";
 
-		// Avoid harmful payloads in message
-		msg.message = msg.message.replace(/</g, "&lt;").replace(/>/g, "&gt;");
 		// Convert to utf8
 		msg.message = decodeURIComponent(msg.message);
+		// Avoid harmful payloads in message
+		msg.message = msg.message.replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
 		socket.broadcast.emit("chat", msg);
 	});

@@ -8,6 +8,11 @@ import mainTitleDecorationBlue from "./assets/main-title-decoration-blue.png";
 import MySnow from "./components/Snow";
 import MyArcade from "./components/Arcade";
 
+const MIN_RECONNECT_DELAY = 500;
+const MAX_RECONNECT_DELAY = 10000;
+
+let reconnectDelay = MIN_RECONNECT_DELAY;
+
 const SERVER_PORT = 5000;
 const DEV_ADDRESS = "http://localhost:" + SERVER_PORT;
 
@@ -32,7 +37,14 @@ function App() {
 
 	const handleConnectError = React.useCallback(() => {
 		if (!socket.connected) {
-			setTimeout(() => socket.connect(), SERVER_PORT);
+			setTimeout(() => {
+				socket.connect();
+				// Double the delay for the next attempt, up to the maximum delay
+				reconnectDelay = Math.min(
+					reconnectDelay * 2,
+					MAX_RECONNECT_DELAY
+				);
+			}, reconnectDelay);
 		}
 	}, []);
 
@@ -46,6 +58,7 @@ function App() {
 		socket.on("connect", () => {
 			console.log("Connected to chat server");
 			setIsConnected(true);
+			reconnectDelay = MIN_RECONNECT_DELAY; // Reset the reconnect delay
 		});
 
 		socket.on("connect_error", handleConnectError);
