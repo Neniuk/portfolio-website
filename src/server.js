@@ -23,9 +23,9 @@ const CLIENT_ADDRESS = ADDRESS_2;
 const app = express();
 const server = require("http").createServer(app);
 const io = socketIo(server, {
-	cors: {
-		origin: CLIENT_ADDRESS,
-		methods: ["GET", "POST"],
+	allowRequest: (req, callback) => {
+		const noOriginHeader = req.headers.origin === undefined;
+		callback(null, noOriginHeader); // only allow requests without 'origin' header
 	},
 });
 
