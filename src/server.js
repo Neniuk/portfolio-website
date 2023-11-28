@@ -24,8 +24,8 @@ const app = express();
 const server = require("http").createServer(app);
 const io = socketIo(server, {
 	allowRequest: (req, callback) => {
-		const noOriginHeader = req.headers.origin === undefined;
-		callback(null, noOriginHeader); // only allow requests without 'origin' header
+		const originIsAllowed = req.headers.origin === CLIENT_ADDRESS;
+		callback(null, originIsAllowed); // only allow requests from CLIENT_ADDRESS
 	},
 });
 
