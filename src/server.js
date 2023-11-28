@@ -14,18 +14,19 @@ dotenv.config({ path: "./.env.local" });
 
 // Environment Variables
 const PORT = process.env.PORT || 5000;
-const ADDRESS = process.env.DEV_ADDRESS || "http://localhost:";
-const ADDRESS_2 = process.env.PROD_ADDRESS || "https://neniuk.dev";
 
-// const TEST_ADDRESS = ADDRESS + PORT;
-const CLIENT_ADDRESS = ADDRESS_2;
+const ALLOWED_ORIGINS = [
+	"https://neniuk.dev",
+	"https://www.neniuk.dev",
+	"https://portfolio-website-45f1e0d390b7.herokuapp.com",
+];
 
 const app = express();
 const server = require("http").createServer(app);
 const io = socketIo(server, {
 	allowRequest: (req, callback) => {
-		const originIsAllowed = req.headers.origin === CLIENT_ADDRESS;
-		callback(null, originIsAllowed); // only allow requests from CLIENT_ADDRESS
+		const originIsAllowed = ALLOWED_ORIGINS.includes(req.headers.origin);
+		callback(null, originIsAllowed); // only allow requests from allowed origins
 	},
 });
 
