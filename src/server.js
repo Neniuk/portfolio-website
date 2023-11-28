@@ -15,9 +15,6 @@ dotenv.config({ path: "./.env.local" });
 // Environment Variables
 const PORT = process.env.PORT || 5000;
 const ADDRESS = process.env.DEV_ADDRESS || "http://localhost:";
-const PROD_ADDRESS =
-	process.env.PROD_ADDRESS ||
-	"https://portfolio-website-45f1e0d390b7.herokuapp.com";
 
 const CLIENT_ADDRESS = ADDRESS + PORT;
 
@@ -32,21 +29,12 @@ const io = socketIo(server, {
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
-// Serve static files from the React app
 app.use(express.static(path.join(__dirname, "../client/build")));
 
 app.get("*", (req, res) => {
 	res.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
 
-// console.log(path.join(__dirname, "../../client/public"));
-// app.use(express.static(path.join(__dirname, "../../client/public")));
-// app.use(express.static(path.join(__dirname, "./public")));
-
-// Routes
-// app.use("/", indexRouter);
-
-// catch 404 and forward to error handler
 app.use(function (req, res, next) {
 	next(createError(404));
 });
