@@ -30,7 +30,7 @@ const io = socketIo(server, {
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
+app.use(cors({ origin: CLIENT_ADDRESS }));
 app.use(express.static(path.join(__dirname, "../client/build")));
 
 app.get("*", (req, res) => {
