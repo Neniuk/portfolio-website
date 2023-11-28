@@ -132,7 +132,7 @@
 }
 
 .project-suggestions-title h3 {
-	font-size: 0.75rem;
+	font-size: 0.7rem;
 	color: var(--accent-alt2);
 }
 
@@ -152,7 +152,7 @@
 }
 
 .arcade-project-adjustment h3 {
-	font-size: 0.9rem;
+	font-size: 0.8rem;
 }
 
 @media screen and (min-width: 600px) {
