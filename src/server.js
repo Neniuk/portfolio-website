@@ -15,8 +15,10 @@ dotenv.config({ path: "./.env.local" });
 // Environment Variables
 const PORT = process.env.PORT || 5000;
 const ADDRESS = process.env.DEV_ADDRESS || "http://localhost:";
+const ADDRESS_2 = process.env.PROD_ADDRESS || "https://neniuk.dev";
 
-const CLIENT_ADDRESS = ADDRESS + PORT;
+// const TEST_ADDRESS = ADDRESS + PORT;
+const CLIENT_ADDRESS = ADDRESS_2;
 
 const app = express();
 const server = require("http").createServer(app);
