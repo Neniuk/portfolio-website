@@ -156,12 +156,14 @@ class MyChat extends Component {
 						connectedUsers={this.props.connectedUsers}
 						isConnected={this.props.isConnected}
 					/>
-					<ChatContent messages={messages} />
-					<ChatInput
-						onSubmit={this.handleChatSubmit}
-						message={this.state.chatMessage.message}
-						onMessageChange={this.handleMessageChange}
-					/>
+					<div className="chat-body">
+						<ChatContent messages={messages} />
+						<ChatInput
+							onSubmit={this.handleChatSubmit}
+							message={this.state.chatMessage.message}
+							onMessageChange={this.handleMessageChange}
+						/>
+					</div>
 				</div>
 			</div>
 		);

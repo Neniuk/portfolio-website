@@ -50,6 +50,7 @@ body {
 	display: flex;
 	flex-direction: column;
 	min-height: 100vh;
+	align-items: center;
 }
 
 h1,
@@ -85,31 +86,66 @@ h1 {
 	/* Other styles... */
 
 	/* Add space between cards */
-	margin-bottom: 20px; /* Adjust as needed */
+	margin-bottom: 1.25rem;
 }
 
 .page-content-table {
 	/* Display columns next to each other, while keeping the main-column centered */
 	display: flex;
 	justify-content: center;
+	flex-direction: column;
+}
+
+@media screen and (min-width: 600px) {
+	.page-content-table {
+		flex-direction: row;
+	}
+}
+
+.main-column {
+	margin-left: 0;
+	margin-right: 0;
+	order: 0;
+}
+
+@media screen and (min-width: 600px) {
+	.main-column {
+		margin-left: 1.25rem;
+		margin-right: 1.25rem;
+		order: 1;
+	}
+}
+
+@media screen and (min-width: 600px) {
+	.main-column {
+		order: 1;
+	}
 }
 
 .right-side-column {
-	/* Other styles... */
+	order: 1;
+}
 
-	/* Add space between the columns */
-	margin-left: 20px; /* Adjust as needed */
+@media screen and (min-width: 600px) {
+	.right-side-column {
+		order: 2;
+	}
 }
 
 .left-side-column {
-	/* Other styles... */
+	order: 2;
+}
 
-	/* Add space between the columns */
-	margin-right: 20px; /* Adjust as needed */
+@media screen and (min-width: 600px) {
+	.left-side-column {
+		order: 0;
+	}
 }
 
 .page-title-decoration {
-	width: 320px;
+	width: 100%;
+	height: auto;
+	/* width: 320px; */
 	height: 32px;
 	filter: brightness(0.5);
 }
@@ -124,12 +160,37 @@ h1 {
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
+
+	max-width: 95%;
+}
+
+@media screen and (min-width: 600px) {
+	.page-title-container {
+		max-width: 600px; /* Adjust as needed */
+	}
+	.page-title-decoration {
+		width: 320px;
+		height: 32px;
+	}
 }
 
 .page-title {
-	margin-left: 20px;
-	margin-right: 20px;
+	margin-left: 1.25rem;
+	margin-right: 1.25rem;
+	font-size: 1.5rem;
 }
+
+@media screen and (min-width: 600px) {
+	.page-title {
+		font-size: 2rem;
+	}
+}
+
+/* @media screen and (min-width: 900px) {
+	.page-title {
+		font-size: 2.5rem;
+	}
+} */
 
 #snowCanvas {
 	position: absolute;
