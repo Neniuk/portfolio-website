@@ -9,7 +9,7 @@ import MySnow from "./components/Snow";
 import MyArcade from "./components/Arcade";
 
 const MIN_RECONNECT_DELAY = 500;
-const MAX_RECONNECT_DELAY = 10000;
+const MAX_RECONNECT_DELAY = 5000;
 
 let reconnectDelay = MIN_RECONNECT_DELAY;
 
