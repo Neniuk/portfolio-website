@@ -63,6 +63,10 @@ function App() {
 
 		socket.on("connect_error", handleConnectError);
 
+		socket.on("reconnect_attempt", () => {
+			console.log("Attempting to reconnect to chat server");
+		});
+
 		socket.on("disconnect", (reason) => {
 			console.log("Disconnected from chat server");
 			setIsConnected(false);
@@ -89,6 +93,7 @@ function App() {
 
 			socket.off("connect");
 			socket.off("connect_error");
+			socket.off("reconnect_attempt");
 			socket.off("disconnect");
 			socket.off("users");
 			socket.off("chat");
