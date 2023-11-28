@@ -28,6 +28,12 @@
 	max-width: 95%;
 }
 
+@media screen and (max-width: 600px) {
+	.arcade {
+		display: none;
+	}
+}
+
 @media screen and (min-width: 600px) {
 	.arcade {
 		max-width: 600px; /* Adjust as needed */

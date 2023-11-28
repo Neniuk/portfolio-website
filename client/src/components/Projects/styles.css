@@ -132,7 +132,7 @@
 }
 
 .project-suggestions-title h3 {
-	font-size: 0.7rem;
+	font-size: 0.75rem;
 	color: var(--accent-alt2);
 }
 
@@ -144,6 +144,7 @@
 
 .project-suggestions-main-title {
 	margin-bottom: 0.5rem;
+	text-align: center;
 }
 
 .inner-list {
