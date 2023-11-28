@@ -19,6 +19,14 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+
+	max-width: 95%;
+}
+
+@media screen and (min-width: 600px) {
+	.profile {
+		max-width: 600px; /* Adjust as needed */
+	}
 }
 
 /* The .profile-picture-container class styles the container for the profile picture */
@@ -34,10 +42,23 @@
 	/* Applying a border to the container */
 	border-style: solid;
 	border-color: var(--accent);
-	border-width: 2px;
+	border-width: var(--border-width);
 
 	/* Adding a vignette effect */
 	position: relative;
+
+	width: 30%;
+	height: 30%;
+
+	margin-bottom: 1.25rem;
+}
+
+@media screen and (min-width: 600px) {
+	.profile-picture-container {
+		width: 200px; /* Original width for larger screens */
+		height: 200px; /* Original height for larger screens */
+		margin-bottom: 0;
+	}
 }
 
 .profile-picture-container::after {
@@ -69,16 +90,32 @@
 }
 
 .profile-details-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
 	/* Setting the margins */
-	margin-left: 20px;
+	margin-left: 1.25rem;
+}
+
+@media screen and (min-width: 600px) {
+	.profile-details-container {
+		align-items: flex-start;
+	}
 }
 
 /* The .profile-name h1 class styles the profile name */
 .profile-name h1 {
 	/* Setting the font properties and text alignment */
 	font-weight: bold;
-	font-size: 50px;
+	font-size: 3rem; /* Adjust the font size */
 	text-align: left;
+}
+
+@media screen and (min-width: 600px) {
+	.profile-name h1 {
+		font-size: 4rem; /* Original font size for larger screens */
+	}
 }
 
 /* The .profile-description class styles the profile description */
@@ -86,20 +123,36 @@
 	/* Setting the font properties and text alignment */
 	font-size: 0.7rem; /* Adjust the font size */
 	color: var(--light);
-	text-align: left;
+	text-align: center;
 
 	/* Setting the width and word-wrap properties */
 	max-width: 400px; /* Adjust the maximum width */
 	word-wrap: break-word;
 }
 
+@media screen and (min-width: 600px) {
+	.profile-description {
+		text-align: left;
+	}
+}
+
 /* The .profile-content class styles the profile content */
 .profile-content {
 	/* Using flexbox for layout */
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	padding-left: 5px;
 	padding-right: 5px;
+	justify-content: center;
+	align-items: center;
+}
+
+@media screen and (min-width: 600px) {
+	.profile-content {
+		flex-direction: row; /* Original flex-direction for larger screens */
+		justify-content: flex-start;
+		align-items: flex-start;
+	}
 }
 
 .social-links {
@@ -109,6 +162,15 @@
 	/* Using flexbox for layout */
 	display: flex;
 	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+@media screen and (min-width: 600px) {
+	.social-links {
+		justify-content: flex-start;
+		align-items: flex-start;
+	}
 }
 
 .social-logo {
@@ -132,5 +194,18 @@
 	}
 	to {
 		transform: rotate(360deg);
+	}
+}
+
+.profile-text-content {
+	display: flex;
+	flex-direction: column;
+	align-items: center; /* Centered on small screens */
+	justify-content: center;
+}
+
+@media screen and (min-width: 600px) {
+	.profile-text-content {
+		align-items: flex-start; /* Left-aligned on larger screens */
 	}
 }

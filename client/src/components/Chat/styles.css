@@ -18,6 +18,14 @@
 	flex-direction: column;
 	align-items: left;
 	justify-content: left;
+
+	max-width: 95%;
+}
+
+@media screen and (min-width: 600px) {
+	.chat {
+		max-width: 600px; /* Adjust as needed */
+	}
 }
 
 .chat-header {
@@ -52,6 +60,12 @@
 	background-color: var(--disconnected-color);
 	/* Decrease the blur radius and spread radius to reduce the intensity of the glow */
 	box-shadow: 0 0 10px 1px var(--disconnected-color); /* Adjust color as needed */
+}
+
+.chat-body {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .chat-content-container {
@@ -91,6 +105,16 @@
 	/* Scroll bar styling */
 	scrollbar-width: thin;
 	scrollbar-color: var(--accent-alt2) var(--dark);
+
+	min-width: 95%;
+	max-width: 95%;
+}
+
+@media screen and (min-width: 600px) {
+	.chat-content-container {
+		min-width: 300px; /* Original min-width for larger screens */
+		max-width: 300px; /* Original max-width for larger screens */
+	}
 }
 
 .chat-bold-me {
@@ -103,42 +127,65 @@
 
 .chat-input-container {
 	margin-top: 10px;
+	display: flex;
+	flex-direction: row;
+	min-width: 95%;
+	max-width: 95%;
+}
+
+@media screen and (min-width: 600px) {
+	.chat-input-container {
+		min-width: 300px; /* Original min-width for larger screens */
+		max-width: 300px; /* Original max-width for larger screens */
+	}
 }
 
 .chat-input {
+	flex-grow: 1;
 	/* Setting the background color */
 	background-color: var(--primary);
 
 	/* Setting the border properties */
 	border-style: solid;
 	border-color: var(--dark-alt);
-	border-width: 2px;
+	border-width: var(--border-width);
 	border-radius: var(--border-radius);
 
 	/* Setting the padding and maximum dimensions */
 	padding: 20px;
 
-	min-width: 240px; /* Limit the maximum width */
-	max-width: 240px; /* Limit the maximum width */
+	/* min-width: 240px;
+	max-width: 240px;
 
-	min-height: 50px; /* Limit the maximum width */
-	max-height: 50px; /* Limit the maximum width */
+	min-height: 50px;
+	max-height: 50px; */
 
-	margin-right: 10px; /* Add space between the input box and the send button */
+	/* min-width: 90%;
+	max-width: 90%; */
+
+	min-height: 50px;
+	max-height: 50px;
+
+	/* margin-right: 10px; */
+	margin-right: 0.5rem;
 
 	color: var(--light);
 }
 
 .chat-send {
-	/* Chat send button, located next to the input box, should be styled nicely 
-    and not extend past the width of the chat content box */
+	flex-grow: 0;
+
 	background-color: var(--primary);
 	border-style: solid;
 	border-color: var(--dark-alt);
-	border-width: 2px;
+	border-width: var(--border-width);
 	border-radius: var(--border-radius);
-	min-width: 50px;
-	max-width: 50px;
+	/* min-width: 50px;
+	max-width: 50px; */
+
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
+
 	min-height: 50px;
 	max-height: 50px;
 	color: var(--light);

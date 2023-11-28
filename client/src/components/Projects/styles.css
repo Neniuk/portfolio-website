@@ -18,6 +18,14 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+
+	max-width: 95%;
+}
+
+@media screen and (min-width: 600px) {
+	.projects {
+		max-width: 600px; /* Adjust as needed */
+	}
 }
 
 .projects-title-container {
@@ -124,7 +132,14 @@
 }
 
 .project-suggestions-title h3 {
+	font-size: 0.75rem;
 	color: var(--accent-alt2);
+}
+
+@media screen and (min-width: 600px) {
+	.project-suggestions-title h3 {
+		font-size: 1rem;
+	}
 }
 
 .project-suggestions-main-title {
@@ -134,4 +149,14 @@
 .inner-list {
 	margin-left: 2rem; /* Adjust as needed */
 	margin-right: 2rem; /* Adjust as needed */
+}
+
+.arcade-project-adjustment h3 {
+	font-size: 0.9rem;
+}
+
+@media screen and (min-width: 600px) {
+	.arcade-project-adjustment h3 {
+		font-size: 1rem;
+	}
 }

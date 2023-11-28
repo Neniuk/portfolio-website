@@ -24,6 +24,14 @@
 	/* For the gradient border */
 	position: relative;
 	border-radius: var(--border-width);
+
+	max-width: 95%;
+}
+
+@media screen and (min-width: 600px) {
+	.arcade {
+		max-width: 600px; /* Adjust as needed */
+	}
 }
 
 .arcade::after {

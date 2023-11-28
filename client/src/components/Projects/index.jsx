@@ -65,11 +65,13 @@ class MyProjects extends Component {
 							link={portfolio.link}
 							description={portfolio.description}
 						/>
-						<Project
-							title={arcade.title}
-							link={arcade.link}
-							description={arcade.description}
-						/>
+						<div className="arcade-project-adjustment">
+							<Project
+								title={arcade.title}
+								link={arcade.link}
+								description={arcade.description}
+							/>
+						</div>
 						<Project
 							title={spotifyDownloader.title}
 							link={spotifyDownloader.link}
