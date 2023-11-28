@@ -22,15 +22,11 @@ const CLIENT_ADDRESS = ADDRESS_2;
 
 const app = express();
 const server = require("http").createServer(app);
-const io = socketIo(server, {
-	cors: {
-		origin: CLIENT_ADDRESS,
-	},
-});
+const io = socketIo(server);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors({ origin: CLIENT_ADDRESS }));
+// app.use(cors({ origin: CLIENT_ADDRESS }));
 app.use(express.static(path.join(__dirname, "../client/build")));
 
 app.get("*", (req, res) => {
