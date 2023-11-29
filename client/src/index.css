@@ -160,6 +160,7 @@ h1 {
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
+	overflow: hidden;
 
 	max-width: 95%;
 }
@@ -167,6 +168,7 @@ h1 {
 @media screen and (min-width: 600px) {
 	.page-title-container {
 		max-width: 600px; /* Adjust as needed */
+		overflow: visible;
 	}
 	.page-title-decoration {
 		width: 320px;
