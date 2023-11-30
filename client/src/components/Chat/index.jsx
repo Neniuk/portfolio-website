@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "./styles.css";
-// import arrow from "../../assets/arrow.png";
+
+import Card from "../StyleComponents/Card";
+
 import BannedWords from "./bannedWords.js";
 
 const submitStyleDelay = 100; // ms
@@ -63,6 +65,17 @@ const ChatInput = ({ onSubmit, message, onMessageChange }) => (
 			Send
 		</button>
 	</form>
+);
+
+const ChatBody = ({ self, messages }) => (
+	<div className="chat-body">
+		<ChatContent messages={messages} />
+		<ChatInput
+			onSubmit={self.handleChatSubmit}
+			message={self.state.chatMessage.message}
+			onMessageChange={self.handleMessageChange}
+		/>
+	</div>
 );
 
 const validChatMessage = (msg) => {
@@ -150,22 +163,11 @@ class MyChat extends Component {
 		const { messages } = this.props;
 
 		return (
-			<div className="card">
-				<div className="chat">
-					<ChatHeader
-						connectedUsers={this.props.connectedUsers}
-						isConnected={this.props.isConnected}
-					/>
-					<div className="chat-body">
-						<ChatContent messages={messages} />
-						<ChatInput
-							onSubmit={this.handleChatSubmit}
-							message={this.state.chatMessage.message}
-							onMessageChange={this.handleMessageChange}
-						/>
-					</div>
-				</div>
-			</div>
+			<Card
+				headerInclude={true}
+				headerContent={<ChatHeader {...this.props} />}
+				bodyContent={<ChatBody self={this} messages={messages} />}
+			/>
 		);
 	}
 }

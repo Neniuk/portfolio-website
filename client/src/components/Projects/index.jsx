@@ -1,10 +1,26 @@
 import React, { Component } from "react";
 import "./styles.css";
+
+import Card from "../StyleComponents/Card";
+import DecoratedTitle from "../StyleComponents/DecoratedTitle";
+
 import starAnimation from "../../assets/star-animation.gif";
 import projectInformation from "./projectInformation";
 
 const { exampleProject, hackathon, portfolio, arcade, spotifyDownloader } =
 	projectInformation;
+
+const DecoratedProjectTitle = ({ title, hasLink, link }) => (
+	<DecoratedTitle
+		title={title}
+		decoration={starAnimation}
+		decorationAlt="Star animation"
+		decorationWidth="1.5rem"
+		decorationHeight="1.5rem"
+		hasLink={hasLink}
+		link={link}
+	/>
+);
 
 const TitleDecoration = () => (
 	<img
@@ -12,21 +28,6 @@ const TitleDecoration = () => (
 		src={starAnimation}
 		alt="Star animation"
 	/>
-);
-
-const Project = (props) => (
-	<div className="project-card">
-		<div className="project">
-			<div className="project-title-container">
-				<TitleDecoration />
-				<a href={props.link} target="_blank" rel="noopener noreferrer">
-					<h3>{props.title}</h3>
-				</a>
-				<TitleDecoration />
-			</div>
-			<div className="project-description">{props.description}</div>
-		</div>
-	</div>
 );
 
 const ProjectSuggestions = () => (
@@ -46,46 +47,82 @@ const ProjectSuggestions = () => (
 	</div>
 );
 
+const ProjectBody = ({ description }) => (
+	<div className="project-description">{description}</div>
+);
+
+const ProjectsBody = () => (
+	<div className="projects-container">
+		<Card
+			headerInclude={true}
+			headerContent={
+				<DecoratedProjectTitle
+					title={hackathon.title}
+					hasLink={true}
+					link={hackathon.link}
+				/>
+			}
+			bodyContent={<ProjectBody description={hackathon.description} />}
+			innerCard={true}
+		/>
+		<Card
+			headerInclude={true}
+			headerContent={
+				<DecoratedProjectTitle
+					title={portfolio.title}
+					hasLink={true}
+					link={portfolio.link}
+				/>
+			}
+			bodyContent={<ProjectBody description={portfolio.description} />}
+			innerCard={true}
+		/>
+		<Card
+			headerInclude={true}
+			headerContent={
+				<DecoratedProjectTitle
+					title={arcade.title}
+					hasLink={true}
+					link={arcade.link}
+				/>
+			}
+			bodyContent={<ProjectBody description={arcade.description} />}
+			innerCard={true}
+		/>
+		<Card
+			headerInclude={true}
+			headerContent={
+				<DecoratedProjectTitle
+					title={spotifyDownloader.title}
+					hasLink={true}
+					link={spotifyDownloader.link}
+				/>
+			}
+			bodyContent={
+				<ProjectBody description={spotifyDownloader.description} />
+			}
+			innerCard={true}
+		/>
+		{/* <Card
+			headerInclude={true}
+			headerContent={
+				<DecoratedProjectTitle title={exampleProject.title} />
+			}
+			bodyContent={<ProjectBody description={exampleProject.description} />}
+			innerCard={true}
+		/> */}
+		<ProjectSuggestions />
+	</div>
+);
+
 class MyProjects extends Component {
 	render() {
 		return (
-			<div className="card">
-				<div className="projects">
-					<div className="projects-title-container">
-						<h1 className="projects-title">Projects</h1>
-					</div>
-					<div className="projects-container">
-						<Project
-							title={hackathon.title}
-							link={hackathon.link}
-							description={hackathon.description}
-						/>
-						<Project
-							title={portfolio.title}
-							link={portfolio.link}
-							description={portfolio.description}
-						/>
-						<div className="arcade-project-adjustment">
-							<Project
-								title={arcade.title}
-								link={arcade.link}
-								description={arcade.description}
-							/>
-						</div>
-						<Project
-							title={spotifyDownloader.title}
-							link={spotifyDownloader.link}
-							description={spotifyDownloader.description}
-						/>
-						{/* <Project
-							title={exampleProject.title}
-							link={exampleProject.link}
-							description={exampleProject.description}
-						/> */}
-						<ProjectSuggestions />
-					</div>
-				</div>
-			</div>
+			<Card
+				headerInclude={true}
+				headerContent={<h1 className="projects-title">Projects</h1>}
+				bodyContent={<ProjectsBody />}
+			/>
 		);
 	}
 }

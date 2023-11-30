@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import "./styles.css";
-import profilePicture from "../../assets/profile-picture-2.png";
 
+import Card from "../StyleComponents/Card";
+
+import profilePicture from "../../assets/profile-picture-2.png";
 import githubLogo from "../../assets/github-logo.png";
 import linkedInLogo from "../../assets/linkedin-logo.png";
 
@@ -64,21 +66,19 @@ const SocialLinks = () => (
 	</div>
 );
 
+const ProfileBody = () => (
+	<div className="profile-content">
+		<ProfilePicture />
+		<div className="profile-details-container">
+			<TextContent />
+			<SocialLinks />
+		</div>
+	</div>
+);
+
 class MyProfile extends Component {
 	render() {
-		return (
-			<div className="card">
-				<div className="profile">
-					<div className="profile-content">
-						<ProfilePicture />
-						<div className="profile-details-container">
-							<TextContent />
-							<SocialLinks />
-						</div>
-					</div>
-				</div>
-			</div>
-		);
+		return <Card headerInclude={false} bodyContent={<ProfileBody />} />;
 	}
 }
 

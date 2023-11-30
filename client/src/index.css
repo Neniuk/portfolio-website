@@ -26,6 +26,8 @@
 	/* Default 480px X 320px */
 	--game-canvas-width: 960px; /* 2x Default */
 	--game-canvas-height: 640px; /* 2x Default */
+
+	--small-screen-width: 640px;
 }
 
 * {
