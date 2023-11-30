@@ -6,12 +6,20 @@ const TitleDecoration = ({
 	decorationAlt,
 	decorationWidth,
 	decorationHeight,
+	decorationBrightness,
+	right,
 }) => (
 	<img
-		className="title-decoration"
+		className={`title-decoration ${right ? "right" : ""}`}
 		src={decoration}
 		alt={decorationAlt}
-		style={{ width: decorationWidth, height: decorationHeight }}
+		style={{
+			width: decorationWidth,
+			height: decorationHeight,
+			filter: decorationBrightness
+				? `brightness(${decorationBrightness})`
+				: "",
+		}}
 	/>
 );
 
@@ -19,21 +27,38 @@ class DecoratedTitle extends Component {
 	render() {
 		const {
 			title,
+			titleSize,
+			titleColor,
+			marginTop,
+			marginBottom,
 			decoration,
 			decorationAlt,
 			decorationWidth,
 			decorationHeight,
+			decorationBrightness,
 			hasLink,
 			link,
 		} = this.props;
 
+		const titleStyle = {
+			fontSize: titleSize,
+			color: titleColor,
+		};
+
 		return (
-			<div className="decorated-title">
+			<div
+				className="decorated-title"
+				style={{
+					marginTop: marginTop ? marginTop : "0",
+					marginBottom: marginBottom ? marginBottom : "0.5rem",
+				}}
+			>
 				<TitleDecoration
 					decoration={decoration}
 					decorationAlt={decorationAlt}
 					decorationWidth={decorationWidth}
 					decorationHeight={decorationHeight}
+					decorationBrightness={decorationBrightness}
 				/>
 				{hasLink ? (
 					<a
@@ -42,16 +67,18 @@ class DecoratedTitle extends Component {
 						rel="noopener noreferrer"
 						className="decorated-title-link"
 					>
-						<h3>{title}</h3>
+						<h3 style={titleStyle}>{title}</h3>
 					</a>
 				) : (
-					<h3>{title}</h3>
+					<h3 style={titleStyle}>{title}</h3>
 				)}
 				<TitleDecoration
 					decoration={decoration}
 					decorationAlt={decorationAlt}
 					decorationWidth={decorationWidth}
 					decorationHeight={decorationHeight}
+					decorationBrightness={decorationBrightness}
+					right={true}
 				/>
 			</div>
 		);

@@ -8,6 +8,27 @@ import mainTitleDecorationBlue from "./assets/main-title-decoration-blue.png";
 import MySnow from "./components/Snow";
 import MyArcade from "./components/Arcade";
 
+import DecoratedTitle from "./components/StyleComponents/DecoratedTitle";
+
+const altAccentColor = getComputedStyle(document.documentElement)
+	.getPropertyValue("--accent-alt2")
+	.trim();
+
+const DecoratedPageTitle = ({ title }) => (
+	<DecoratedTitle
+		title={title}
+		titleSize="2rem"
+		titleColor={altAccentColor}
+		marginTop="1rem"
+		marginBottom="1rem"
+		decoration={mainTitleDecorationBlue}
+		decorationAlt="Page title decoration"
+		decorationWidth="320px"
+		decorationHeight="32px"
+		decorationBrightness="0.5"
+	/>
+);
+
 const MIN_RECONNECT_DELAY = 500;
 const MAX_RECONNECT_DELAY = 5000;
 
@@ -103,11 +124,7 @@ function App() {
 	return (
 		<div className="App">
 			<MySnow />
-			<div className="page-title-container">
-				<PageTitleDecoration decorationSide="left" />
-				<h1 className="page-title">NENIUK.DEV</h1>
-				<PageTitleDecoration decorationSide="right" />
-			</div>
+			<DecoratedPageTitle title="NENIUK.DEV" />
 			<div className="page-content-table">
 				<div className="left-side-column"></div>
 				<div className="main-column">

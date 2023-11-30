@@ -1,9 +1,22 @@
 import React, { Component } from "react";
 import Draggable from "react-draggable";
 import "./styles.css";
+
+import Card from "../StyleComponents/Card";
+
 import controllerImage from "../../assets/controller.png";
 // import JetpackZombiesGame from "./Games/JetpackZombies";
 import PongGame from "./Games/Pong";
+
+const ArcadeBody = () => (
+	<div className="arcade-logo-container">
+		<img
+			src={controllerImage}
+			alt="Game controller"
+			className="arcade-logo"
+		/>
+	</div>
+);
 
 class MyArcade extends Component {
 	constructor(props) {
@@ -33,16 +46,8 @@ class MyArcade extends Component {
 		const { gameActive } = this.state;
 
 		return (
-			<div className="card">
-				<div className="arcade">
-					<div className="arcade-logo-container">
-						<img
-							src={controllerImage}
-							alt="Game controller"
-							className="arcade-logo"
-						/>
-					</div>
-				</div>
+			<>
+				<Card bodyContent={<ArcadeBody />} customClass="arcade" />
 				{gameActive && (
 					<Draggable
 						handle=".game-navbar"
@@ -68,7 +73,7 @@ class MyArcade extends Component {
 						</div>
 					</Draggable>
 				)}
-			</div>
+			</>
 		);
 	}
 }
