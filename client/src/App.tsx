@@ -3,10 +3,10 @@ import MyProjects from "./components/Projects";
 import MyChat from "./components/Chat";
 import { io } from "socket.io-client";
 import React from "react";
-import mainTitleDecoration from "./assets/main-title-decoration.png";
+// import mainTitleDecoration from "./assets/main-title-decoration.png";
 import mainTitleDecorationBlue from "./assets/main-title-decoration-blue.png";
 import MySnow from "./components/Snow";
-import MyArcade from "./components/Arcade";
+// import MyArcade from "./components/Arcade";
 
 import DecoratedTitle from "./components/StyleComponents/DecoratedTitle";
 
@@ -34,26 +34,26 @@ const MAX_RECONNECT_DELAY = 5000;
 
 let reconnectDelay = MIN_RECONNECT_DELAY;
 
-const SERVER_PORT = 5000;
-const DEV_ADDRESS = "http://localhost:" + SERVER_PORT;
+// const SERVER_PORT = 5000;
+// const DEV_ADDRESS = "http://localhost:" + SERVER_PORT;
 
 const PROD_ADDRESS = "https://www.neniuk.dev/";
 // console.log("Server Address: " + SERVER_ADDRESS);
 
 const socket = io(PROD_ADDRESS, { transports: ["websocket"] });
 
-const PageTitleDecoration = (props: { decorationSide: string }) => (
-	<img
-		className={"page-title-decoration " + props.decorationSide}
-		src={mainTitleDecorationBlue}
-		alt="Main title decoration"
-	/>
-);
+// const PageTitleDecoration = (props: { decorationSide: string }) => (
+// 	<img
+// 		className={"page-title-decoration " + props.decorationSide}
+// 		src={mainTitleDecorationBlue}
+// 		alt="Main title decoration"
+// 	/>
+// );
 
 function App() {
 	// State for number of connected users
 	const [connectedUsers, setConnectedUsers] = React.useState(0);
-	const [messages, setMessages] = React.useState([]);
+	const [messages, setMessages] = React.useState<any[]>([]);
 	const [isConnected, setIsConnected] = React.useState(false);
 
 	const handleConnectError = React.useCallback(() => {
@@ -145,7 +145,7 @@ function App() {
 							setMessages={setMessages}
 							isConnected={isConnected}
 						/>
-						<MyArcade />
+						{/* <MyArcade /> */}
 					</div>
 				</div>
 			</div>

@@ -13,8 +13,28 @@ const snowflakeImages = {
 	1: snowflake1,
 };
 
+interface SnowflakeOptions {
+	snowflakeImages: any;
+	width: number;
+	height: number;
+	minSpeed: number;
+	maxSpeed: number;
+	random: (min: number, max: number) => number;
+}
+
 class Snowflake {
-	constructor(options) {
+	x: any;
+	y: any;
+	speed: any;
+	image: HTMLImageElement;
+	radius: number;
+	opacity: any;
+	directionX: any;
+	directionY: any;
+	rotation: any;
+	rotationSpeed: any;
+
+	constructor(options: SnowflakeOptions) {
 		this.x = options.random(options.width / 4, (3 * options.width) / 4); // Randomize initial x position
 		this.y = options.random(-options.height, 0); // Randomize initial y position
 
@@ -48,7 +68,31 @@ class Snowflake {
 }
 
 class Snowfall {
-	constructor(options) {
+	canvas: any;
+	ctx: any;
+	width: any;
+	height: any;
+	maxSpeed: any;
+	minSpeed: any;
+	amount: any;
+	maxRadius: any;
+	minRadius: any;
+	background: any;
+	snowflakeImages: any;
+	snowflakes: any[];
+
+	constructor(options: {
+		canvas: any;
+		width: any;
+		height: any;
+		maxSpeed: any;
+		minSpeed: any;
+		amount: any;
+		background: any;
+		snowflakeImages: any;
+		maxRadius?: any;
+		minRadius?: any;
+	}) {
 		this.canvas = options.canvas;
 		this.ctx = this.canvas.getContext("2d");
 		this.width = options.width;
@@ -88,7 +132,7 @@ class Snowfall {
 		});
 	}
 
-	random = (min, max) => {
+	random = (min: number, max: number) => {
 		return Math.random() * (max - min) + min;
 	};
 
@@ -187,7 +231,7 @@ class Snowfall {
 
 class MySnow extends Component {
 	componentDidMount() {
-		const snowfall = new Snowfall({
+		new Snowfall({
 			canvas: document.getElementById("snowCanvas"),
 			width: window.innerWidth,
 			height: window.innerHeight,

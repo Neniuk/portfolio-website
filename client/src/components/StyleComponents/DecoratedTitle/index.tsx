@@ -36,8 +36,8 @@ type DecoratedTitleProps = {
 	decorationAlt: string;
 	decorationWidth: string;
 	decorationHeight: string;
-	hasLink: boolean;
-	link: string;
+	hasLink?: boolean;
+	link?: string;
 	titleSize?: string;
 	titleColor?: string;
 	marginTop?: string;
@@ -80,7 +80,9 @@ class DecoratedTitle extends Component<DecoratedTitleProps> {
 					decorationAlt={decorationAlt}
 					decorationWidth={decorationWidth}
 					decorationHeight={decorationHeight}
-					decorationBrightness={decorationBrightness}
+					decorationBrightness={
+						decorationBrightness ? decorationBrightness : ""
+					}
 					right={false}
 				/>
 				{hasLink ? (
@@ -100,7 +102,9 @@ class DecoratedTitle extends Component<DecoratedTitleProps> {
 					decorationAlt={decorationAlt}
 					decorationWidth={decorationWidth}
 					decorationHeight={decorationHeight}
-					decorationBrightness={decorationBrightness}
+					decorationBrightness={
+						decorationBrightness ? decorationBrightness : ""
+					}
 					right={true}
 				/>
 			</div>

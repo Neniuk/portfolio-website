@@ -7,8 +7,13 @@ import DecoratedTitle from "../StyleComponents/DecoratedTitle";
 import starAnimation from "../../assets/star-animation.gif";
 import projectInformation from "./projectInformation";
 
-const { exampleProject, hackathon, portfolio, arcade, spotifyDownloader } =
-	projectInformation;
+const {
+	//exampleProject,
+	hackathon,
+	portfolio,
+	arcade,
+	spotifyDownloader,
+} = projectInformation;
 
 const DecoratedProjectTitle = ({
 	title,
@@ -55,7 +60,7 @@ const ProjectSuggestions = () => (
 	</div>
 );
 
-const ProjectBody = ({ description }: { description: string }) => (
+const ProjectBody = ({ description }: { description: React.JSX.Element }) => (
 	<div className="project-description">{description}</div>
 );
 
