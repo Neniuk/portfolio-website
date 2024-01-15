@@ -13,9 +13,9 @@ dotenv.config({ path: "./.env.local" });
 const PORT: string = process.env.PORT || "5000";
 
 const ALLOWED_ORIGINS: string[] = [
-	"https://neniuk.dev",
-	"https://www.neniuk.dev",
-	"https://portfolio-website-45f1e0d390b7.herokuapp.com",
+    "https://neniuk.dev",
+    "https://www.neniuk.dev",
+    "https://portfolio-website-45f1e0d390b7.herokuapp.com",
 ];
 
 const app: Express = express();
@@ -40,13 +40,13 @@ app.get("*", (req: Request, res: Response, next: NextFunction) => {
 
 // Error handler
 app.use((err: any, req: Request, res: Response, next: NextFunction) => {
-	// set locals, only providing error in development
-	res.locals.message = err.message;
-	res.locals.error = req.app.get("env") === "development" ? err : {};
+    // set locals, only providing error in development
+    res.locals.message = err.message;
+    res.locals.error = req.app.get("env") === "development" ? err : {};
 
-	// render the error page
-	res.status(err.status || 500);
-	res.send("error");
+    // render the error page
+    res.status(err.status || 500);
+    res.send("error");
 });
 
 // Socket.io types
@@ -55,15 +55,15 @@ app.use((err: any, req: Request, res: Response, next: NextFunction) => {
 //     basicEmit: (a: number, b: string, c: Buffer) => void;
 //     withAck: (d: string, callback: (e: number) => void) => void;
 // }
-  
+
 //   interface ClientToServerEvents {
 //     hello: () => void;
 // }
-  
+
 //   interface InterServerEvents {
 //     ping: () => void;
 // }
-  
+
 //   interface SocketData {
 //     name: string;
 //     age: number;
@@ -73,63 +73,63 @@ app.use((err: any, req: Request, res: Response, next: NextFunction) => {
 let connectedUsers: Set<string> = new Set();
 
 const validChatMessage = (msg: string): boolean => {
-	if (msg.length > 250) {
-		return false;
-	}
+    if (msg.length > 250) {
+        return false;
+    }
 
-	const words = msg.split(" ");
-	for (let i = 0; i < words.length; i++) {
-		if (BannedWords.includes(words[i].toLowerCase())) {
-			return false;
-		}
-	}
+    const words = msg.split(" ");
+    for (let i = 0; i < words.length; i++) {
+        if (BannedWords.includes(words[i].toLowerCase())) {
+            return false;
+        }
+    }
 
-	return true;
+    return true;
 };
 
 io.on("connection", (socket: Socket) => {
-	// console.log("A user connected");
-	// TODO: Handle collisions and add usernames to connectedUsers, for example as a dictionary
-	const username = "User" + crypto.randomBytes(3).toString("hex");
-	socket.data.username = username;
+    // console.log("A user connected");
+    // TODO: Handle collisions and add usernames to connectedUsers, for example as a dictionary
+    const username = "User" + crypto.randomBytes(3).toString("hex");
+    socket.data.username = username;
 
-	connectedUsers.add(socket.id);
-	io.emit("users", connectedUsers.size);
+    connectedUsers.add(socket.id);
+    io.emit("users", connectedUsers.size);
 
-	socket.on("disconnect", (_reason: any) => {
-		// console.log("A user disconnected: " + _reason);
-		// TODO: Remove username from connectedUsers, release the socket.username
-		connectedUsers.delete(socket.id);
-		io.emit("users", connectedUsers.size);
-	});
+    socket.on("disconnect", (_reason: any) => {
+        // console.log("A user disconnected: " + _reason);
+        // TODO: Remove username from connectedUsers, release the socket.username
+        connectedUsers.delete(socket.id);
+        io.emit("users", connectedUsers.size);
+    });
 
-	socket.on("chat", (msg: { message: string; sender: string }) => {
+    socket.on("chat", (msg: { message: string; sender: string }) => {
         if (typeof msg !== "object" || !msg.message || !msg.sender) {
             console.log("Invalid message or sender");
             return;
         }
-        
-		// Log socket id
-		console.log("Sender: " + socket.id);
-		console.log("Message: " + msg.message);
 
-		if (!validChatMessage(msg.message)) {
-			console.log("Invalid message");
-			return;
-		}
+        // Log socket id
+        console.log("Sender: " + socket.id);
+        console.log("Message: " + msg.message);
 
-		msg.sender = "ANONYMOUS";
+        if (!validChatMessage(msg.message)) {
+            console.log("Invalid message");
+            return;
+        }
 
-		// Convert to utf8
-		msg.message = decodeURIComponent(msg.message);
-		// Avoid harmful payloads in message
-		msg.message = msg.message.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        msg.sender = "ANONYMOUS";
 
-		socket.broadcast.emit("chat", msg);
-	});
+        // Convert to utf8
+        msg.message = decodeURIComponent(msg.message);
+        // Avoid harmful payloads in message
+        msg.message = msg.message.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+        socket.broadcast.emit("chat", msg);
+    });
 });
 
-server.on('error', (err: Error) => {
+server.on("error", (err: Error) => {
     console.log(err);
 });
 

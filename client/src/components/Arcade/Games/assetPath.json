@@ -1,4 +1,4 @@
 {
-	"pongAssetPath": "/gameAssets/Pong/",
-	"jetpackZombiesAssetPath": "/gameAssets/JetpackZombies/"
+    "pongAssetPath": "/gameAssets/Pong/",
+    "jetpackZombiesAssetPath": "/gameAssets/JetpackZombies/"
 }

@@ -27,26 +27,26 @@ import LevelTwoScene from "./levelTwoScene.js";
 import ShootingCutScene from "./shootingCutScene.js";
 
 let gameConfig = {
-	type: Phaser.AUTO,
-	backgroundColor: "#000000",
-	scale: {
-		mode: Phaser.Scale.FIT,
-		autoCenter: Phaser.Scale.CENTER_BOTH,
-		width: 480,
-		height: 320,
-	},
-	pixelArt: true,
-	physics: {
-		default: "arcade",
-		arcade: {
-			// debug: true,
-			gravity: {
-				y: 0,
-			},
-		},
-	},
-	scene: [MenuScene, LevelOneScene, LevelTwoScene, ShootingCutScene],
-	parent: "game-container",
+    type: Phaser.AUTO,
+    backgroundColor: "#000000",
+    scale: {
+        mode: Phaser.Scale.FIT,
+        autoCenter: Phaser.Scale.CENTER_BOTH,
+        width: 480,
+        height: 320,
+    },
+    pixelArt: true,
+    physics: {
+        default: "arcade",
+        arcade: {
+            // debug: true,
+            gravity: {
+                y: 0,
+            },
+        },
+    },
+    scene: [MenuScene, LevelOneScene, LevelTwoScene, ShootingCutScene],
+    parent: "game-container",
 };
 
 // let game = new Phaser.Game(gameConfig);
