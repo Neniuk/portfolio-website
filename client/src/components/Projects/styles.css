@@ -86,6 +86,7 @@
 
 .project-bold {
     color: var(--accent-alt2);
+    font-weight: 500;
 }
 
 .project-description {

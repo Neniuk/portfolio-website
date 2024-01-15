@@ -15,6 +15,7 @@ export default {
             colors: {
                 titleColorPrimary: "var(--title-color-primary)",
                 titleColorSecondary: "var(--title-color-secondary)",
+                textBoldColor: "var(--text-bold-color)",
                 borderColorPrimary: "var(--border-color-primary)",
                 borderColorSecondary: "var(--border-color-secondary)",
             },

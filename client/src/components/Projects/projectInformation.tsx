@@ -17,7 +17,7 @@ const exampleProject: Project = {
 
 // Junction Hackathon 2023
 const HackathonDescription = () => (
-    <ul>
+    <ul className="list-outside list-disc">
         <li>
             We built a <strong className="project-bold">dashboard tool</strong>{" "}
             with cards of varying information, from summarized news articles, to
@@ -51,7 +51,7 @@ const hackathon: Project = {
 
 // Portfolio Website
 const PortfolioDescription = () => (
-    <ul>
+    <ul className="list-outside list-disc">
         <li>
             Built using <strong className="project-bold">React.js</strong>,{" "}
             <strong className="project-bold">Node.js</strong> and{" "}
@@ -75,7 +75,7 @@ const portfolio: Project = {
 
 // Arcade
 const ArcadeDescription = () => (
-    <ul>
+    <ul className="list-outside list-disc">
         <li>
             Collection of games built using technologies such as{" "}
             <strong className="project-bold">Phaser.io</strong>,{" "}
@@ -93,7 +93,7 @@ const arcade: Project = {
 
 // Spotify Downloader
 const SpotifyDownloaderDescription = () => (
-    <ul>
+    <ul className="list-outside list-disc">
         <li>
             Fetches the user's playlists and the song names in the selected
             playlist using the{" "}
@@ -106,7 +106,7 @@ const SpotifyDownloaderDescription = () => (
             Simple CLI-tool, built using{" "}
             <strong className="project-bold">Python</strong> and various
             libraries, such as:
-            <ul className="inner-list">
+            <ul className="inner-list list-outside list-disc">
                 <li>
                     <strong className="project-bold">requests</strong> for
                     making the API calls

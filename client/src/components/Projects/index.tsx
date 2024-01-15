@@ -35,6 +35,19 @@ const DecoratedProjectTitle = ({
     />
 );
 
+const ProjectTitle = ({ title, link }: { title: string; link: string }) => (
+    <div>
+        <a
+            href={link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="decorated-title-link"
+        >
+            <h3 className="project-title">{title}</h3>
+        </a>
+    </div>
+);
+
 const TitleDecoration = () => (
     <img
         className="project-title-decoration"
