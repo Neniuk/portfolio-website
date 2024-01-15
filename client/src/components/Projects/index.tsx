@@ -37,6 +37,7 @@ const DecoratedProjectTitle = ({
 
 const ProjectTitle = ({ title, link }: { title: string; link: string }) => (
     <div>
+        <img src={starAnimation} alt="Star animation" />
         <a
             href={link}
             target="_blank"
