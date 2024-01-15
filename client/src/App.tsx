@@ -32,6 +32,32 @@ const DecoratedPageTitle = ({ title }: { title: string }) => (
     />
 );
 
+const MainTitle = () => (
+    <div className="my-6 flex flex-row items-center justify-center gap-8">
+        <img
+            className="main-title-decoration"
+            src={mainTitleDecorationBlue}
+            alt="Main title decoration"
+            style={{
+                width: "320px",
+                height: "32px",
+            }}
+        />
+        <h3 className="text-titleColorSecondary text-center text-3xl">
+            NENIUK.DEV
+        </h3>
+        <img
+            className="main-title-decoration rotate-180"
+            src={mainTitleDecorationBlue}
+            alt="Main title decoration"
+            style={{
+                width: "320px",
+                height: "32px",
+            }}
+        />
+    </div>
+);
+
 const MIN_RECONNECT_DELAY: number = 500;
 const MAX_RECONNECT_DELAY: number = 5000;
 
@@ -125,34 +151,33 @@ const App = () => {
     }, [handleConnectError]);
 
     return (
-        <>
-            <div className="App">
-                <h1 className="text-lg font-bold text-white underline">
-                    Hello world!
-                </h1>
-                <MySnow />
-                <DecoratedPageTitle title="NENIUK.DEV" />
-                <div className="page-content-table">
-                    <div className="left-side-column"></div>
-                    <div className="main-column">
-                        <MyProfile />
-                        <MyProjects />
-                        <div className="contact"></div>
-                        <div className="blog"></div>
-                    </div>
-                    <div className="right-side-column">
-                        <MyChat
-                            socket={socket}
-                            connectedUsers={connectedUsers}
-                            messages={messages}
-                            setMessages={setMessages}
-                            isConnected={isConnected}
-                        />
-                        {/* <MyArcade /> */}
-                    </div>
+        <div className="App m-auto flex flex-col items-center">
+            {/* <h1 className="text-lg font-bold text-white underline">
+                Hello world!
+            </h1> */}
+            <MySnow />
+            <MainTitle />
+            {/* <DecoratedPageTitle title="NENIUK.DEV" /> */}
+            <div className="page-content-table flex w-full flex-row justify-center gap-6">
+                <div className="left-column"></div>
+                <div className="main-column">
+                    <MyProfile />
+                    <MyProjects />
+                    <div className="contact"></div>
+                    <div className="blog"></div>
+                </div>
+                <div className="right-column">
+                    <MyChat
+                        socket={socket}
+                        connectedUsers={connectedUsers}
+                        messages={messages}
+                        setMessages={setMessages}
+                        isConnected={isConnected}
+                    />
+                    {/* <MyArcade /> */}
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 

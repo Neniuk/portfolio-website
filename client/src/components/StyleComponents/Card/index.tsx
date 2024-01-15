@@ -37,20 +37,27 @@ class Card extends Component<CardProps> {
 
         const classes = `card ${customClass ? customClass : ""}`;
 
+        const innerCardClasses: string = "inner-card mb-4";
+        const outerCardClasses: string = "card mb-4";
+
         return (
             <div
-                className={classes}
+                className={classes + "p-6"}
+                // Different classes depending on if it is innerCard
+                // className={innerCard ? "inner-card" : "card"}
                 style={{
                     backgroundColor: innerCard ? secondaryColor : primaryColor,
                     borderColor: innerCard ? darkAltColor : outerBorderColor,
-                    minWidth: innerCard ? "95%" : "",
-                    maxWidth: innerCard ? "95%" : "",
                 }}
             >
                 {headerInclude && (
-                    <div className="card-header">{headerContent}</div>
+                    <div className="flex w-full flex-row items-start justify-between">
+                        {headerContent}
+                    </div>
                 )}
-                <div className="card-body">{bodyContent}</div>
+                <div className="flex w-full flex-col items-center justify-center">
+                    {bodyContent}
+                </div>
             </div>
         );
     }

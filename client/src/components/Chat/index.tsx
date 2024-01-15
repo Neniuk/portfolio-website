@@ -16,7 +16,7 @@ const ChatHeader = ({
 }) => (
     <div className="chat-header">
         <div className="chat-title-container">
-            <h1 className="chat-title">Chat</h1>
+            <h1 className="text-2xl">Chat</h1>
         </div>
         <div className="chat-connection-indicator">
             <div

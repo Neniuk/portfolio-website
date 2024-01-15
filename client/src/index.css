@@ -1,15 +1,55 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-    line-height: 1.5;
-    font-weight: 400;
+    --primary: #000000;
+    --secondary: #00001a;
+    --light: #f2f2f2;
+    --light-alt: #e6e6e6;
+    --dark: #00001a;
+    --dark-alt: #2d2d2d;
+    --accent: #ff66cc;
+    /* Somewhere between dark-alt and light-alt */
+    --outer-border-color: #4d4d4d;
+    /* --accent: #ffcc00; */
+    /*A blue that goes well with the main accent color*/
+    --accent-alt: #ff66cc;
+    --accent-alt2: #00ccff;
+    --accent-alt3: #ffcc00;
 
-    color-scheme: light dark;
-    color: rgba(255, 255, 255, 0.87);
-    background-color: #242424;
+    --connected-color: #00ff00;
+    --disconnected-color: #ff0000;
+
+    --border-radius: 5px;
+    --border-width: 2px;
+
+    /* Default 480px X 320px */
+    --game-canvas-width: 960px; /* 2x Default */
+    --game-canvas-height: 640px; /* 2x Default */
+
+    --small-screen-width: 640px;
+
+    --title-font: "Press Start 2P", cursive;
+    --title-color-primary: #ff66cc;
+    --title-color-secondary: #00ccff;
+
+    --border-color-primary: #4d4d4d;
+    --border-color-secondary: #2d2d2d;
+
+    --translate-mirror-x: scaleX(-1);
+    --translate-mirror-y: scaleY(-1);
+
+    /* font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400; */
+
+    /* color-scheme: light dark; */
+    color: rgb(255, 255, 255);
+    background-color: #000;
 
     font-synthesis: none;
     text-rendering: optimizeLegibility;
@@ -26,17 +66,41 @@ a:hover {
     color: #535bf2;
 }
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto Mono", monospace; /* Use Roboto Mono for all elements */
+    font-size: 12px; /* Adjust the base font size */
+}
+
+body,
+html {
+    height: 100%;
+}
+
 body {
     margin: 0;
     display: flex;
     place-items: center;
     min-width: 320px;
     min-height: 100vh;
+    /* background-color: #000; */
 }
 
-h1 {
+/* h1 {
     font-size: 3.2em;
     line-height: 1.1;
+} */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Press Start 2P", cursive; /* Use Press Start 2P for headers */
+    color: var(--title-color-primary);
 }
 
 button {
@@ -56,17 +120,4 @@ button:hover {
 button:focus,
 button:focus-visible {
     outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-    :root {
-        color: #213547;
-        background-color: #ffffff;
-    }
-    a:hover {
-        color: #747bff;
-    }
-    button {
-        background-color: #f9f9f9;
-    }
 }

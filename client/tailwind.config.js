@@ -2,7 +2,30 @@
 export default {
     content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
     theme: {
-        extend: {},
+        extend: {
+            maxWidth: {
+                "95%": "95%",
+            },
+            minWidth: {
+                "95%": "95%",
+            },
+            fontFamily: {
+                titleFont: "var(--title-font)",
+            },
+            colors: {
+                titleColorPrimary: "var(--title-color-primary)",
+                titleColorSecondary: "var(--title-color-secondary)",
+                borderColorPrimary: "var(--border-color-primary)",
+                borderColorSecondary: "var(--border-color-secondary)",
+            },
+            zIndex: {
+                bottom: "-1000",
+            },
+            translate: {
+                mirrorX: "var(--translate-mirror-x)",
+                mirrorY: "var(--translate-mirror-y)",
+            },
+        },
     },
     plugins: [],
 };

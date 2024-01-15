@@ -92,10 +92,20 @@ class DecoratedTitle extends Component<DecoratedTitleProps> {
                         rel="noopener noreferrer"
                         className="decorated-title-link"
                     >
-                        <h3 style={titleStyle}>{title}</h3>
+                        <h3
+                            style={titleStyle}
+                            className="color-titleColorSecondary"
+                        >
+                            {title}
+                        </h3>
                     </a>
                 ) : (
-                    <h3 style={titleStyle}>{title}</h3>
+                    <h3
+                        style={titleStyle}
+                        className="color-titleColorSecondary"
+                    >
+                        {title}
+                    </h3>
                 )}
                 <TitleDecoration
                     decoration={decoration}

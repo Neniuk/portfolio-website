@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import "./styles.css";
+
+// Assets
 // import snowflake32 from "../../assets/snowflake32.png";
 import snowflake11 from "../../assets/snowflake11.png";
 import snowflake5 from "../../assets/snowflake5.png";
@@ -243,7 +244,12 @@ class MySnow extends Component {
         });
     }
     render() {
-        return <canvas id="snowCanvas"></canvas>;
+        return (
+            <canvas
+                id="snowCanvas"
+                className="z-bottom absolute h-full w-full"
+            ></canvas>
+        );
     }
 }
 
