@@ -11,8 +11,8 @@ import BannedWords from "./models/bannedWords";
 dotenv.config({ path: "./.env.local" });
 
 const PORT: string = process.env.PORT || "5000";
-
 const ALLOWED_ORIGINS: string[] = [
+    "http://localhost:3000",
     "https://neniuk.dev",
     "https://www.neniuk.dev",
     "https://portfolio-website-45f1e0d390b7.herokuapp.com",

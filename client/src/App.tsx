@@ -1,5 +1,5 @@
 import { io } from "socket.io-client";
-import React from "react";
+import React, { useState, useEffect, useCallback } from "react";
 
 // Components
 import MyProfile from "./components/Profile";
@@ -7,60 +7,15 @@ import MyProjects from "./components/Projects";
 import MyChat from "./components/Chat";
 import MySnow from "./components/Snow";
 import DecoratedTitle from "./components/StyleComponents/DecoratedTitle";
+import MainTitle from "./components/MainTitle";
 // import MyArcade from "./components/Arcade";
 
 // Assets
 import mainTitleDecorationBlue from "./assets/main-title-decoration-blue.png";
 // import mainTitleDecoration from "./assets/main-title-decoration.png";
 
-const altAccentColor = getComputedStyle(document.documentElement)
-    .getPropertyValue("--accent-alt2")
-    .trim();
-
-const DecoratedPageTitle = ({ title }: { title: string }) => (
-    <DecoratedTitle
-        title={title}
-        titleSize="2rem"
-        titleColor={altAccentColor}
-        marginTop="1rem"
-        marginBottom="1rem"
-        decoration={mainTitleDecorationBlue}
-        decorationAlt="Page title decoration"
-        decorationWidth="320px"
-        decorationHeight="32px"
-        decorationBrightness="0.5"
-    />
-);
-
-const MainTitle = () => (
-    <div className="my-6 flex flex-row items-center justify-center gap-8">
-        <img
-            className="main-title-decoration"
-            src={mainTitleDecorationBlue}
-            alt="Main title decoration"
-            style={{
-                width: "320px",
-                height: "32px",
-            }}
-        />
-        <h3 className="text-titleColorSecondary text-center text-3xl">
-            NENIUK.DEV
-        </h3>
-        <img
-            className="main-title-decoration rotate-180"
-            src={mainTitleDecorationBlue}
-            alt="Main title decoration"
-            style={{
-                width: "320px",
-                height: "32px",
-            }}
-        />
-    </div>
-);
-
 const MIN_RECONNECT_DELAY: number = 500;
 const MAX_RECONNECT_DELAY: number = 5000;
-
 let reconnectDelay: number = MIN_RECONNECT_DELAY;
 
 // const SERVER_PORT = 5000;
@@ -71,21 +26,12 @@ const PROD_ADDRESS = "https://www.neniuk.dev/";
 
 const socket = io(PROD_ADDRESS, { transports: ["websocket"] });
 
-// const PageTitleDecoration = (props: { decorationSide: string }) => (
-// 	<img
-// 		className={"page-title-decoration " + props.decorationSide}
-// 		src={mainTitleDecorationBlue}
-// 		alt="Main title decoration"
-// 	/>
-// );
-
 const App = () => {
-    // State for number of connected users
-    const [connectedUsers, setConnectedUsers] = React.useState(0);
-    const [messages, setMessages] = React.useState<any[]>([]);
-    const [isConnected, setIsConnected] = React.useState(false);
+    const [connectedUsers, setConnectedUsers] = useState(0);
+    const [messages, setMessages] = useState<any[]>([]);
+    const [isConnected, setIsConnected] = useState(false);
 
-    const handleConnectError = React.useCallback(() => {
+    const handleConnectError = useCallback(() => {
         if (!socket.connected) {
             setTimeout(() => {
                 socket.connect();
@@ -98,7 +44,7 @@ const App = () => {
         }
     }, []);
 
-    React.useEffect(() => {
+    useEffect(() => {
         const handleBeforeUnload = () => {
             socket.close();
         };
@@ -108,7 +54,9 @@ const App = () => {
         socket.on("connect", () => {
             console.log("Connected to chat server");
             setIsConnected(true);
-            reconnectDelay = MIN_RECONNECT_DELAY; // Reset the reconnect delay
+
+            // Reset the reconnect delay
+            reconnectDelay = MIN_RECONNECT_DELAY;
         });
 
         socket.on("connect_error", handleConnectError);
@@ -137,7 +85,6 @@ const App = () => {
             setMessages((prevMessages) => [...prevMessages, message]);
         });
 
-        // This will run when the component is unmounted
         return () => {
             window.removeEventListener("beforeunload", handleBeforeUnload);
 
