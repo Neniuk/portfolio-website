@@ -98,7 +98,7 @@ const App = () => {
     }, [handleConnectError]);
 
     return (
-        <div className="App m-auto flex flex-col items-center">
+        <div className="App m-auto flex flex-col items-center w-full h-full">
             {/* <h1 className="text-lg font-bold text-white underline">
                 Hello world!
             </h1> */}
