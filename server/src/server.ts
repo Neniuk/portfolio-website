@@ -34,12 +34,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "../client/build")));
 
-app.get("*", (req: Request, res: Response, next: NextFunction) => {
+app.get("*", (_req: Request, res: Response, _next: NextFunction) => {
     res.sendFile(path.join(__dirname, "../client/build", "index.html"));
 });
 
 // Error handler
-app.use((err: any, req: Request, res: Response, next: NextFunction) => {
+app.use((err: any, req: Request, res: Response, _next: NextFunction) => {
     // set locals, only providing error in development
     res.locals.message = err.message;
     res.locals.error = req.app.get("env") === "development" ? err : {};
@@ -120,12 +120,18 @@ io.on("connection", (socket: Socket) => {
 
         msg.sender = "ANONYMOUS";
 
-        // Convert to utf8
-        msg.message = decodeURIComponent(msg.message);
-        // Avoid harmful payloads in message
-        msg.message = msg.message.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        try {
+            // Sanitize message
+            msg.sender = decodeURIComponent(msg.sender);
+            msg.message = msg.message
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;");
 
-        socket.broadcast.emit("chat", msg);
+            socket.broadcast.emit("chat", msg);
+        } catch (err) {
+            console.log(err);
+            return;
+        }
     });
 });
 
