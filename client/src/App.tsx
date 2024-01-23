@@ -6,7 +6,6 @@ import MyProfile from "./components/Profile";
 import MyProjects from "./components/Projects";
 import MyChat from "./components/Chat";
 import MySnow from "./components/Snow";
-import DecoratedTitle from "./components/StyleComponents/DecoratedTitle";
 import MainTitle from "./components/MainTitle";
 // import MyArcade from "./components/Arcade";
 
@@ -70,7 +69,6 @@ const App = () => {
             setIsConnected(false);
 
             if (reason === "io server disconnect") {
-                // the disconnection was initiated by the server, you need to reconnect manually
                 socket.connect();
             }
         });
@@ -98,7 +96,7 @@ const App = () => {
     }, [handleConnectError]);
 
     return (
-        <div className="App m-auto flex flex-col items-center w-full h-full">
+        <div className="App m-auto flex h-full w-full flex-col items-center">
             {/* <h1 className="text-lg font-bold text-white underline">
                 Hello world!
             </h1> */}
