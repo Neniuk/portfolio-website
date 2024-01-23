@@ -1,7 +1,7 @@
-import mainTitleDecorationBlue from "../../assets/main-title-decoration-blue.png"
+import mainTitleDecorationBlue from "../../assets/main-title-decoration-blue.png";
 
 const MainTitle = () => (
-    <div className="my-6 flex flex-row items-center justify-center gap-8">
+    <div className="mb-6 mt-24 flex flex-row items-center justify-center gap-8">
         <img
             className="main-title-decoration"
             src={mainTitleDecorationBlue}

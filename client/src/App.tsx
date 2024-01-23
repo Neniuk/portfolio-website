@@ -9,10 +9,6 @@ import MySnow from "./components/Snow";
 import MainTitle from "./components/MainTitle";
 // import MyArcade from "./components/Arcade";
 
-// Assets
-import mainTitleDecorationBlue from "./assets/main-title-decoration-blue.png";
-// import mainTitleDecoration from "./assets/main-title-decoration.png";
-
 const MIN_RECONNECT_DELAY: number = 500;
 const MAX_RECONNECT_DELAY: number = 5000;
 let reconnectDelay: number = MIN_RECONNECT_DELAY;
