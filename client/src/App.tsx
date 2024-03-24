@@ -92,10 +92,7 @@ const App = () => {
     }, [handleConnectError]);
 
     return (
-        <div className="App m-auto flex h-full w-full flex-col items-center">
-            {/* <h1 className="text-lg font-bold text-white underline">
-                Hello world!
-            </h1> */}
+        <div className="App m-auto flex h-full w-full flex-col items-center justify-center">
             <MySnow />
             <MainTitle />
             {/* <DecoratedPageTitle title="NENIUK.DEV" /> */}

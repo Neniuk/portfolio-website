@@ -3,7 +3,7 @@ import mainTitleDecorationBlue from "../../assets/main-title-decoration-blue.png
 const MainTitle = () => (
     <div className="mb-6 mt-24 flex flex-row items-center justify-center gap-8">
         <img
-            className="main-title-decoration"
+            className="main-title-decoration brightness-50"
             src={mainTitleDecorationBlue}
             alt="Main title decoration"
             style={{
@@ -15,7 +15,7 @@ const MainTitle = () => (
             NENIUK.DEV
         </h3>
         <img
-            className="main-title-decoration rotate-180"
+            className="main-title-decoration rotate-180 brightness-50"
             src={mainTitleDecorationBlue}
             alt="Main title decoration"
             style={{
