@@ -94,7 +94,7 @@ class DecoratedTitle extends Component<DecoratedTitleProps> {
                     >
                         <h3
                             style={titleStyle}
-                            className="color-titleColorSecondary"
+                            className="color-titleColorSecondary decoration-titleColorSecondary underline"
                         >
                             {title}
                         </h3>

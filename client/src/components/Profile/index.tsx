@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./styles.css";
 
 import Card from "../StyleComponents/Card";
 
@@ -10,55 +9,46 @@ import linkedInLogo from "../../assets/linkedin-logo.png";
 const githubLink = "https://github.com/Neniuk";
 const linkedInLink = "https://www.linkedin.com/in/mattiasvslotte/";
 
-const profileName = "Mattias";
-
-const ProfileDescription = () => (
-    <p>
-        Hi, I'm Mattias, a second-year bachelor's student in software
-        engineering. I'm currently looking for a summer job or an internship for
-        the summer of 2024. I'm also open to part-time work during the school
-        year. If you have any questions, feel free to contact me via email or
-        LinkedIn.
-    </p>
-);
-
-// const LoremDescription = () => (
-// 	<p>
-// 		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla accumsan,
-// 		metus ultrices eleifend gravida, nulla nunc varius lorem, vitae rutrum
-// 		nisi dolor eget odio. Nullam mollis. Ut justo. Suspendisse potenti.
-// 	</p>
-// );
-
 const ProfilePicture = () => (
-    <div className="profile-picture-container">
+    <div>
         <img
-            className="profile-picture"
+            className="w-200px border-titleColorPrimary h-auto rounded-lg border-2"
             src={profilePicture}
             alt="Profile picture"
         />
     </div>
 );
 
+const ProfileTitle = () => (
+    <div className="text-6xl">
+        <h1>Mattias</h1>
+    </div>
+);
+
 const TextContent = () => (
-    <div className="profile-text-content">
-        <div className="profile-name">
-            <h1>{profileName}</h1>
-        </div>
-        <div className="profile-description">
-            <ProfileDescription />
-        </div>
+    <div>
+        <p>
+            Hi, I'm Mattias, a second-year bachelor's student in software
+            engineering. I'm currently looking for a summer job or an internship
+            for the summer of 2024. I'm also open to part-time work during the
+            school year. If you have any questions, feel free to contact me via
+            email or LinkedIn.
+        </p>
     </div>
 );
 
 const SocialLinks = () => (
-    <div className="social-links">
+    <div className="flex flex-row gap-4">
         <a href={githubLink} target="_blank" rel="noopener noreferrer">
-            <img className="social-logo" src={githubLogo} alt="Github logo" />
+            <img
+                className="w-32px h-auto hover:animate-spin hover:brightness-75"
+                src={githubLogo}
+                alt="Github logo"
+            />
         </a>
         <a href={linkedInLink} target="_blank" rel="noopener noreferrer">
             <img
-                className="social-logo"
+                className="w-32px h-auto hover:animate-spin hover:brightness-75"
                 src={linkedInLogo}
                 alt="LinkedIn logo"
             />
@@ -67,9 +57,10 @@ const SocialLinks = () => (
 );
 
 const ProfileBody = () => (
-    <div className="profile-content">
+    <div className="flex flex-row gap-4">
         <ProfilePicture />
-        <div className="profile-details-container">
+        <div className="flex flex-col gap-4">
+            <ProfileTitle />
             <TextContent />
             <SocialLinks />
         </div>

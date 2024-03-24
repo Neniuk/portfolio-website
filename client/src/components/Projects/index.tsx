@@ -62,7 +62,7 @@ const ProjectSuggestions = () => (
         <div className="project-suggestions">
             <div className="project-suggestions-title-container">
                 <TitleDecoration />
-                <div className="project-suggestions-title">
+                <div className="project-suggestions-title font-bold">
                     <h3 className="project-suggestions-main-title">
                         Click to suggest project ideas
                     </h3>

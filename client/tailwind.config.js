@@ -9,6 +9,14 @@ export default {
             minWidth: {
                 "95%": "95%",
             },
+            width: {
+                "200px": "200px",
+                "32px": "32px",
+            },
+            height: {
+                "200px": "200px",
+                "32px": "32px",
+            },
             fontFamily: {
                 titleFont: "var(--title-font)",
             },
