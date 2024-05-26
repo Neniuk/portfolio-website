@@ -1,21 +1,33 @@
 import React from "react";
 
+// Components
 import ChatContent from "./ChatContent";
 import ChatInput from "./ChatInput";
 
+// Types
+import MessageWithSender from "../../../models/MessageWithSender";
+
 type ChatBodyProps = {
-    self: any;
-    messages: any;
+    handleChatSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
+    handleMessageChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    chatMessage: MessageWithSender;
+    setChatMessage: React.Dispatch<React.SetStateAction<MessageWithSender>>;
+    messages: MessageWithSender[];
 };
 
-const ChatBody: React.FC<ChatBodyProps> = ({ self, messages }) => {
+const ChatBody: React.FC<ChatBodyProps> = ({
+    handleChatSubmit,
+    handleMessageChange,
+    chatMessage,
+    messages,
+}) => {
     return (
         <div className="chat-body">
             <ChatContent messages={messages} />
             <ChatInput
-                onSubmit={self.handleChatSubmit}
-                message={self.state.chatMessage.message}
-                onMessageChange={self.handleMessageChange}
+                onSubmit={handleChatSubmit}
+                message={chatMessage.message}
+                onMessageChange={handleMessageChange}
             />
         </div>
     );

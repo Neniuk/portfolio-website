@@ -9,6 +9,9 @@ import MySnow from "./components/Snow";
 import MainTitle from "./components/MainTitle";
 // import MyArcade from "./components/Arcade";
 
+// Types
+import MessageWithSender from "./models/MessageWithSender";
+
 const MIN_RECONNECT_DELAY: number = 500;
 const MAX_RECONNECT_DELAY: number = 5000;
 let reconnectDelay: number = MIN_RECONNECT_DELAY;
@@ -23,7 +26,7 @@ const socket = io(PROD_ADDRESS, { transports: ["websocket"] });
 
 const App = () => {
     const [connectedUsers, setConnectedUsers] = useState(0);
-    const [messages, setMessages] = useState<any[]>([]);
+    const [messages, setMessages] = useState<MessageWithSender[]>([]);
     const [isConnected, setIsConnected] = useState(false);
 
     const handleConnectError = useCallback(() => {
@@ -73,7 +76,7 @@ const App = () => {
             setConnectedUsers(numUsers);
         });
 
-        socket.on("chat", (message: any) => {
+        socket.on("chat", (message: MessageWithSender) => {
             // console.log("Message received: " + message);
 
             setMessages((prevMessages) => [...prevMessages, message]);

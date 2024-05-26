@@ -37,8 +37,8 @@ class Card extends Component<CardProps> {
 
         const classes = `card ${customClass ? customClass : ""}`;
 
-        const innerCardClasses: string = "inner-card mb-4";
-        const outerCardClasses: string = "card mb-4";
+        // const innerCardClasses: string = "inner-card mb-4";
+        // const outerCardClasses: string = "card mb-4";
 
         return (
             <div

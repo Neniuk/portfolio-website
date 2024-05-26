@@ -1,5 +1,7 @@
-import { Component } from "react";
+import React from "react";
 import "./styles.css";
+
+import validator from "validator";
 
 const TitleDecoration = ({
     decoration,
@@ -45,81 +47,74 @@ type DecoratedTitleProps = {
     decorationBrightness?: string;
 };
 
-class DecoratedTitle extends Component<DecoratedTitleProps> {
-    render() {
-        const {
-            title,
-            titleSize,
-            titleColor,
-            marginTop,
-            marginBottom,
-            decoration,
-            decorationAlt,
-            decorationWidth,
-            decorationHeight,
-            decorationBrightness,
-            hasLink,
-            link,
-        } = this.props;
+const DecoratedTitle: React.FC<DecoratedTitleProps> = ({
+    title,
+    titleSize,
+    titleColor,
+    marginTop,
+    marginBottom,
+    decoration,
+    decorationAlt,
+    decorationWidth,
+    decorationHeight,
+    decorationBrightness,
+    hasLink,
+    link,
+}) => {
+    const titleStyle = {
+        fontSize: titleSize,
+        color: titleColor,
+    };
 
-        const titleStyle = {
-            fontSize: titleSize,
-            color: titleColor,
-        };
-
-        return (
-            <div
-                className="decorated-title"
-                style={{
-                    marginTop: marginTop ? marginTop : "0",
-                    marginBottom: marginBottom ? marginBottom : "0.5rem",
-                }}
-            >
-                <TitleDecoration
-                    decoration={decoration}
-                    decorationAlt={decorationAlt}
-                    decorationWidth={decorationWidth}
-                    decorationHeight={decorationHeight}
-                    decorationBrightness={
-                        decorationBrightness ? decorationBrightness : ""
-                    }
-                    right={false}
-                />
-                {hasLink ? (
-                    <a
-                        href={link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="decorated-title-link"
-                    >
-                        <h3
-                            style={titleStyle}
-                            className="color-titleColorSecondary decoration-titleColorSecondary underline"
-                        >
-                            {title}
-                        </h3>
-                    </a>
-                ) : (
+    return (
+        <div
+            className="decorated-title"
+            style={{
+                marginTop: marginTop ? marginTop : "0",
+                marginBottom: marginBottom ? marginBottom : "0.5rem",
+            }}
+        >
+            <TitleDecoration
+                decoration={decoration}
+                decorationAlt={decorationAlt}
+                decorationWidth={decorationWidth}
+                decorationHeight={decorationHeight}
+                decorationBrightness={
+                    decorationBrightness ? decorationBrightness : ""
+                }
+                right={false}
+            />
+            {hasLink && link && validator.isURL(link) ? (
+                <a
+                    href={link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="decorated-title-link"
+                >
                     <h3
                         style={titleStyle}
-                        className="color-titleColorSecondary"
+                        className="color-titleColorSecondary decoration-titleColorSecondary underline"
                     >
                         {title}
                     </h3>
-                )}
-                <TitleDecoration
-                    decoration={decoration}
-                    decorationAlt={decorationAlt}
-                    decorationWidth={decorationWidth}
-                    decorationHeight={decorationHeight}
-                    decorationBrightness={
-                        decorationBrightness ? decorationBrightness : ""
-                    }
-                    right={true}
-                />
-            </div>
-        );
-    }
-}
+                </a>
+            ) : (
+                <h3 style={titleStyle} className="color-titleColorSecondary">
+                    {title}
+                </h3>
+            )}
+            <TitleDecoration
+                decoration={decoration}
+                decorationAlt={decorationAlt}
+                decorationWidth={decorationWidth}
+                decorationHeight={decorationHeight}
+                decorationBrightness={
+                    decorationBrightness ? decorationBrightness : ""
+                }
+                right={true}
+            />
+        </div>
+    );
+};
 
 export default DecoratedTitle;

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 
 // Assets
 // import snowflake32 from "../../assets/snowflake32.png";
@@ -7,7 +7,11 @@ import snowflake5 from "../../assets/snowflake5.png";
 import snowflake3 from "../../assets/snowflake3.png";
 import snowflake1 from "../../assets/snowflake1.png";
 
-const snowflakeImages = {
+interface SnowflakeImages {
+    [key: number]: string;
+}
+
+const snowflakeImages: SnowflakeImages = {
     11: snowflake11,
     5: snowflake5,
     3: snowflake3,
@@ -15,7 +19,7 @@ const snowflakeImages = {
 };
 
 interface SnowflakeOptions {
-    snowflakeImages: any;
+    snowflakeImages: SnowflakeImages;
     width: number;
     height: number;
     minSpeed: number;
@@ -24,16 +28,16 @@ interface SnowflakeOptions {
 }
 
 class Snowflake {
-    x: any;
-    y: any;
-    speed: any;
+    x: number;
+    y: number;
+    speed: number;
     image: HTMLImageElement;
     radius: number;
-    opacity: any;
-    directionX: any;
-    directionY: any;
-    rotation: any;
-    rotationSpeed: any;
+    opacity: number;
+    directionX: number;
+    directionY: number;
+    rotation: number;
+    rotationSpeed: number;
 
     constructor(options: SnowflakeOptions) {
         this.x = options.random(options.width / 4, (3 * options.width) / 4); // Randomize initial x position
@@ -43,7 +47,7 @@ class Snowflake {
         this.image = new Image();
 
         // Weighted randomization of snowflake radius
-        let radii = [];
+        const radii = [];
         for (let i = 0; i < 12; i++) {
             radii.push(1);
         }
@@ -68,32 +72,34 @@ class Snowflake {
     }
 }
 
-class Snowfall {
-    canvas: any;
-    ctx: any;
-    width: any;
-    height: any;
-    maxSpeed: any;
-    minSpeed: any;
-    amount: any;
-    maxRadius: any;
-    minRadius: any;
-    background: any;
-    snowflakeImages: any;
-    snowflakes: any[];
+interface SnowfallOptions {
+    canvas: HTMLCanvasElement;
+    width: number;
+    height: number;
+    maxSpeed: number;
+    minSpeed: number;
+    amount: number;
+    background: string;
+    snowflakeImages: SnowflakeImages;
+    maxRadius?: number;
+    minRadius?: number;
+}
 
-    constructor(options: {
-        canvas: any;
-        width: any;
-        height: any;
-        maxSpeed: any;
-        minSpeed: any;
-        amount: any;
-        background: any;
-        snowflakeImages: any;
-        maxRadius?: any;
-        minRadius?: any;
-    }) {
+class Snowfall {
+    canvas: HTMLCanvasElement | null;
+    ctx: CanvasRenderingContext2D | null;
+    width: number;
+    height: number;
+    maxSpeed: number;
+    minSpeed: number;
+    amount: number;
+    maxRadius?: number;
+    minRadius?: number;
+    background: string;
+    snowflakeImages: SnowflakeImages;
+    snowflakes: Snowflake[];
+
+    constructor(options: SnowfallOptions) {
         this.canvas = options.canvas;
         this.ctx = this.canvas.getContext("2d");
         this.width = options.width;
@@ -109,25 +115,30 @@ class Snowfall {
         this.snowflakes = [];
 
         this.canvas.style.background = this.background;
-        let devicePixelRatio = window.devicePixelRatio || 1;
+        const devicePixelRatio = window.devicePixelRatio || 1;
         this.canvas.width = this.width * devicePixelRatio;
         this.canvas.height = this.height * devicePixelRatio;
-        this.ctx.scale(devicePixelRatio, devicePixelRatio);
+        if (this.ctx) {
+            this.ctx.scale(devicePixelRatio, devicePixelRatio);
+        }
 
         this.createSnowflakes();
         this.animateSnowflakes();
 
         window.addEventListener("resize", () => {
-            let devicePixelRatio = window.devicePixelRatio || 1;
+            const devicePixelRatio = window.devicePixelRatio || 1;
             this.width = window.innerWidth;
             this.height = window.innerHeight;
+            if (!this.canvas) return;
             this.canvas.width = this.width * devicePixelRatio;
             this.canvas.height = this.height * devicePixelRatio;
-            this.ctx.scale(devicePixelRatio, devicePixelRatio);
+            if (this.ctx) {
+                this.ctx.scale(devicePixelRatio, devicePixelRatio);
+            }
 
             // Update the x position of each snowflake
             for (let i = 0; i < this.snowflakes.length; i++) {
-                let flake = this.snowflakes[i];
+                const flake = this.snowflakes[i];
                 flake.x = this.random(this.width / 4, (3 * this.width) / 4);
             }
         });
@@ -145,9 +156,11 @@ class Snowfall {
 
     drawSnowflakes = () => {
         for (let i = 0; i < this.snowflakes.length; i++) {
-            let flake = this.snowflakes[i];
+            const flake = this.snowflakes[i];
 
+            if (!this.ctx) return;
             // Adjust the global alpha
+
             this.ctx.globalAlpha =
                 flake.opacity *
                 (1 -
@@ -180,6 +193,7 @@ class Snowfall {
             flake.rotation += flake.rotationSpeed;
 
             // Reset the global alpha
+
             this.ctx.globalAlpha = 1;
 
             flake.x += flake.directionX * flake.speed;
@@ -202,7 +216,8 @@ class Snowfall {
         const gradientEndRadius = 1000;
 
         // Create radial gradient
-        let gradient = this.ctx.createRadialGradient(
+        if (!this.ctx) return;
+        const gradient = this.ctx.createRadialGradient(
             gradientStartX,
             gradientStartY,
             gradientStartRadius,
@@ -221,6 +236,7 @@ class Snowfall {
     };
 
     animateSnowflakes = () => {
+        if (!this.ctx) return;
         this.ctx.clearRect(0, 0, this.width, this.height);
 
         this.setGradient();
@@ -230,10 +246,15 @@ class Snowfall {
     };
 }
 
-class MySnow extends Component {
-    componentDidMount() {
+const MySnow: React.FC = () => {
+    useEffect(() => {
+        const canvas = document.getElementById("snowCanvas");
+        if (!(canvas instanceof HTMLCanvasElement)) {
+            throw new Error("Element with id 'snowCanvas' is not a canvas");
+        }
+
         new Snowfall({
-            canvas: document.getElementById("snowCanvas"),
+            canvas: canvas,
             width: window.innerWidth,
             height: window.innerHeight,
             maxSpeed: 0.5,
@@ -242,15 +263,16 @@ class MySnow extends Component {
             background: "linear-gradient(to bottom, #000000 0%, #000000 100%)",
             snowflakeImages: snowflakeImages,
         });
-    }
-    render() {
-        return (
-            <canvas
-                id="snowCanvas"
-                className="z-bottom absolute h-full w-full"
-            ></canvas>
-        );
-    }
-}
+    }, []);
 
-export default React.memo(MySnow);
+    return (
+        <canvas
+            id="snowCanvas"
+            className="z-bottom absolute h-full w-full"
+        ></canvas>
+    );
+};
+
+const MemoizedMySnow = React.memo(MySnow);
+
+export default MemoizedMySnow;

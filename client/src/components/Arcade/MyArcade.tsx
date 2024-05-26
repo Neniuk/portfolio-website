@@ -39,7 +39,11 @@ const MyArcade = () => {
 
     return (
         <>
-            <Card bodyContent={<ArcadeBody />} customClass="arcade" />
+            <Card
+                bodyContent={<ArcadeBody />}
+                customClass="arcade"
+                headerInclude={false}
+            />
             {gameActive && (
                 <Draggable
                     handle=".game-navbar"
