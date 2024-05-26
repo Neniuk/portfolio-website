@@ -5,6 +5,7 @@ import path from "path";
 import { Server, Socket } from "socket.io";
 import crypto from "crypto";
 import { createServer } from "http";
+import { rateLimit } from "express-rate-limit";
 
 import BannedWords from "./models/bannedWords";
 
@@ -29,6 +30,12 @@ const io = new Server(server, {
     },
 });
 
+const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 100, // limit each IP to 100 requests per windowMs
+});
+
+app.use(limiter);
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
