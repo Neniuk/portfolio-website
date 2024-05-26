@@ -6,6 +6,7 @@ const path = require("path");
 const socketIo = require("socket.io");
 const BannedWords = require("./models/bannedWords");
 const crypto = require("crypto");
+const rateLimit = require("express-rate-limit");
 
 // const indexRouter = require("./routes/index");
 
@@ -40,6 +41,12 @@ const io = socketIo(server);
 // 	},
 // });
 
+const limiter = rateLimit({
+	windowMs: 15 * 60 * 1000, // 15 minutes
+	max: 100, // limit each IP to 100 requests per windowMs
+});
+
+app.use(limiter);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "../client/build")));
