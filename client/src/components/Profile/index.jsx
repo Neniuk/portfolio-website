@@ -13,20 +13,18 @@ const profileName = "Mattias";
 const ProfileDescription = () => (
 	<p>
 		Hi, I'm Mattias, a second-year bachelor's student in software
-		engineering. I'm currently looking for a summer job or an internship for
-		the summer of 2024. I'm also open to part-time work during the school
-		year. If you have any questions, feel free to contact me via email or
-		LinkedIn.
+		engineering. I'm currently working as a cloud software trainee. If you
+		have any questions, feel free to contact me via email or LinkedIn.
 	</p>
 );
 
-const LoremDescription = () => (
-	<p>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla accumsan,
-		metus ultrices eleifend gravida, nulla nunc varius lorem, vitae rutrum
-		nisi dolor eget odio. Nullam mollis. Ut justo. Suspendisse potenti.
-	</p>
-);
+// const LoremDescription = () => (
+// 	<p>
+// 		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla accumsan,
+// 		metus ultrices eleifend gravida, nulla nunc varius lorem, vitae rutrum
+// 		nisi dolor eget odio. Nullam mollis. Ut justo. Suspendisse potenti.
+// 	</p>
+// );
 
 const ProfilePicture = () => (
 	<div className="profile-picture-container">
