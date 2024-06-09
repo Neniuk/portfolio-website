@@ -13,5 +13,8 @@
         "heroku-postbuild": "cd client && npm install && npm run build:to:server && cd ../server && npm install && npm run build"
     },
     "author": "",
-    "license": "ISC"
+    "license": "ISC",
+    "dependencies": {
+        "typescript": "^5.4.5"
+    }
 }
