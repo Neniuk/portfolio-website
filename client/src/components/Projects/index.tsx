@@ -1,5 +1,4 @@
 import React from "react";
-import "./styles.css";
 
 import starAnimation from "../../assets/star-animation.gif";
 import projectInformation from "./projectInformation";
@@ -51,9 +50,7 @@ const ProjectsBody: React.FC = () => {
                             alt="Star animation"
                         />
                     </div>
-                    <div className="project-description">
-                        {project.description}
-                    </div>
+                    <div className="pl-6">{project.description}</div>
                 </div>
             ))}
             <ProjectSuggestions />
@@ -63,7 +60,7 @@ const ProjectsBody: React.FC = () => {
 
 const Projects: React.FC = () => {
     return (
-        <div className="bg-primaryColor border-outerBorderColor w-[95%] rounded-md border-2 border-solid p-6 sm:w-[600px]">
+        <div className="bg-primaryColor border-outerBorderColor w-[95%] rounded-md border-2 border-solid p-6 md:w-[600px]">
             <h2 className="text-titleColor mb-6 text-2xl">Projects</h2>
             <ProjectsBody />
         </div>

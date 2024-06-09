@@ -112,7 +112,7 @@ export const ArcadeDescription = () => (
 
 // Spotify Downloader
 export const SpotifyDownloaderDescription = () => (
-    <ul className="list-outside list-disc">
+    <ul className="list-outside list-disc [&_ul]:list-[revert]">
         <li>
             Fetches the user's playlists and the song names in the selected
             playlist using the{" "}
@@ -129,7 +129,7 @@ export const SpotifyDownloaderDescription = () => (
                 Python
             </strong>{" "}
             and various libraries, such as:
-            <ul className="inner-list list-outside list-disc">
+            <ul className="inner-list list-outside list-disc pl-6">
                 <li>
                     <strong className="text-titleColorSecondary font-bold">
                         requests

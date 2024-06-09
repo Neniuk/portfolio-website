@@ -115,13 +115,13 @@ const App = () => {
         <div className="App flex h-full w-full flex-col items-center justify-center">
             <Snow />
             <MainTitle />
-            <div className="flex w-full flex-col justify-center gap-6 sm:flex-row">
+            <div className="flex w-full flex-col justify-center gap-6 md:flex-row">
                 <div className="left-column"></div>
                 <div className="flex flex-col items-center justify-center gap-6">
                     <Profile />
                     <Projects />
                 </div>
-                <div className="right-column mb-10 flex flex-col items-center justify-center gap-6 sm:mb-0 sm:items-start sm:justify-start">
+                <div className="right-column mb-10 flex flex-col items-center justify-center gap-6 md:mb-0 md:items-start md:justify-start">
                     <Chat
                         socket={socket}
                         connectedUsers={connectedUsers}

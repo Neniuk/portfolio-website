@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Socket } from "socket.io-client";
-import "./styles.css";
 
 // Components
 import ChatHeader from "./ChatHeader";
@@ -80,7 +79,7 @@ const MyChat: React.FC<ChatProps> = ({
     };
 
     return (
-        <div className="bg-primaryColor border-outerBorderColor flex w-[95%] flex-col gap-4 rounded-md border-2 border-solid p-6 sm:w-[350px]">
+        <div className="bg-primaryColor border-outerBorderColor flex w-[95%] flex-col gap-4 rounded-md border-2 border-solid p-6 md:w-[350px]">
             <ChatHeader
                 isConnected={isConnected}
                 connectedUsers={connectedUsers}

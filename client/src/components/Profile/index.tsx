@@ -1,4 +1,5 @@
 import React from "react";
+import "./styles.css";
 
 import profilePicture from "../../assets/profile-picture-2.png";
 import githubLogo from "../../assets/github-logo.png";
@@ -8,13 +9,7 @@ const githubLink = "https://github.com/Neniuk";
 const linkedInLink = "https://www.linkedin.com/in/mattiasvslotte/";
 
 const ProfilePicture: React.FC = () => (
-    <div
-        className="border-accentColor mr-2 h-[200px] w-[180px] rounded-3xl border-2 border-solid"
-        style={{
-            background:
-                "radial-gradient(circle at center, transparent, black 80%)",
-        }}
-    >
+    <div className="pfp-container border-accentColor mr-2 h-[200px] w-[180px] rounded-3xl border-2 border-solid">
         <img
             className="h-full w-full rounded-3xl object-cover"
             style={{
@@ -64,9 +59,9 @@ const SocialLinks: React.FC = () => (
 
 const Profile: React.FC = () => {
     return (
-        <div className="border-outerBorderColor bg-primaryColor flex w-[95%] flex-col items-center justify-center gap-4 rounded-md border-2 border-solid p-6 sm:w-[600px] sm:flex-row">
+        <div className="border-outerBorderColor bg-primaryColor flex w-[95%] flex-col items-center justify-center gap-4 rounded-md border-2 border-solid p-6 md:w-[600px] md:flex-row">
             <ProfilePicture />
-            <div className="max-w-95% flex flex-col items-center gap-4 text-center sm:max-w-[60%] sm:items-start sm:text-start">
+            <div className="max-w-95% flex flex-col items-center gap-4 text-center md:max-w-[60%] md:items-start md:text-start">
                 <ProfileTitle />
                 <ProfileSummary />
                 <SocialLinks />

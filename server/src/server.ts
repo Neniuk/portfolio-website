@@ -11,13 +11,23 @@ import BannedWords from "./models/bannedWords";
 
 dotenv.config({ path: "./.env.local" });
 
-const PORT: string = process.env.PORT || "5000";
-const ALLOWED_ORIGINS: string[] = [
-    "http://localhost:3000",
-    "https://neniuk.dev",
-    "https://www.neniuk.dev",
-    "https://portfolio-website-45f1e0d390b7.herokuapp.com",
-];
+const PORT: string = process.env.PORT ?? "5000";
+const ENVIRONMENT: string = process.env.NODE_ENV ?? "";
+
+let ALLOWED_ORIGINS: string[] = [];
+if (ENVIRONMENT === "development") {
+    console.log("Running in development mode");
+    ALLOWED_ORIGINS = ["http://localhost:3000", "http://localhost:5173"];
+} else if (ENVIRONMENT === "production") {
+    console.log("Running in production mode");
+    ALLOWED_ORIGINS = [
+        "https://neniuk.dev",
+        "https://www.neniuk.dev",
+        "https://portfolio-website-45f1e0d390b7.herokuapp.com",
+    ];
+} else {
+    throw new Error("Invalid environment");
+}
 
 const app: Express = express();
 const server = createServer(app);
@@ -56,26 +66,6 @@ app.use((err: any, req: Request, res: Response, _next: NextFunction) => {
     res.send("error");
 });
 
-// Socket.io types
-// interface ServerToClientEvents {
-//     noArg: () => void;
-//     basicEmit: (a: number, b: string, c: Buffer) => void;
-//     withAck: (d: string, callback: (e: number) => void) => void;
-// }
-
-//   interface ClientToServerEvents {
-//     hello: () => void;
-// }
-
-//   interface InterServerEvents {
-//     ping: () => void;
-// }
-
-//   interface SocketData {
-//     name: string;
-//     age: number;
-// }
-
 // Socket.io
 let connectedUsers: Set<string> = new Set();
 
@@ -85,8 +75,8 @@ const validChatMessage = (msg: string): boolean => {
     }
 
     const words = msg.split(" ");
-    for (let i = 0; i < words.length; i++) {
-        if (BannedWords.includes(words[i].toLowerCase())) {
+    for (const word of words) {
+        if (BannedWords.includes(word.toLowerCase())) {
             return false;
         }
     }
@@ -95,7 +85,6 @@ const validChatMessage = (msg: string): boolean => {
 };
 
 io.on("connection", (socket: Socket) => {
-    // console.log("A user connected");
     // TODO: Handle collisions and add usernames to connectedUsers, for example as a dictionary
     const username = "User" + crypto.randomBytes(3).toString("hex");
     socket.data.username = username;
@@ -104,7 +93,6 @@ io.on("connection", (socket: Socket) => {
     io.emit("users", connectedUsers.size);
 
     socket.on("disconnect", (_reason: any) => {
-        // console.log("A user disconnected: " + _reason);
         // TODO: Remove username from connectedUsers, release the socket.username
         connectedUsers.delete(socket.id);
         io.emit("users", connectedUsers.size);
