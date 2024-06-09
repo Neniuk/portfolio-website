@@ -1,12 +1,15 @@
 {
-  "name": "portfolio-website-refactor",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "heroku-postbuild": "cd client && npm install && npm run build:to:server && cd ../server && npm install"
-  },
-  "author": "",
-  "license": "ISC"
+    "name": "portfolio-website-refactor",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "heroku-postbuild": "cd client && npm install && npm run build:to:server && cd ../server && npm install"
+    },
+    "author": "",
+    "license": "ISC",
+	"devDependencies": {
+		"typescript": "^5.3.3"
+	}
 }
