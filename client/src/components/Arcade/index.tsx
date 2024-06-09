@@ -72,7 +72,7 @@ const MyArcade: React.FC = () => {
                                     outline: "inherit",
                                 }}
                             >
-                                <h1 className="game-navbar-close-text hover:text-accentTertiaryColor text-xl hover:scale-125 hover:transform">
+                                <h1 className="game-navbar-close-text hover:text-accentTertiaryColor text-titleColorPrimary text-xl hover:scale-125 hover:transform">
                                     X
                                 </h1>
                             </button>

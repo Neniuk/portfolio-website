@@ -9,7 +9,7 @@ import { rateLimit } from "express-rate-limit";
 
 import BannedWords from "./models/bannedWords";
 
-dotenv.config({ path: "./.env.local" });
+dotenv.config();
 
 const PORT: string = process.env.PORT ?? "5000";
 const ENVIRONMENT: string = process.env.NODE_ENV ?? "";
@@ -17,7 +17,11 @@ const ENVIRONMENT: string = process.env.NODE_ENV ?? "";
 let ALLOWED_ORIGINS: string[] = [];
 if (ENVIRONMENT === "development") {
     console.log("Running in development mode");
-    ALLOWED_ORIGINS = ["http://localhost:3000", "http://localhost:5173"];
+    ALLOWED_ORIGINS = [
+        "http://localhost:3000",
+        "http://localhost:5000",
+        "http://localhost:5173",
+    ];
 } else if (ENVIRONMENT === "production") {
     console.log("Running in production mode");
     ALLOWED_ORIGINS = [
@@ -49,11 +53,23 @@ app.use(limiter);
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, "../client/build")));
 
-app.get("*", (_req: Request, res: Response, _next: NextFunction) => {
-    res.sendFile(path.join(__dirname, "../client/build", "index.html"));
-});
+// Serve static files
+if (ENVIRONMENT === "development") {
+    console.log("Serving static files in development mode");
+    app.use(express.static(path.join(__dirname, "../dist", "client")));
+    app.get("*", (_req: Request, res: Response, _next: NextFunction) => {
+        res.sendFile(path.join(__dirname, "../dist", "client", "index.html"));
+    });
+} else if (ENVIRONMENT === "production") {
+    console.log("Serving static files in production mode");
+    app.use(express.static(path.join(__dirname, "../client")));
+    app.get("*", (_req: Request, res: Response, _next: NextFunction) => {
+        res.sendFile(path.join(__dirname, "../client", "index.html"));
+    });
+} else {
+    throw new Error("Invalid environment");
+}
 
 // Error handler
 app.use((err: any, req: Request, res: Response, _next: NextFunction) => {
@@ -100,16 +116,10 @@ io.on("connection", (socket: Socket) => {
 
     socket.on("chat", (msg: { message: string; sender: string }) => {
         if (typeof msg !== "object" || !msg.message || !msg.sender) {
-            console.log("Invalid message or sender");
             return;
         }
 
-        // Log socket id
-        console.log("Sender: " + socket.id);
-        console.log("Message: " + msg.message);
-
         if (!validChatMessage(msg.message)) {
-            console.log("Invalid message");
             return;
         }
 
