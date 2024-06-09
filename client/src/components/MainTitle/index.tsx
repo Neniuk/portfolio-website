@@ -1,27 +1,19 @@
 import mainTitleDecorationBlue from "../../assets/main-title-decoration-blue.png";
 
 const MainTitle = () => (
-    <div className="mb-6 mt-24 flex flex-row items-center justify-center gap-8">
+    <div className="mb-0 mt-6 flex w-[95%] flex-row items-center justify-center gap-8 sm:mb-6 sm:w-full">
         <img
-            className="main-title-decoration brightness-50"
+            className="main-title-decoration h-[32px] w-[95%] brightness-50 sm:w-[320px]"
             src={mainTitleDecorationBlue}
             alt="Main title decoration"
-            style={{
-                width: "320px",
-                height: "32px",
-            }}
         />
         <h3 className="text-titleColorSecondary text-center text-3xl">
             NENIUK.DEV
         </h3>
         <img
-            className="main-title-decoration rotate-180 brightness-50"
+            className="main-title-decoration h-[32px] w-[95%] rotate-180 brightness-50 sm:w-[320px]"
             src={mainTitleDecorationBlue}
             alt="Main title decoration"
-            style={{
-                width: "320px",
-                height: "32px",
-            }}
         />
     </div>
 );

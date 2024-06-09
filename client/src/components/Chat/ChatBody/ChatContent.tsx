@@ -6,15 +6,15 @@ type ChatContentProps = {
 
 const ChatContent: React.FC<ChatContentProps> = ({ messages }) => {
     return (
-        <div className="chat-content-container">
+        <div className="bg-secondaryColor border-innerBorderColor flex max-h-[300px] min-h-[300px] w-full flex-col items-start gap-1 overflow-y-auto whitespace-pre-wrap break-all rounded-md border-2 border-solid p-6">
             {messages.map((message, index) => (
-                <div key={index} className="chat-message-container">
-                    <p className="chat-message-text">
+                <div key={index}>
+                    <p>
                         <strong
                             className={
                                 message.sender === "ME"
-                                    ? "chat-bold-me"
-                                    : "chat-bold-anonymous"
+                                    ? "text-accentColor font-bold"
+                                    : "text-accentSecondaryColor font-bold"
                             }
                         >
                             {message.sender}

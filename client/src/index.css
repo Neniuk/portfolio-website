@@ -1,28 +1,39 @@
 @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-    --primary: #000000;
-    --secondary: #00001a;
-    --light: #f2f2f2;
-    --light-alt: #e6e6e6;
-    --dark: #00001a;
-    --dark-alt: #2d2d2d;
-    --accent: #ff66cc;
-    /* Somewhere between dark-alt and light-alt */
-    --outer-border-color: #4d4d4d;
-    /* --accent: #ffcc00; */
-    /*A blue that goes well with the main accent color*/
-    --accent-alt: #ff66cc;
-    --accent-alt2: #00ccff;
-    --accent-alt3: #ffcc00;
+    /* Colors */
+    --color-primary: #000000;
+    --color-secondary: #00001a;
+    --color-light: #f2f2f2;
+    --color-light-alt: #e6e6e6;
+    --color-dark: #00001a;
+    --color-dark-alt: #2d2d2d;
+    --color-accent: #ff66cc;
+    --color-accent-secondary: #00ccff;
+    --color-accent-tertiary: #ffcc00;
+    --color-accent-alt: #ff66cc;
+    --color-accent-alt2: #00ccff;
+    --color-accent-alt3: #ffcc00;
 
-    --connected-color: #00ff00;
-    --disconnected-color: #ff0000;
+    --color-outer-border: #4d4d4d;
+    --color-inner-border: #2d2d2d;
+    --color-border-primary: #4d4d4d;
+    --color-border-secondary: #2d2d2d;
+
+    --color-connected: #00ff00;
+    --color-disconnected: #ff0000;
+
+    --color-text-light: #dddbdb;
+    --color-text-dark: #000000;
+    --color-text-bold: #00ccff;
+
+    --color-title-primary: #ff66cc;
+    --color-title-secondary: #00ccff;
 
     --border-radius: 5px;
     --border-width: 2px;
@@ -34,22 +45,10 @@
     --small-screen-width: 640px;
 
     --title-font: "Press Start 2P", cursive;
-    --title-color-primary: #ff66cc;
-    --title-color-secondary: #00ccff;
-
-    --border-color-primary: #4d4d4d;
-    --border-color-secondary: #2d2d2d;
 
     --translate-mirror-x: scaleX(-1);
     --translate-mirror-y: scaleY(-1);
 
-    --text-bold-color: #00ccff;
-
-    /* font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-    line-height: 1.5;
-    font-weight: 400; */
-
-    /* color-scheme: light dark; */
     color: rgb(255, 255, 255);
     background-color: #000;
 
@@ -73,27 +72,32 @@ a:hover {
     padding: 0;
     box-sizing: border-box;
     font-family: "Roboto Mono", monospace; /* Use Roboto Mono for all elements */
-    font-size: 12px; /* Adjust the base font size */
+    font-size: 12px;
+    line-height: 1.4;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-accent-alt2) var(--color-secondary);
+}
+
+*::-webkit-scrollbar {
+    width: 8px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: var(--color-accent-alt2);
+}
+
+*::-webkit-scrollbar-track {
+    background-color: var(--dark);
 }
 
 body,
 html {
-    height: 100%;
-}
-
-body {
     margin: 0;
-    display: flex;
-    place-items: center;
-    min-width: 320px;
-    min-height: 100vh;
-    /* background-color: #000; */
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    color: var(--color-text-light);
 }
-
-/* h1 {
-    font-size: 3.2em;
-    line-height: 1.1;
-} */
 
 h1,
 h2,
@@ -102,7 +106,7 @@ h4,
 h5,
 h6 {
     font-family: "Press Start 2P", cursive; /* Use Press Start 2P for headers */
-    color: var(--title-color-primary);
+    color: var(--color-title-primary);
 }
 
 button {

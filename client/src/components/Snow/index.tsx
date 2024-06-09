@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 
 // Assets
-// import snowflake32 from "../../assets/snowflake32.png";
 import snowflake11 from "../../assets/snowflake11.png";
 import snowflake5 from "../../assets/snowflake5.png";
 import snowflake3 from "../../assets/snowflake3.png";
@@ -110,7 +109,6 @@ class Snowfall {
         this.maxRadius = options.maxRadius;
         this.minRadius = options.minRadius;
         this.background = options.background;
-        // this.snowFlakeImage = options.snowFlakeImage;
         this.snowflakeImages = options.snowflakeImages;
         this.snowflakes = [];
 
@@ -137,8 +135,8 @@ class Snowfall {
             }
 
             // Update the x position of each snowflake
-            for (let i = 0; i < this.snowflakes.length; i++) {
-                const flake = this.snowflakes[i];
+            for (const element of this.snowflakes) {
+                const flake = element;
                 flake.x = this.random(this.width / 4, (3 * this.width) / 4);
             }
         });
@@ -155,8 +153,8 @@ class Snowfall {
     };
 
     drawSnowflakes = () => {
-        for (let i = 0; i < this.snowflakes.length; i++) {
-            const flake = this.snowflakes[i];
+        for (const element of this.snowflakes) {
+            const flake = element;
 
             if (!this.ctx) return;
             // Adjust the global alpha
@@ -246,14 +244,14 @@ class Snowfall {
     };
 }
 
-const MySnow: React.FC = () => {
+const Snow: React.FC = () => {
     useEffect(() => {
         const canvas = document.getElementById("snowCanvas");
         if (!(canvas instanceof HTMLCanvasElement)) {
             throw new Error("Element with id 'snowCanvas' is not a canvas");
         }
 
-        new Snowfall({
+        const snowfallOptions = {
             canvas: canvas,
             width: window.innerWidth,
             height: window.innerHeight,
@@ -262,17 +260,18 @@ const MySnow: React.FC = () => {
             amount: 200,
             background: "linear-gradient(to bottom, #000000 0%, #000000 100%)",
             snowflakeImages: snowflakeImages,
-        });
+        };
+
+        new Snowfall(snowfallOptions);
     }, []);
 
     return (
         <canvas
             id="snowCanvas"
-            className="z-bottom absolute h-full w-full"
+            className="z-bottom absolute inset-0 h-full w-full"
         ></canvas>
     );
 };
 
-const MemoizedMySnow = React.memo(MySnow);
-
-export default MemoizedMySnow;
+const MemoizedSnow = React.memo(Snow);
+export default MemoizedSnow;

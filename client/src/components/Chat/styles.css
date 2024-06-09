@@ -10,7 +10,6 @@
 
     /* Setting the padding and maximum dimensions */
     padding: 20px;
-    max-width: 650px; /* Limit the maximum width */
     margin: auto; /* Center the element */
 
     /* Using flexbox for layout */
@@ -83,9 +82,6 @@
     /* Setting the padding and maximum dimensions */
     padding: 20px;
 
-    min-width: 300px; /* Limit the maximum width */
-    max-width: 300px; /* Limit the maximum width */
-
     min-height: 300px; /* Limit the maximum width */
     max-height: 300px; /* Limit the maximum width */
 
@@ -120,11 +116,11 @@
 }
 
 .chat-bold-me {
-    color: var(--accent-alt);
+    color: var(--color-accent-alt);
 }
 
 .chat-bold-anonymous {
-    color: var(--accent-alt2);
+    color: var(--color-accent-alt2);
 }
 
 .chat-input-container {
@@ -156,19 +152,9 @@
     /* Setting the padding and maximum dimensions */
     padding: 20px;
 
-    /* min-width: 240px;
-	max-width: 240px;
-
-	min-height: 50px;
-	max-height: 50px; */
-
-    /* min-width: 90%;
-	max-width: 90%; */
-
     min-height: 50px;
     max-height: 50px;
 
-    /* margin-right: 10px; */
     margin-right: 0.5rem;
 
     color: var(--light);
@@ -182,8 +168,6 @@
     border-color: var(--dark-alt);
     border-width: var(--border-width);
     border-radius: var(--border-radius);
-    /* min-width: 50px;
-	max-width: 50px; */
 
     padding-left: 0.5rem;
     padding-right: 0.5rem;
@@ -195,18 +179,12 @@
 
 .chat-send:hover {
     border-color: var(--light);
-    /* color: var(--accent-alt); */
 }
 
 .chat-send.clicked {
     border-color: var(--accent-alt2);
     color: var(--accent-alt2);
 }
-
-/* .chat-send-icon {
-	width: 16px;
-	height: 16px;
-} */
 
 .connected-users-container {
     display: flex;

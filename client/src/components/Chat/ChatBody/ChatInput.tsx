@@ -12,18 +12,21 @@ const ChatInput: React.FC<ChatInputProps> = ({
     onMessageChange,
 }) => {
     return (
-        <form className="chat-input-container" onSubmit={onSubmit}>
+        <form className="mt-3 flex w-full flex-row" onSubmit={onSubmit}>
             <input
                 type="text"
-                className={`chat-input ${
-                    message.length === 250 ? "input-max-length" : ""
+                className={`bg-primaryColor border-innerBorderColor mr-2 max-h-[50px] min-h-[50px] flex-grow rounded-md border-2 border-solid p-5 text-white ${
+                    message.length === 250 ? "border-disabledColor" : ""
                 }`}
                 placeholder="Type a message..."
                 value={message}
                 onChange={onMessageChange}
                 maxLength={250}
             />
-            <button className="chat-send" type="submit">
+            <button
+                className="bg-primaryColor border-innerBorderColor focus:border-accentAlt2 focus:text-accentAlt2 max-h-[50px] min-h-[50px] flex-grow-0 rounded-md border-2 border-solid px-2 text-white hover:border-white"
+                type="submit"
+            >
                 Send
             </button>
         </form>

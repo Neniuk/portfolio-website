@@ -11,7 +11,6 @@ type ChatBodyProps = {
     handleChatSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
     handleMessageChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
     chatMessage: MessageWithSender;
-    setChatMessage: React.Dispatch<React.SetStateAction<MessageWithSender>>;
     messages: MessageWithSender[];
 };
 
@@ -22,7 +21,7 @@ const ChatBody: React.FC<ChatBodyProps> = ({
     messages,
 }) => {
     return (
-        <div className="chat-body">
+        <div className="flex flex-col items-center">
             <ChatContent messages={messages} />
             <ChatInput
                 onSubmit={handleChatSubmit}

@@ -2,27 +2,43 @@ import { io } from "socket.io-client";
 import React, { useState, useEffect, useCallback } from "react";
 
 // Components
-import MyProfile from "./components/Profile";
-import MyProjects from "./components/Projects";
-import MyChat from "./components/Chat";
-import MySnow from "./components/Snow";
 import MainTitle from "./components/MainTitle";
-// import MyArcade from "./components/Arcade";
+import { default as Profile } from "./components/Profile";
+import { default as Projects } from "./components/Projects";
+import { default as Chat } from "./components/Chat";
+import { default as Snow } from "./components/Snow";
+import { default as Arcade } from "./components/Arcade";
 
 // Types
 import MessageWithSender from "./models/MessageWithSender";
+
+const ENVIRONMENT = process.env.NODE_ENV;
 
 const MIN_RECONNECT_DELAY: number = 500;
 const MAX_RECONNECT_DELAY: number = 5000;
 let reconnectDelay: number = MIN_RECONNECT_DELAY;
 
-// const SERVER_PORT = 5000;
-// const DEV_ADDRESS = "http://localhost:" + SERVER_PORT;
+const DEV_SERVER_PORT = 5000;
+const DEV_ADDRESS = "http://localhost:" + DEV_SERVER_PORT;
 
 const PROD_ADDRESS = "https://www.neniuk.dev/";
-// console.log("Server Address: " + SERVER_ADDRESS);
 
-const socket = io(PROD_ADDRESS, { transports: ["websocket"] });
+let SERVER_ADDRESS = "";
+if (ENVIRONMENT === "development") {
+    SERVER_ADDRESS = DEV_ADDRESS;
+    console.log("Connecting to development server...");
+} else if (ENVIRONMENT === "production") {
+    SERVER_ADDRESS = PROD_ADDRESS;
+    console.log("Connecting to production server...");
+} else {
+    console.error("Invalid environment, unable to connect to server");
+}
+
+if (SERVER_ADDRESS === "") {
+    throw new Error("Invalid server address");
+}
+
+const socket = io(SERVER_ADDRESS, { transports: ["websocket"] });
 
 const App = () => {
     const [connectedUsers, setConnectedUsers] = useState(0);
@@ -37,6 +53,9 @@ const App = () => {
                 reconnectDelay = Math.min(
                     reconnectDelay * 2,
                     MAX_RECONNECT_DELAY
+                );
+                console.log(
+                    `Connection failed, reconnecting in ${reconnectDelay}ms`
                 );
             }, reconnectDelay);
         }
@@ -77,8 +96,6 @@ const App = () => {
         });
 
         socket.on("chat", (message: MessageWithSender) => {
-            // console.log("Message received: " + message);
-
             setMessages((prevMessages) => [...prevMessages, message]);
         });
 
@@ -95,27 +112,24 @@ const App = () => {
     }, [handleConnectError]);
 
     return (
-        <div className="App m-auto flex h-full w-full flex-col items-center justify-center">
-            <MySnow />
+        <div className="App flex h-full w-full flex-col items-center justify-center">
+            <Snow />
             <MainTitle />
-            {/* <DecoratedPageTitle title="NENIUK.DEV" /> */}
-            <div className="page-content-table flex w-full flex-row justify-center gap-6">
+            <div className="flex w-full flex-col justify-center gap-6 sm:flex-row">
                 <div className="left-column"></div>
-                <div className="main-column">
-                    <MyProfile />
-                    <MyProjects />
-                    <div className="contact"></div>
-                    <div className="blog"></div>
+                <div className="flex flex-col items-center justify-center gap-6">
+                    <Profile />
+                    <Projects />
                 </div>
-                <div className="right-column">
-                    <MyChat
+                <div className="right-column mb-10 flex flex-col items-center justify-center gap-6 sm:mb-0 sm:items-start sm:justify-start">
+                    <Chat
                         socket={socket}
                         connectedUsers={connectedUsers}
                         messages={messages}
                         setMessages={setMessages}
                         isConnected={isConnected}
                     />
-                    {/* <MyArcade /> */}
+                    <Arcade />
                 </div>
             </div>
         </div>

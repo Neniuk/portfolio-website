@@ -10,21 +10,18 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
     connectedUsers,
 }) => {
     return (
-        <div className="chat-header">
-            <div className="chat-title-container">
-                <h1 className="text-2xl">Chat</h1>
-            </div>
-            <div className="chat-connection-indicator">
+        <div className="flex w-full flex-row items-center justify-between">
+            <h1 className="text-2xl">Chat</h1>
+            <div className="flex flex-row items-center">
                 <div
-                    className={`chat-connection-indicator-dot ${
-                        isConnected ? "connected" : "disconnected"
+                    className={`mr-4 h-3 w-3 rounded-full ${
+                        isConnected
+                            ? "bg-connectedColor"
+                            : "bg-disconnectedColor"
                     }`}
                     title="Chat connection"
                 ></div>
-                <div className="connected-users-container">
-                    <p className="chat-connection-count-text">Users: </p>
-                    <p className="chat-connection-count">{connectedUsers}</p>
-                </div>
+                <p>Users: {connectedUsers}</p>
             </div>
         </div>
     );
