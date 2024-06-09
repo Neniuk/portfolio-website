@@ -3,14 +3,15 @@
     "version": "1.0.0",
     "description": "",
     "main": "index.js",
+    "engines": {
+        "node": "22.2.0",
+        "npm": "10.7.0"
+    },
     "scripts": {
         "start": "cd server && npm start",
         "test": "echo \"Error: no test specified\" && exit 1",
         "heroku-postbuild": "cd client && npm install && npm run build:to:server && cd ../server && npm install && npm run build"
     },
     "author": "",
-    "license": "ISC",
-	"devDependencies": {
-		"typescript": "^5.3.3"
-	}
+    "license": "ISC"
 }
