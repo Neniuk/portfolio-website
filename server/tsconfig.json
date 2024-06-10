@@ -6,7 +6,7 @@
 
         "esModuleInterop": true,
         "forceConsistentCasingInFileNames": true,
-        "outDir": "./dist",
+        "outDir": "./dist/server",
 
         /* Linting */
         "strict": true,
