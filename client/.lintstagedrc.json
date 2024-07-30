@@ -1,4 +1,4 @@
 {
-    "*.{js,jsx,ts,tsx}": "eslint --fix",
-    "*": "prettier --ignore-unknown --write --concurrent false"
+    "*.{js,jsx,ts,tsx}": ["prettier --ignore-unknown --write", "eslint --fix"],
+    "*.{html,css,json,md,scss,yml,yaml}": ["prettier --ignore-unknown --write"]
 }
