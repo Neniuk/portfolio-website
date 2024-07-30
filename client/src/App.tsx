@@ -8,6 +8,7 @@ import { default as Projects } from "./components/Projects";
 import { default as Chat } from "./components/Chat";
 import { default as Snow } from "./components/Snow";
 import { default as Starfield } from "./components/Starfield";
+import { default as SunMoonCycle } from "./components/SunMoonCycle";
 import { default as Arcade } from "./components/Arcade";
 
 // Types
@@ -124,6 +125,7 @@ const App = () => {
                 <div className="flex flex-col items-center justify-center gap-6">
                     <Profile />
                     <Projects />
+                    <SunMoonCycle />
                 </div>
                 <div className="right-column mb-10 flex flex-col items-center justify-center gap-6 md:mb-0 md:items-start md:justify-start">
                     <Chat

@@ -1,118 +1,84 @@
 import React, { useEffect, useRef } from "react";
 
-class Star {
-    x: number;
-    y: number;
-    z: number;
-    radius: number;
-    color: string;
-    constructor(
-        x: number,
-        y: number,
-        z: number,
-        radius: number,
-        color: string
-    ) {
-        this.x = x;
-        this.y = y;
-        this.z = z;
-        this.radius = radius;
-        this.color = color;
-    }
-}
-
-class StarfieldProps {
-    canvas: HTMLCanvasElement;
-    ctx: CanvasRenderingContext2D;
-    width: number;
-    height: number;
-    stars: Star[];
-    starCount: number;
-    constructor(
-        canvas: HTMLCanvasElement,
-        ctx: CanvasRenderingContext2D,
-        width: number,
-        height: number,
-        starCount: number
-    ) {
-        this.canvas = canvas;
-        this.ctx = ctx;
-        this.width = width;
-        this.height = height;
-        this.stars = [];
-        this.starCount = starCount;
-    }
-
-    init() {
-        this.canvas.width = this.width;
-        this.canvas.height = this.height;
-
-        for (let i = 0; i < this.starCount; i++) {
-            const x = Math.random() * this.width;
-            const y = Math.random() * this.height;
-            const z = Math.random() * this.width;
-            const radius = Math.random() * 1.5;
-            const color = `rgba(255, 255, 255, ${Math.random()})`;
-
-            this.stars.push(new Star(x, y, z, radius, color));
-        }
-
-        this.animate();
-    }
-
-    animate() {
-        this.ctx.fillStyle = "black";
-        this.ctx.fillRect(0, 0, this.width, this.height);
-
-        this.stars.forEach((star) => {
-            this.ctx.beginPath();
-            this.ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
-            this.ctx.fillStyle = star.color;
-            this.ctx.fill();
-
-            star.z -= 1;
-
-            if (star.z <= 0) {
-                star.z = this.width;
-            }
-        });
-
-        requestAnimationFrame(() => this.animate());
-    }
-}
-
 const Starfield: React.FC = () => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
 
     useEffect(() => {
         const canvas = canvasRef.current;
+        if (!canvas) return;
 
-        if (canvas) {
-            const ctx = canvas.getContext("2d");
+        const ctx = canvas.getContext("2d");
+        if (!ctx) return;
 
-            if (ctx) {
-                const width = window.innerWidth;
-                const height = window.innerHeight;
-                const starCount = 1000;
+        const stars: {
+            angle: number;
+            radius: number;
+            size: number;
+            speed: number;
+        }[] = [];
 
-                const starfield = new StarfieldProps(
-                    canvas,
-                    ctx,
-                    width,
-                    height,
-                    starCount
-                );
+        const createStar = () => {
+            const angle = Math.random() * 2 * Math.PI;
+            const radius = Math.random() * canvas.width;
+            const size = Math.random() * 2;
+            const speed = Math.random() * 0.001 + 0.00025; // Even slower speed
+            stars.push({ angle, radius, size, speed });
+        };
 
-                starfield.init();
+        const drawStar = (star: { x: number; y: number; size: number }) => {
+            ctx.fillStyle = "white";
+            ctx.fillRect(star.x, star.y, star.size, star.size);
+        };
+
+        const animateStars = () => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            for (const element of stars) {
+                const star = element;
+                star.angle += star.speed;
+                const x = centerX + star.radius * Math.cos(star.angle);
+                const y = centerY + star.radius * Math.sin(star.angle);
+                drawStar({ x, y, size: star.size });
             }
+            requestAnimationFrame(animateStars);
+        };
+
+        const resizeCanvas = () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        };
+
+        resizeCanvas();
+        window.addEventListener("resize", resizeCanvas);
+
+        for (let i = 0; i < 500; i++) {
+            // Increase the number of stars
+            createStar();
         }
+
+        animateStars();
+
+        return () => {
+            window.removeEventListener("resize", resizeCanvas);
+        };
     }, []);
 
     return (
         <canvas
             ref={canvasRef}
-            className="z-bottom absolute inset-0 left-0 top-0 h-full w-full"
-            style={{ zIndex: -1 }}
+            style={{
+                display: "block",
+                width: "100%",
+                height: "100%",
+                margin: 0,
+                padding: 0,
+                position: "absolute",
+                top: 0,
+                left: 0,
+                backgroundColor: "black",
+                zIndex: -1000,
+            }}
         ></canvas>
     );
 };
