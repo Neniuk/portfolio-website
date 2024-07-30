@@ -1,5 +1,12 @@
 import React, { useEffect, useRef } from "react";
 
+// Controls the density of the starfield
+const STAR_COUNT = 1000;
+const STAR_SIZE_MAX = 2;
+const STAR_SPEED_MIN = 0.00025;
+// (max - min)
+const STAR_SPEED_RANGE = 0.001;
+
 const Starfield: React.FC = () => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -20,8 +27,8 @@ const Starfield: React.FC = () => {
         const createStar = () => {
             const angle = Math.random() * 2 * Math.PI;
             const radius = Math.random() * canvas.width;
-            const size = Math.random() * 2;
-            const speed = Math.random() * 0.001 + 0.00025; // Even slower speed
+            const size = Math.random() * STAR_SIZE_MAX;
+            const speed = Math.random() * STAR_SPEED_RANGE + STAR_SPEED_MIN;
             stars.push({ angle, radius, size, speed });
         };
 
@@ -52,8 +59,7 @@ const Starfield: React.FC = () => {
         resizeCanvas();
         window.addEventListener("resize", resizeCanvas);
 
-        for (let i = 0; i < 500; i++) {
-            // Increase the number of stars
+        for (let i = 0; i < STAR_COUNT; i++) {
             createStar();
         }
 
@@ -67,18 +73,7 @@ const Starfield: React.FC = () => {
     return (
         <canvas
             ref={canvasRef}
-            style={{
-                display: "block",
-                width: "100%",
-                height: "100%",
-                margin: 0,
-                padding: 0,
-                position: "absolute",
-                top: 0,
-                left: 0,
-                backgroundColor: "black",
-                zIndex: -1000,
-            }}
+            className="z-bottom absolute left-0 top-0 m-0 block h-full w-full bg-black p-0"
         ></canvas>
     );
 };

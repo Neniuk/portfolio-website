@@ -5,6 +5,8 @@ import sunImage from "../../assets/sun.png";
 import moonImage from "../../assets/moon.png";
 
 const UPDATE_INTERVAL: number = 60000;
+const SUN_SIZE: number = 38;
+const MOON_SIZE: number = 44;
 
 const SunMoonCycle: React.FC = () => {
     const [cycleState, setCycleState] = useState({
@@ -50,9 +52,17 @@ const SunMoonCycle: React.FC = () => {
                 <div
                     className="absolute top-1/2 -translate-y-1/2"
                     style={{
-                        left: `${cycleState.positionPercentage}%`,
-                        width: cycleState.isDaytime ? "38px" : "44px",
-                        height: cycleState.isDaytime ? "38px" : "44px",
+                        // Ensure the sun/moon is centered on the current time
+                        left: `calc(${cycleState.positionPercentage}% - ${
+                            cycleState.isDaytime ? SUN_SIZE / 2 : MOON_SIZE / 2
+                        }px)`,
+                        // Set the size of the sun/moon
+                        width: `${
+                            cycleState.isDaytime ? SUN_SIZE : MOON_SIZE
+                        }px`,
+                        height: `${
+                            cycleState.isDaytime ? SUN_SIZE : MOON_SIZE
+                        }px`,
                     }}
                 >
                     <img
