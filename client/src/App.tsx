@@ -7,6 +7,7 @@ import { default as Profile } from "./components/Profile";
 import { default as Projects } from "./components/Projects";
 import { default as Chat } from "./components/Chat";
 import { default as Snow } from "./components/Snow";
+import { default as Starfield } from "./components/Starfield";
 import { default as Arcade } from "./components/Arcade";
 
 // Types
@@ -44,6 +45,9 @@ const App = () => {
     const [connectedUsers, setConnectedUsers] = useState(0);
     const [messages, setMessages] = useState<MessageWithSender[]>([]);
     const [isConnected, setIsConnected] = useState(false);
+
+    const currentMonth: number = new Date().getMonth();
+    const isWinter: boolean = currentMonth >= 10 || currentMonth <= 2;
 
     const handleConnectError = useCallback(() => {
         if (!socket.connected) {
@@ -113,7 +117,7 @@ const App = () => {
 
     return (
         <div className="App flex h-full w-full flex-col items-center justify-center">
-            <Snow />
+            {isWinter ? <Snow /> : <Starfield />}
             <MainTitle />
             <div className="flex w-full flex-col justify-center gap-6 md:flex-row">
                 <div className="left-column"></div>

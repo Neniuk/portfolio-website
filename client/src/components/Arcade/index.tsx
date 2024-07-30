@@ -28,6 +28,7 @@ const MyArcade: React.FC = () => {
     return (
         <div className="hidden w-full md:block">
             <div className="arcade h-[160px] w-[350px]">
+                {/* TODO: Instead of just opening the game with the button, make it instead toggle between opening and closing the game */}
                 <button
                     className="bg-primaryColor flex h-[160px] w-[350px] transform cursor-pointer flex-col items-center justify-center rounded-md p-10 hover:scale-105 hover:shadow-[0_0_20px_var(--color-accent),0_0_20px_var(--color-accent)] hover:brightness-125 hover:saturate-[1.1] hover:filter"
                     onClick={() => setGameActive(true)}

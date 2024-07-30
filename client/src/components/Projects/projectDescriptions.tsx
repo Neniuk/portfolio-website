@@ -35,21 +35,6 @@ export const HackathonDescription = () => (
             </strong>
             {""}.
         </li>
-        <br />
-        <li>
-            Trustworthiness of the information provided by the LLM was one of
-            the key factors of this challenge, and as such we utilized
-            techniques such as{" "}
-            <strong className="text-titleColorSecondary font-bold">
-                prompt engineering
-            </strong>{" "}
-            and{" "}
-            <strong className="text-titleColorSecondary font-bold">
-                knowledge bases
-            </strong>{" "}
-            to help ensure the accuracy of the information and to avoid
-            hallucinations (making up non-existent data) by the model.
-        </li>
     </ul>
 );
 
@@ -120,44 +105,11 @@ export const SpotifyDownloaderDescription = () => (
                 Spotify API
             </strong>
             {""}. Finally all the songs are downloaded and converted to mp3
-            using subprocess calls to ffmpeg.
-        </li>
-        <br />
-        <li>
-            Simple CLI-tool, built using{" "}
+            using subprocess calls to ffmpeg. Simple CLI-tool, built using{" "}
             <strong className="text-titleColorSecondary font-bold">
                 Python
             </strong>{" "}
-            and various libraries, such as:
-            <ul className="inner-list list-outside list-disc pl-6">
-                <li>
-                    <strong className="text-titleColorSecondary font-bold">
-                        requests
-                    </strong>{" "}
-                    for making the API calls
-                </li>
-                <li>
-                    <strong className="text-titleColorSecondary font-bold">
-                        youtubesearchpython
-                    </strong>{" "}
-                    for searching the songs on YouTube
-                </li>
-                <li>
-                    <strong className="text-titleColorSecondary font-bold">
-                        pytube
-                    </strong>{" "}
-                    for downloading the videos
-                </li>
-                <li>
-                    <strong className="text-titleColorSecondary font-bold">
-                        subprocess
-                    </strong>{" "}
-                    for calling ffmpeg to convert the videos to mp3
-                </li>
-                <li>
-                    And a few others for handling other aspects of the tool.
-                </li>
-            </ul>
+            and various libraries.
         </li>
     </ul>
 );
