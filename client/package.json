@@ -13,6 +13,7 @@
         "test-coverage": "vitest --coverage"
     },
     "dependencies": {
+        "license-checker": "^25.0.1",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "react-draggable": "^4.4.6",
