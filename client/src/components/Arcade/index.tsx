@@ -28,7 +28,6 @@ const MyArcade: React.FC = () => {
     return (
         <div className="hidden w-full md:block">
             <div className="arcade h-[160px] w-[350px]">
-                {/* TODO: Instead of just opening the game with the button, make it instead toggle between opening and closing the game */}
                 <button
                     className="bg-primaryColor flex h-[160px] w-[350px] transform cursor-pointer flex-col items-center justify-center rounded-md p-10 hover:scale-105 hover:shadow-[0_0_20px_var(--color-accent),0_0_20px_var(--color-accent)] hover:brightness-125 hover:saturate-[1.1] hover:filter"
                     onClick={() => setGameActive((gameActive) => !gameActive)}
@@ -49,10 +48,8 @@ const MyArcade: React.FC = () => {
                 >
                     <div ref={nodeRef} className="game">
                         <div
-                            className="game-navbar bg-primaryColor border-accentSecondaryColor flex w-full cursor-move flex-row items-center justify-between border-2 border-solid p-2"
+                            className="game-navbar bg-primaryColor border-accentSecondaryColor flex w-full cursor-move flex-row items-center justify-between rounded-t-xl border-2 border-solid p-2"
                             style={{
-                                borderTopLeftRadius: "10px",
-                                borderTopRightRadius: "10px",
                                 borderBottom: "none",
                             }}
                         >
@@ -62,29 +59,17 @@ const MyArcade: React.FC = () => {
                             <button
                                 onClick={() => setGameActive(false)}
                                 onKeyDown={handleKeyDownClose}
+                                className="group cursor-pointer border-none bg-none p-0 text-inherit outline-inherit"
                                 style={{
                                     background: "none",
-                                    color: "inherit",
-                                    border: "none",
-                                    padding: 4,
-                                    paddingRight: 8,
-                                    font: "inherit",
-                                    cursor: "pointer",
-                                    outline: "inherit",
                                 }}
                             >
-                                <h1 className="game-navbar-close-text hover:text-accentTertiaryColor text-titleColorPrimary text-xl hover:scale-125 hover:transform">
+                                <h1 className="game-navbar-close-text group-hover:text-accentTertiaryColor text-titleColorPrimary text-xl group-hover:scale-125 group-hover:transform">
                                     X
                                 </h1>
                             </button>
                         </div>
-                        <div
-                            className="game-content bg-primaryColor border-accentSecondaryColor flex h-[400px] w-[500px] flex-col items-center justify-center border-2 border-solid p-2"
-                            style={{
-                                borderBottomLeftRadius: "10px",
-                                borderBottomRightRadius: "10px",
-                            }}
-                        >
+                        <div className="game-content bg-primaryColor border-accentSecondaryColor flex h-[400px] w-[500px] flex-col items-center justify-center rounded-b-xl border-2 border-solid p-2">
                             <p className="text-lg">
                                 The arcade is currently unavailable
                             </p>
