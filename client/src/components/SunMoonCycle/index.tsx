@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "./styles.css";
 
 // Assets
 import sunImage from "../../assets/sun.png";
@@ -69,10 +70,10 @@ const SunMoonCycle: React.FC = () => {
                         src={cycleState.isDaytime ? sunImage : moonImage}
                         alt={cycleState.isDaytime ? "Sun" : "Moon"}
                         title={cycleState.currentTime}
+                        className="sun-moon-cycle-image"
                         style={{
                             width: "100%",
-                            height: "100%",
-                            imageRendering: "crisp-edges",
+                            height: "auto",
                             filter: cycleState.isDaytime
                                 ? "drop-shadow(0 0 10px yellow)"
                                 : "drop-shadow(0 0 10px lightblue)",

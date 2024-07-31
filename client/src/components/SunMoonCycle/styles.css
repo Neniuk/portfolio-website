@@ -1,0 +1,5 @@
+.sun-moon-cycle-image {
+    image-rendering: -webkit-optimize-contrast; /* For Chrome */
+    image-rendering: crisp-edges; /* For Firefox */
+    image-rendering: pixelated; /* Fallback for other browsers */
+}
