@@ -1,5 +1,5 @@
 {
-    "name": "portfolio-website-refactor",
+    "name": "portfolio-website",
     "version": "1.0.0",
     "description": "",
     "main": "index.js",
@@ -8,7 +8,7 @@
         "npm": "10.8.1"
     },
     "scripts": {
-        "install": "cd client && npm install --dev && cd ../server && npm install --dev",
+        "install": "cd client && npm install --include=dev && cd ../server && npm install --include=dev",
         "build": "cd client && npm run build:to:server && cd ../server && npm run build",
         "start": "cd server && npm start",
         "test": "echo \"Error: no test specified\" && exit 1",
