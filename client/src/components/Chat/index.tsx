@@ -79,7 +79,7 @@ const MyChat: React.FC<ChatProps> = ({
     };
 
     return (
-        <div className="bg-primaryColor border-outerBorderColor flex w-[95%] flex-col gap-4 rounded-md border-2 border-solid p-6 md:w-[350px]">
+        <div className="bg-primaryColor border-outerBorderColor flex w-[95%] flex-col gap-4 rounded-md border-2 border-solid p-6 md:w-[600px] lg:w-[350px]">
             <ChatHeader
                 isConnected={isConnected}
                 connectedUsers={connectedUsers}
