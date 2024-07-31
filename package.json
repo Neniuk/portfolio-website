@@ -8,16 +8,14 @@
         "npm": "10.8.1"
     },
     "scripts": {
+        "install": "cd client && npm install --dev && cd ../server && npm install --dev",
+        "build": "cd client && npm run build:to:server && cd ../server && npm run build",
         "start": "cd server && npm start",
         "test": "echo \"Error: no test specified\" && exit 1",
-        "heroku-postbuild": "cd client && npm install && npm run build:to:server && cd ../server && npm install && npm run build",
         "prepare": "husky"
     },
     "author": "",
     "license": "ISC",
-    "dependencies": {
-        "typescript": "^5.4.5"
-    },
     "devDependencies": {
         "husky": "^9.1.4",
         "lint-staged": "^15.2.7"
