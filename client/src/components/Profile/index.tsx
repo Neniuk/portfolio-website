@@ -17,6 +17,8 @@ const ProfilePicture: React.FC = () => (
             }}
             src={profilePicture}
             alt="Pixel art self portrait"
+            width="180"
+            height="200"
         />
     </div>
 );
@@ -45,6 +47,8 @@ const SocialLinks: React.FC = () => (
                 className="w-32px h-auto hover:animate-spin hover:brightness-75"
                 src={githubLogo}
                 alt="Github logo"
+                width="32"
+                height="32"
             />
         </a>
         <a href={linkedInLink} target="_blank" rel="noopener noreferrer">
@@ -52,6 +56,8 @@ const SocialLinks: React.FC = () => (
                 className="w-32px h-auto hover:animate-spin hover:brightness-75"
                 src={linkedInLogo}
                 alt="LinkedIn logo"
+                width="32"
+                height="32"
             />
         </a>
     </div>

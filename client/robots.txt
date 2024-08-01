@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /private
+Disallow: /*.png
+Disallow: /*.jpg
+Disallow: /*.jpeg
+Disallow: /*.gif
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: CCBot
+Disallow: /

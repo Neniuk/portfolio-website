@@ -13,14 +13,26 @@ const {
 
 const ProjectSuggestions: React.FC = () => (
     <div className="bg-secondaryColor border-innerBorderColor flex flex-row items-center justify-center border-2 border-solid p-10">
-        <img className="h-6 w-6" src={starAnimation} alt="Star animation" />
+        <img
+            className="h-6 w-6"
+            src={starAnimation}
+            alt="Star animation"
+            width="24"
+            height="24"
+        />
         <div className="mx-6 flex flex-col items-center text-center font-bold">
             <h3 className="text-titleColorSecondary">
                 Click to suggest project ideas
             </h3>
             <h3 className="text-titleColorSecondary">(Under construction)</h3>
         </div>
-        <img className="h-6 w-6" src={starAnimation} alt="Star animation" />
+        <img
+            className="h-6 w-6"
+            src={starAnimation}
+            alt="Star animation"
+            width="24"
+            height="24"
+        />
     </div>
 );
 
@@ -38,6 +50,8 @@ const ProjectsBody: React.FC = () => {
                             className="h-6 w-6"
                             src={starAnimation}
                             alt="Star animation"
+                            width="24"
+                            height="24"
                         />
                         <a href={project.link} className="project-link">
                             <h3 className="border-accentSecondaryColor inline-block border-b-2">
@@ -48,6 +62,8 @@ const ProjectsBody: React.FC = () => {
                             className="h-6 w-6"
                             src={starAnimation}
                             alt="Star animation"
+                            width="24"
+                            height="24"
                         />
                     </div>
                     <div className="pl-6">{project.description}</div>

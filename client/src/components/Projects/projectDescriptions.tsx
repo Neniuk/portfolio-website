@@ -9,7 +9,7 @@ export const ExampleProjectDescription = () => (
 
 // Junction Hackathon 2023
 export const HackathonDescription = () => (
-    <ul className="list-outside list-disc">
+    <ul className="list-outside list-disc [&>li:last-child]:mb-0 [&>li]:mb-6">
         <li>
             We built a{" "}
             <strong className="text-titleColorSecondary font-bold">
@@ -18,7 +18,6 @@ export const HackathonDescription = () => (
             with cards of varying information, from summarized news articles, to
             graphed data, and a chatbot.
         </li>
-        <br />
         <li>
             Built using{" "}
             <strong className="text-titleColorSecondary font-bold">
@@ -40,7 +39,7 @@ export const HackathonDescription = () => (
 
 // Portfolio Website
 export const PortfolioDescription = () => (
-    <ul className="list-outside list-disc">
+    <ul className="list-outside list-disc [&>li:last-child]:mb-0 [&>li]:mb-6">
         <li>
             Built using{" "}
             <strong className="text-titleColorSecondary font-bold">
@@ -56,7 +55,6 @@ export const PortfolioDescription = () => (
             </strong>
             {""}.
         </li>
-        <br />
         <li>
             The{" "}
             <strong className="text-titleColorSecondary font-bold">chat</strong>{" "}
@@ -76,7 +74,7 @@ export const PortfolioDescription = () => (
 
 // Arcade
 export const ArcadeDescription = () => (
-    <ul className="list-outside list-disc">
+    <ul className="list-outside list-disc [&>li:last-child]:mb-0 [&>li]:mb-6">
         <li>
             Collection of games built using technologies such as{" "}
             <strong className="text-titleColorSecondary font-bold">
@@ -97,7 +95,7 @@ export const ArcadeDescription = () => (
 
 // Spotify Downloader
 export const SpotifyDownloaderDescription = () => (
-    <ul className="list-outside list-disc [&_ul]:list-[revert]">
+    <ul className="list-outside list-disc [&>li:last-child]:mb-0 [&>li]:mb-6 [&_ul]:list-[revert]">
         <li>
             Fetches the user's playlists and the song names in the selected
             playlist using the{" "}
