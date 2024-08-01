@@ -37,6 +37,8 @@ const MyArcade: React.FC = () => {
                         src={controllerImage}
                         alt="Game controller"
                         className="h-[105px] w-[165px] select-none"
+                        width="165"
+                        height="105"
                     />
                 </button>
             </div>

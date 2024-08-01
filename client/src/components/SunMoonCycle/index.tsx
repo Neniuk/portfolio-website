@@ -78,6 +78,8 @@ const SunMoonCycle: React.FC = () => {
                                 ? "drop-shadow(0 0 10px yellow)"
                                 : "drop-shadow(0 0 10px lightblue)",
                         }}
+                        width={cycleState.isDaytime ? SUN_SIZE : MOON_SIZE}
+                        height={cycleState.isDaytime ? SUN_SIZE : MOON_SIZE}
                     />
                 </div>
             </div>
