@@ -17,6 +17,7 @@ dotenv.config();
 
 const PORT: string = process.env.PORT ?? "5000";
 const ENVIRONMENT: string = process.env.NODE_ENV ?? "";
+const MAX_CONNECTIONS: number = 1000;
 
 let ALLOWED_ORIGINS: string[] = [];
 if (ENVIRONMENT === "development") {
@@ -91,6 +92,7 @@ app.use(
 // Socket.io
 const connectedUsers: Map<string, string> = new Map();
 const connectedUsernames: Set<string> = new Set();
+let currentConnections: number = 0;
 
 const validChatMessage = (msg: string): boolean => {
     if (msg.length > 250) {
@@ -119,50 +121,71 @@ const generateUniqueUsername = (
     return username;
 };
 
-io.on("connection", (socket: Socket) => {
+const handleConnect = (socket: Socket) => {
+    if (currentConnections >= MAX_CONNECTIONS) {
+        socket.disconnect();
+        return;
+    }
+
+    currentConnections++;
+
     const username = generateUniqueUsername(connectedUsernames);
     socket.data.username = username;
 
     connectedUsers.set(socket.id, username);
     connectedUsernames.add(username);
 
-    io.emit("users", connectedUsers.size);
+    io.emit("users", currentConnections);
+};
+
+const handleDisconnect = (socket: Socket) => {
+    currentConnections--;
+
+    const usernameToDelete: string | undefined = connectedUsers.get(socket.id);
+    connectedUsers.delete(socket.id);
+
+    if (usernameToDelete) {
+        connectedUsernames.delete(usernameToDelete);
+    }
+
+    io.emit("users", currentConnections);
+};
+
+const handleChat = (
+    socket: Socket,
+    msg: { message: string; sender: string }
+) => {
+    if (typeof msg !== "object" || !msg.message || !msg.sender) {
+        return;
+    }
+
+    if (!validChatMessage(msg.message)) {
+        return;
+    }
+
+    msg.sender = socket.data.username || "ANONYMOUS";
+
+    try {
+        // Sanitize message
+        msg.sender = decodeURIComponent(msg.sender);
+        msg.message = msg.message.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+        socket.broadcast.emit("chat", msg);
+    } catch (err) {
+        console.log(err);
+        return;
+    }
+};
+
+io.on("connection", (socket: Socket) => {
+    handleConnect(socket);
 
     socket.on("disconnect", (_reason: string) => {
-        const usernameToDelete: string | undefined = connectedUsers.get(
-            socket.id
-        );
-        if (usernameToDelete) {
-            connectedUsers.delete(socket.id);
-            connectedUsernames.delete(usernameToDelete);
-        }
-
-        io.emit("users", connectedUsers.size);
+        handleDisconnect(socket);
     });
 
     socket.on("chat", (msg: { message: string; sender: string }) => {
-        if (typeof msg !== "object" || !msg.message || !msg.sender) {
-            return;
-        }
-
-        if (!validChatMessage(msg.message)) {
-            return;
-        }
-
-        msg.sender = socket.data.username || "ANONYMOUS";
-
-        try {
-            // Sanitize message
-            msg.sender = decodeURIComponent(msg.sender);
-            msg.message = msg.message
-                .replace(/</g, "&lt;")
-                .replace(/>/g, "&gt;");
-
-            socket.broadcast.emit("chat", msg);
-        } catch (err) {
-            console.log(err);
-            return;
-        }
+        handleChat(socket, msg);
     });
 });
 

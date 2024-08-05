@@ -50,6 +50,41 @@ const MyChat: React.FC<ChatProps> = ({
             return;
         }
 
+        // Handle chat commands
+        if (message.startsWith("/")) {
+            // Handle chat commands here
+            switch (message) {
+                case "/clear":
+                case "/c":
+                    setMessages([]);
+                    break;
+                case "/help":
+                case "/h":
+                    setMessages((prevMessages) => [
+                        ...prevMessages,
+                        {
+                            sender: "HELP",
+                            message:
+                                "Commands:\nHelp-menu: '/help', '/h'\nClear chat: '/clear', '/c'",
+                        },
+                    ]);
+                    break;
+                default:
+                    setMessages((prevMessages) => [
+                        ...prevMessages,
+                        {
+                            sender: "ERROR",
+                            message:
+                                "Command not found.\nType '/help' for help.",
+                        },
+                    ]);
+                    break;
+            }
+            // For now, just clear the chat input field
+            setChatMessage({ sender: senderName, message: "" });
+            return;
+        }
+
         // If the message is not valid, clear the chat input field and return
         if (!validChatMessage(message)) {
             setChatMessage({ sender: senderName, message: "" });
