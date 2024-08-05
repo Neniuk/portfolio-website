@@ -1,29 +1,29 @@
 name: On PR to main
 
 on:
-  pull_request:
-      branches: [ main ]
+    pull_request:
+        branches: [main]
 
 jobs:
-  lint:
-    name: Lint
-    runs-on: ubuntu-latest
+    lint:
+        name: Lint
+        runs-on: ubuntu-latest
 
-    permissions:
-        contents: read
-        packages: read
-        # To report GitHub Actions status checks
-        statuses: write
+        permissions:
+            contents: read
+            packages: read
+            # To report GitHub Actions status checks
+            statuses: write
 
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-            # super-linter needs the full git history to get the
-            # list of files that changed across commits
-            fetch-depth: 0
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+              with:
+                  # super-linter needs the full git history to get the
+                  # list of files that changed across commits
+                  fetch-depth: 0
 
-      - name: Super-Linter
-        uses: super-linter/super-linter@v6.7.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            - name: Super-Linter
+              uses: super-linter/super-linter@v6.7.0
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

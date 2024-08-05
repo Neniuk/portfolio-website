@@ -9,6 +9,10 @@ import { rateLimit } from "express-rate-limit";
 
 import BannedWords from "./models/bannedWords";
 
+interface CustomError extends Error {
+    status?: number;
+}
+
 dotenv.config();
 
 const PORT: string = process.env.PORT ?? "5000";
@@ -72,18 +76,25 @@ if (ENVIRONMENT === "development") {
 }
 
 // Error handler
-app.use((err: any, req: Request, res: Response, _next: NextFunction) => {
-    // set locals, only providing error in development
-    res.locals.message = err.message;
-    res.locals.error = req.app.get("env") === "development" ? err : {};
+app.use(
+    (err: CustomError, req: Request, res: Response, _next: NextFunction) => {
+        // set locals, only providing error in development
+        res.locals.message = err.message;
+        res.locals.error = req.app.get("env") === "development" ? err : {};
 
-    // render the error page
-    res.status(err.status || 500);
-    res.send("error");
-});
+        // render the error page
+        res.status(err.status || 500);
+        res.send("error");
+    }
+);
 
 // Socket.io
-let connectedUsers: Set<string> = new Set();
+type ConnectedUser = {
+    id: string;
+    username: string;
+};
+const connectedUsers: Set<ConnectedUser> = new Set();
+const connectedUsernames: Set<string> = new Set();
 
 const validChatMessage = (msg: string): boolean => {
     if (msg.length > 250) {
@@ -100,17 +111,33 @@ const validChatMessage = (msg: string): boolean => {
     return true;
 };
 
+const generateUniqueUsername = (
+    connectedUsernamesLocal: Set<string>
+): string => {
+    let username: string;
+
+    do {
+        username = "User" + crypto.randomBytes(3).toString("hex");
+    } while (connectedUsernamesLocal.has(username));
+
+    return username;
+};
+
 io.on("connection", (socket: Socket) => {
-    // TODO: Handle collisions and add usernames to connectedUsers, for example as a dictionary
-    const username = "User" + crypto.randomBytes(3).toString("hex");
+    const username = generateUniqueUsername(connectedUsernames);
     socket.data.username = username;
 
-    connectedUsers.add(socket.id);
+    connectedUsers.add({ id: socket.id, username: username });
+    connectedUsernames.add(username);
+
     io.emit("users", connectedUsers.size);
 
-    socket.on("disconnect", (_reason: any) => {
-        // TODO: Remove username from connectedUsers, release the socket.username
-        connectedUsers.delete(socket.id);
+    socket.on("disconnect", (_reason: string) => {
+        connectedUsers.delete({
+            id: socket.id,
+            username: socket.data.username,
+        });
+        connectedUsernames.delete(socket.data.username);
         io.emit("users", connectedUsers.size);
     });
 
@@ -123,7 +150,7 @@ io.on("connection", (socket: Socket) => {
             return;
         }
 
-        msg.sender = "ANONYMOUS";
+        msg.sender = socket.data.username || "ANONYMOUS";
 
         try {
             // Sanitize message
