@@ -1,4 +1,4 @@
-# The software [super-linter](https://github.com/super-linter/super-linter) is used to lint the codebase, its use is licensed under the MIT License (provided below):
+# The software [super-linter](https://github.com/super-linter/super-linter) is used to lint the codebase, its use is licensed under the MIT License (provided below)
 
 MIT License
 

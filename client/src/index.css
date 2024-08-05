@@ -7,33 +7,33 @@
 
 :root {
     /* Colors */
-    --color-primary: #000000;
+    --color-primary: #000;
     --color-secondary: #00001a;
     --color-light: #f2f2f2;
     --color-light-alt: #e6e6e6;
     --color-dark: #00001a;
     --color-dark-alt: #2d2d2d;
-    --color-accent: #ff66cc;
-    --color-accent-secondary: #00ccff;
-    --color-accent-tertiary: #ffcc00;
-    --color-accent-alt: #ff66cc;
-    --color-accent-alt2: #00ccff;
-    --color-accent-alt3: #ffcc00;
+    --color-accent: #f6c;
+    --color-accent-secondary: #0cf;
+    --color-accent-tertiary: #fc0;
+    --color-accent-alt: #f6c;
+    --color-accent-alt2: #0cf;
+    --color-accent-alt3: #fc0;
 
     --color-outer-border: #4d4d4d;
     --color-inner-border: #2d2d2d;
     --color-border-primary: #4d4d4d;
     --color-border-secondary: #2d2d2d;
 
-    --color-connected: #00ff00;
-    --color-disconnected: #ff0000;
+    --color-connected: #0f0;
+    --color-disconnected: #f00;
 
     --color-text-light: #dddbdb;
-    --color-text-dark: #000000;
-    --color-text-bold: #00ccff;
+    --color-text-dark: #000;
+    --color-text-bold: #0cf;
 
-    --color-title-primary: #ff66cc;
-    --color-title-secondary: #00ccff;
+    --color-title-primary: #f6c;
+    --color-title-secondary: #0cf;
 
     --border-radius: 5px;
     --border-width: 2px;
@@ -49,11 +49,11 @@
     --translate-mirror-x: scaleX(-1);
     --translate-mirror-y: scaleY(-1);
 
-    color: rgb(255, 255, 255);
+    color: rgba(255, 255, 255, 1);
     background-color: #000;
 
     font-synthesis: none;
-    text-rendering: optimizeLegibility;
+    text-rendering: optimizelegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -63,6 +63,7 @@ a {
     color: #646cff;
     text-decoration: inherit;
 }
+
 a:hover {
     color: #535bf2;
 }
@@ -120,9 +121,11 @@ button {
     cursor: pointer;
     transition: border-color 0.25s;
 }
+
 button:hover {
     border-color: #646cff;
 }
+
 button:focus,
 button:focus-visible {
     outline: 4px auto -webkit-focus-ring-color;
