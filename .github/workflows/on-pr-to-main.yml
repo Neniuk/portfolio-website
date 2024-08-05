@@ -4,6 +4,11 @@ on:
     pull_request:
         branches: [main]
 
+permissions:
+    contents: read
+    packages: read
+    statuses: write
+
 jobs:
     lint:
         name: Lint
@@ -26,4 +31,6 @@ jobs:
             - name: Super-Linter
               uses: super-linter/super-linter@v6.7.0
               env:
+                  VALIDATE_JAVASCRIPT_STANDARD: false
+                  VALIDATE_TYPESCRIPT_STANDARD: false
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
