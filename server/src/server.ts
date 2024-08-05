@@ -89,11 +89,7 @@ app.use(
 );
 
 // Socket.io
-type ConnectedUser = {
-    id: string;
-    username: string;
-};
-const connectedUsers: Set<ConnectedUser> = new Set();
+const connectedUsers: Map<string, string> = new Map();
 const connectedUsernames: Set<string> = new Set();
 
 const validChatMessage = (msg: string): boolean => {
@@ -127,17 +123,20 @@ io.on("connection", (socket: Socket) => {
     const username = generateUniqueUsername(connectedUsernames);
     socket.data.username = username;
 
-    connectedUsers.add({ id: socket.id, username: username });
+    connectedUsers.set(socket.id, username);
     connectedUsernames.add(username);
 
     io.emit("users", connectedUsers.size);
 
     socket.on("disconnect", (_reason: string) => {
-        connectedUsers.delete({
-            id: socket.id,
-            username: socket.data.username,
-        });
-        connectedUsernames.delete(socket.data.username);
+        const usernameToDelete: string | undefined = connectedUsers.get(
+            socket.id
+        );
+        if (usernameToDelete) {
+            connectedUsers.delete(socket.id);
+            connectedUsernames.delete(usernameToDelete);
+        }
+
         io.emit("users", connectedUsers.size);
     });
 
