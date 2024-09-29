@@ -32,10 +32,9 @@ const ProfileTitle: React.FC = () => (
 const ProfileSummary: React.FC = () => (
     <div>
         <p>
-            Hi, I'm Mattias, a second-year bachelor's student in software
-            engineering. I'm currently working as a cloud software trainee. If
-            you have any questions, feel free to contact me via email or
-            LinkedIn.
+            Hi, I'm Mattias, a final-year bachelor's student in software
+            engineering. If you have any questions, feel free to contact me via
+            email or LinkedIn.
         </p>
     </div>
 );
