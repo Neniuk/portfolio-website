@@ -46,14 +46,23 @@ export const PortfolioDescription = () => (
                 React.js
             </strong>
             ,{" "}
+            <strong className="text-titleColorSecondary font-bold">Vite</strong>
+            ,{" "}
+            <strong className="text-titleColorSecondary font-bold">
+                TailwindCSS
+            </strong>
+            ,{" "}
             <strong className="text-titleColorSecondary font-bold">
                 Node.js
+            </strong>
+            ,{" "}
+            <strong className="text-titleColorSecondary font-bold">
+                Express.js
             </strong>{" "}
             and{" "}
             <strong className="text-titleColorSecondary font-bold">
-                Express.js
+                Socket.io
             </strong>
-            {""}.
         </li>
         <li>
             The{" "}
@@ -108,6 +117,22 @@ export const SpotifyDownloaderDescription = () => (
                 Python
             </strong>{" "}
             and various libraries.
+        </li>
+    </ul>
+);
+
+// K-Means Clustering Palette Generator
+export const KmcPaletteGeneratorDescription = () => (
+    <ul className="list-outside list-disc [&>li:last-child]:mb-0 [&>li]:mb-6">
+        <li>
+            Generates a color palette from an image using{" "}
+            <strong className="text-titleColorSecondary font-bold">
+                K-Means Clustering
+            </strong>
+            {""}. Built using{" "}
+            <strong className="text-titleColorSecondary font-bold">
+                GoLang.
+            </strong>
         </li>
     </ul>
 );

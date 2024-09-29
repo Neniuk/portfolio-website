@@ -9,6 +9,7 @@ const {
     portfolio,
     arcade,
     spotifyDownloader,
+    kmcPaletteGenerator,
 } = projectInformation;
 
 const ProjectSuggestions: React.FC = () => (
@@ -37,7 +38,13 @@ const ProjectSuggestions: React.FC = () => (
 );
 
 const ProjectsBody: React.FC = () => {
-    const projects = [hackathon, portfolio, arcade, spotifyDownloader];
+    const projects = [
+        portfolio,
+        spotifyDownloader,
+        kmcPaletteGenerator,
+        hackathon,
+        arcade,
+    ];
     return (
         <div className="flex flex-col gap-3">
             {projects.map((project) => (

@@ -5,6 +5,7 @@ import {
     PortfolioDescription,
     ArcadeDescription,
     SpotifyDownloaderDescription,
+    KmcPaletteGeneratorDescription,
 } from "./projectDescriptions";
 
 const exampleProject: Project = {
@@ -37,10 +38,17 @@ const spotifyDownloader: Project = {
     description: <SpotifyDownloaderDescription />,
 };
 
+const kmcPaletteGenerator: Project = {
+    title: "KMC Palette Generator",
+    link: "https://github.com/Neniuk/kmc-palette",
+    description: <KmcPaletteGeneratorDescription />,
+};
+
 export default {
     exampleProject,
     hackathon,
     portfolio,
     arcade,
     spotifyDownloader,
+    kmcPaletteGenerator,
 };
