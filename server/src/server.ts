@@ -61,7 +61,6 @@ app.use(express.urlencoded({ extended: false }));
 
 // Check if directory is correct
 if (!__dirname.endsWith("portfolio-website/server/dist/server")) {
-    console.log("Invalid directory: " + __dirname);
     throw new Error("Invalid directory");
 }
 
