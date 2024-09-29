@@ -67,19 +67,17 @@ if (!__dirname.endsWith("portfolio-website/server/dist/server")) {
 // Serve static files
 if (ENVIRONMENT === "development") {
     console.log("Serving static files in development mode");
-    app.use(express.static(path.join(__dirname, "../client")));
-    app.get("*", (_req: Request, res: Response, _next: NextFunction) => {
-        res.sendFile(path.join(__dirname, "../client", "index.html"));
-    });
 } else if (ENVIRONMENT === "production") {
     console.log("Serving static files in production mode");
-    app.use(express.static(path.join(__dirname, "../client")));
-    app.get("*", (_req: Request, res: Response, _next: NextFunction) => {
-        res.sendFile(path.join(__dirname, "../client", "index.html"));
-    });
 } else {
     throw new Error("Invalid environment");
 }
+
+const clientPath = path.join(__dirname, "../client");
+app.use(express.static(clientPath));
+app.get("*", (_req: Request, res: Response, _next: NextFunction) => {
+    res.sendFile(path.join(clientPath, "index.html"));
+});
 
 // Error handler
 app.use(
