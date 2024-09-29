@@ -59,12 +59,18 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+// Check if directory is correct
+if (!__dirname.endsWith("portfolio-website/server/dist/server")) {
+    console.log("Invalid directory: " + __dirname);
+    throw new Error("Invalid directory");
+}
+
 // Serve static files
 if (ENVIRONMENT === "development") {
     console.log("Serving static files in development mode");
-    app.use(express.static(path.join(__dirname, "../dist", "client")));
+    app.use(express.static(path.join(__dirname, "../client")));
     app.get("*", (_req: Request, res: Response, _next: NextFunction) => {
-        res.sendFile(path.join(__dirname, "../dist", "client", "index.html"));
+        res.sendFile(path.join(__dirname, "../client", "index.html"));
     });
 } else if (ENVIRONMENT === "production") {
     console.log("Serving static files in production mode");
