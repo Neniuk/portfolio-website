@@ -59,11 +59,6 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// Check if directory is correct
-if (!__dirname.endsWith("portfolio-website/server/dist/server")) {
-    throw new Error("Invalid directory");
-}
-
 // Serve static files
 if (ENVIRONMENT === "development") {
     console.log("Serving static files in development mode");
