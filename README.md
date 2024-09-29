@@ -17,13 +17,13 @@ Welcome to my portfolio website. This project showcases some of my skills, and p
 Clone the project
 
 ```bash
-  git clone https://link-to-project
+  git clone git@github.com:Neniuk/portfolio-website.git
 ```
 
 Go to the project directory
 
 ```bash
-  cd my-project
+  cd portfolio-website
 ```
 
 Create .env file for environment variables
@@ -39,19 +39,19 @@ Insert the required environment variables into the file
   PORT="<e.g. 5000>"
 ```
 
-Install dependencies
+Install dependencies (from repository root)
 
 ```bash
   npm install
 ```
 
-Build the client & server
+Build the client & server (from repository root)
 
 ```bash
   npm run build
 ```
 
-Start the server
+Start the server (from repository root)
 
 ```bash
   npm start
