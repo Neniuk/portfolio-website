@@ -5,6 +5,10 @@ import "./styles.css";
 // Images
 import controllerImage from "../../assets/controller.png";
 
+// Games
+import PongGame from "./Games/Pong";
+// test
+
 const MyArcade: React.FC = () => {
     const [gameActive, setGameActive] = useState(false);
     const nodeRef = useRef(null);
@@ -72,9 +76,10 @@ const MyArcade: React.FC = () => {
                             </button>
                         </div>
                         <div className="game-content bg-primaryColor border-accentSecondaryColor flex h-[400px] w-[500px] flex-col items-center justify-center rounded-b-xl border-2 border-solid p-2">
-                            <p className="text-lg">
+                            {/* <p className="text-lg">
                                 The arcade is currently unavailable
-                            </p>
+                            </p> */}
+                            <PongGame />
                         </div>
                     </div>
                 </Draggable>

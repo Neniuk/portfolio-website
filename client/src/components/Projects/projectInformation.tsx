@@ -40,8 +40,8 @@ const portfolio: Project = {
         </p>
     ),
     technologies: [
-        "React",
         "TS",
+        "React",
         "Vite",
         "Node",
         "Express",
@@ -59,7 +59,7 @@ const arcade: Project = {
             an engaging and interactive experience.
         </p>
     ),
-    technologies: ["Phaser.io", "JS", "WebGL"],
+    technologies: ["TS", "Phaser.io"],
 };
 
 const spotifyDownloader: Project = {
