@@ -35,6 +35,13 @@
     --color-title-primary: #f6c;
     --color-title-secondary: #0cf;
 
+    /* Colors for Pills */
+    --color-pill-danger: #ff4d4d;
+    --color-pill-warning: #e6b800;
+    --color-pill-success: #33cc33;
+    --color-pill-info: #008ab8;
+    --color-pill-blank: #535353;
+
     --border-radius: 5px;
     --border-width: 2px;
 

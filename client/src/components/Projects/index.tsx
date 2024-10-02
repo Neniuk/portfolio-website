@@ -1,41 +1,39 @@
 import React from "react";
 
 import starAnimation from "../../assets/star-animation.gif";
-import projectInformation from "./projectInformation";
-
-const {
-    //exampleProject,
+import {
     hackathon,
     portfolio,
     arcade,
     spotifyDownloader,
     kmcPaletteGenerator,
-} = projectInformation;
+} from "./projectInformation";
+import Pill from "../Pill";
 
-const ProjectSuggestions: React.FC = () => (
-    <div className="bg-secondaryColor border-innerBorderColor flex flex-row items-center justify-center border-2 border-solid p-10">
-        <img
-            className="h-6 w-6"
-            src={starAnimation}
-            alt="Star animation"
-            width="24"
-            height="24"
-        />
-        <div className="mx-6 flex flex-col items-center text-center font-bold">
-            <h3 className="text-titleColorSecondary">
-                Click to suggest project ideas
-            </h3>
-            <h3 className="text-titleColorSecondary">(Under construction)</h3>
-        </div>
-        <img
-            className="h-6 w-6"
-            src={starAnimation}
-            alt="Star animation"
-            width="24"
-            height="24"
-        />
-    </div>
-);
+// const ProjectSuggestions: React.FC = () => (
+//     <div className="bg-secondaryColor border-innerBorderColor flex flex-row items-center justify-center border-2 border-solid p-10">
+//         <img
+//             className="h-6 w-6"
+//             src={starAnimation}
+//             alt="Star animation"
+//             width="24"
+//             height="24"
+//         />
+//         <div className="mx-6 flex flex-col items-center text-center font-bold">
+//             <h3 className="text-titleColorSecondary">
+//                 Click to suggest project ideas
+//             </h3>
+//             <h3 className="text-titleColorSecondary">(Under construction)</h3>
+//         </div>
+//         <img
+//             className="h-6 w-6"
+//             src={starAnimation}
+//             alt="Star animation"
+//             width="24"
+//             height="24"
+//         />
+//     </div>
+// );
 
 const ProjectsBody: React.FC = () => {
     const projects = [
@@ -50,7 +48,7 @@ const ProjectsBody: React.FC = () => {
             {projects.map((project) => (
                 <div
                     key={project.title}
-                    className="bg-secondaryColor border-innerBorderColor flex flex-col rounded-md border-2 border-solid p-6"
+                    className="bg-secondaryColor border-innerBorderColor flex flex-col gap-2 rounded-md border-2 border-solid p-6"
                 >
                     <div className="mb-2 flex flex-row gap-4">
                         <img
@@ -73,10 +71,17 @@ const ProjectsBody: React.FC = () => {
                             height="24"
                         />
                     </div>
-                    <div className="pl-6">{project.description}</div>
+                    <div className="flex flex-col gap-4 pl-6">
+                        <div>{project.description}</div>
+                        <div className="flex flex-row flex-wrap gap-2">
+                            {project.technologies.map((tech) => (
+                                <Pill key={tech} text={tech} type="blank" />
+                            ))}
+                        </div>
+                    </div>
                 </div>
             ))}
-            <ProjectSuggestions />
+            {/* <ProjectSuggestions /> */}
         </div>
     );
 };
