@@ -100,7 +100,7 @@ const SunMoonCycle: React.FC = () => {
                     <img
                         src={cycleState.isDaytime ? sunImage : moonImage}
                         alt={cycleState.isDaytime ? "Sun" : "Moon"}
-                        title={cycleState.currentTime}
+                        title={cycleState.isDaytime ? "Sun" : "Moon"}
                         className="sun-moon-cycle-image"
                         style={{
                             width: "100%",
