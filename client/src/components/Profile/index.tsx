@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import "./styles.css";
 
 import profilePicture from "../../assets/profile-picture-2.png";
 import githubLogo from "../../assets/github-logo.png";
 import linkedInLogo from "../../assets/linkedin-logo.png";
+import emailLogo from "../../assets/email-logo.png";
 import locationPin from "../../assets/location-pin.png";
 
 const githubLink = "https://github.com/Neniuk";
@@ -50,31 +51,56 @@ const ProfileSummary: React.FC = () => (
     </div>
 );
 
-const SocialLinks: React.FC = () => (
-    <div className="flex flex-row gap-4">
-        <a href={githubLink} target="_blank" rel="noopener noreferrer">
-            <img
-                className="w-32px h-auto hover:animate-spin hover:brightness-75"
-                src={githubLogo}
-                alt="Github logo"
-                width="32"
-                height="32"
-            />
-        </a>
-        <a href={linkedInLink} target="_blank" rel="noopener noreferrer">
-            <img
-                className="w-32px h-auto hover:animate-spin hover:brightness-75"
-                src={linkedInLogo}
-                alt="LinkedIn logo"
-                width="32"
-                height="32"
-            />
-        </a>
-        <button className="bg-accentColor text-primaryColor rounded-md px-4 py-2 hover:brightness-75">
-            Contact
-        </button>
-    </div>
-);
+const SocialLinks: React.FC = () => {
+    const [showEmail, setShowEmail] = useState(false);
+
+    const handleEmailClick = () => {
+        setShowEmail(!showEmail);
+    };
+
+    return (
+        <div className="flex flex-row gap-4">
+            <a href={githubLink} target="_blank" rel="noopener noreferrer">
+                <img
+                    className="w-32px h-auto hover:animate-spin hover:brightness-75"
+                    src={githubLogo}
+                    alt="Github logo"
+                    width="32"
+                    height="32"
+                />
+            </a>
+            <a href={linkedInLink} target="_blank" rel="noopener noreferrer">
+                <img
+                    className="w-32px h-auto hover:animate-spin hover:brightness-75"
+                    src={linkedInLogo}
+                    alt="LinkedIn logo"
+                    width="32"
+                    height="32"
+                />
+            </a>
+            {/* Email button -> reveal email */}
+            <div className="flex flex-row justify-center gap-4">
+                <button
+                    className="h-auto w-[32px] cursor-pointer rounded-none border-none bg-transparent p-0"
+                    onClick={handleEmailClick}
+                >
+                    <img
+                        className="w-32px h-auto hover:animate-spin hover:brightness-75"
+                        src={emailLogo}
+                        alt="Email logo"
+                        width="32"
+                        height="32"
+                    />
+                </button>
+                {showEmail && (
+                    <div className="flex flex-col justify-center text-gray-400">
+                        ______@______.com
+                    </div>
+                )}
+            </div>
+        </div>
+    );
+};
 
 const Profile: React.FC = () => {
     return (
