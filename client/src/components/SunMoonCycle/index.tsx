@@ -49,6 +49,8 @@ const SunMoonCycle: React.FC = () => {
 
     return (
         <div className="border-outerBorderColor bg-primaryColor flex w-[95%] flex-col items-center justify-center gap-4 overflow-hidden rounded-md border-2 border-solid p-6 md:w-[600px] md:flex-row">
+            {/* Time now */}
+            <p>{cycleState.currentTime}</p>
             <div className="relative h-2 w-full rounded-full bg-gradient-to-r from-blue-900 via-yellow-500 to-indigo-900">
                 <div
                     className="absolute top-1/2 -translate-y-1/2"

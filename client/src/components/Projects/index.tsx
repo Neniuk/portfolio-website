@@ -9,6 +9,7 @@ import {
     kmcPaletteGenerator,
 } from "./projectInformation";
 import Pill from "../Pill";
+// import Carousel from "../Carousel";
 
 // const ProjectSuggestions: React.FC = () => (
 //     <div className="bg-secondaryColor border-innerBorderColor flex flex-row items-center justify-center border-2 border-solid p-10">
@@ -45,6 +46,7 @@ const ProjectsBody: React.FC = () => {
     ];
     return (
         <div className="flex flex-col gap-3">
+            {/* <Carousel projects={projects} /> */}
             {projects.map((project) => (
                 <div
                     key={project.title}

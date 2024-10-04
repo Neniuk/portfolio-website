@@ -19,13 +19,12 @@ const hackathon: Project = {
     link: "https://github.com/Neniuk/junction-hackathon-2023",
     description: (
         <p>
-            We built a dashboard tool with cards of varying information, from
-            summarized news articles to graphed data and a chatbot. Utilized
-            various LLMs and tools for managing and running these models, such
-            as Ollama.ai.
+            Dashboard tool with cards of varying information, from summarized
+            news articles to graphed data and a chatbot. Utilized various LLMs
+            and tools for managing and running these models, such as Ollama.ai.
         </p>
     ),
-    technologies: ["JS", "Node", "Express", "Ollama.ai"],
+    technologies: ["JavaScript", "Node", "Express", "Ollama.ai"],
 };
 
 const portfolio: Project = {
@@ -34,15 +33,12 @@ const portfolio: Project = {
     description: (
         <p>
             A personal portfolio website showcasing projects and skills, with a
-            real-time chat feature. The chat works through WebSockets using
-            Socket.io. The sent messages are filtered and then broadcasted to
-            all connected clients.
+            real-time chat feature.
         </p>
     ),
     technologies: [
-        "TS",
+        "TypeScript",
         "React",
-        "Vite",
         "Node",
         "Express",
         "Socket.io",
@@ -54,12 +50,9 @@ const arcade: Project = {
     title: "Arcade (Under construction)",
     link: "https://github.com/Neniuk/arcade",
     description: (
-        <p>
-            Collection of games built using various web technologies, providing
-            an engaging and interactive experience.
-        </p>
+        <p>Collection of games built using various web technologies.</p>
     ),
-    technologies: ["TS", "Phaser.io"],
+    technologies: ["TypeScript", "Phaser.io"],
 };
 
 const spotifyDownloader: Project = {
@@ -68,8 +61,7 @@ const spotifyDownloader: Project = {
     description: (
         <p>
             A simple CLI-tool that fetches the user's playlists and the song
-            names in the selected playlist using the Spotify API. Downloads and
-            converts songs to mp3 using subprocess calls to ffmpeg.
+            names in the selected playlist using the Spotify API.
         </p>
     ),
     technologies: ["Python"],

@@ -4,6 +4,7 @@ import "./styles.css";
 import profilePicture from "../../assets/profile-picture-2.png";
 import githubLogo from "../../assets/github-logo.png";
 import linkedInLogo from "../../assets/linkedin-logo.png";
+import locationPin from "../../assets/location-pin.png";
 
 const githubLink = "https://github.com/Neniuk";
 const linkedInLink = "https://www.linkedin.com/in/mattiasvslotte/";
@@ -24,8 +25,18 @@ const ProfilePicture: React.FC = () => (
 );
 
 const ProfileTitle: React.FC = () => (
-    <div className="text-6xl">
-        <h1>Mattias</h1>
+    <div className="flex flex-col justify-center gap-1">
+        <h1 className="text-6xl">Mattias</h1>
+        <div className="flex flex-row items-center gap-2">
+            <img
+                className="h-auto w-[12px]"
+                src={locationPin}
+                alt="Location pin"
+                width="12"
+                height="21"
+            />
+            <p className="text-lg text-gray-400">Finland</p>
+        </div>
     </div>
 );
 
@@ -59,6 +70,9 @@ const SocialLinks: React.FC = () => (
                 height="32"
             />
         </a>
+        <button className="bg-accentColor text-primaryColor rounded-md px-4 py-2 hover:brightness-75">
+            Contact
+        </button>
     </div>
 );
 
