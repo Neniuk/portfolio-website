@@ -35,6 +35,18 @@ const SunMoonCycle: React.FC = () => {
     const [formattedCurrentTime, setFormattedCurrentTime] = useState<string>(
         getFormattedCurrentTime()
     );
+    const [sunIsLoading, setSunIsLoading] = useState(true);
+    const [moonIsLoading, setMoonIsLoading] = useState(true);
+
+    useEffect(() => {
+        const sun = new Image();
+        sun.src = sunImage;
+        sun.onload = () => setSunIsLoading(false);
+
+        const moon = new Image();
+        moon.src = moonImage;
+        moon.onload = () => setMoonIsLoading(false);
+    }, []);
 
     useEffect(() => {
         const updateCycleState = () => {
@@ -97,21 +109,25 @@ const SunMoonCycle: React.FC = () => {
                         }px`,
                     }}
                 >
-                    <img
-                        src={cycleState.isDaytime ? sunImage : moonImage}
-                        alt={cycleState.isDaytime ? "Sun" : "Moon"}
-                        title={cycleState.isDaytime ? "Sun" : "Moon"}
-                        className="sun-moon-cycle-image"
-                        style={{
-                            width: "100%",
-                            height: "auto",
-                            filter: cycleState.isDaytime
-                                ? "drop-shadow(0 0 10px yellow)"
-                                : "drop-shadow(0 0 10px lightblue)",
-                        }}
-                        width={cycleState.isDaytime ? SUN_SIZE : MOON_SIZE}
-                        height={cycleState.isDaytime ? SUN_SIZE : MOON_SIZE}
-                    />
+                    {sunIsLoading && moonIsLoading ? (
+                        <div></div>
+                    ) : (
+                        <img
+                            src={cycleState.isDaytime ? sunImage : moonImage}
+                            alt={cycleState.isDaytime ? "Sun" : "Moon"}
+                            title={cycleState.isDaytime ? "Sun" : "Moon"}
+                            className="sun-moon-cycle-image select-none"
+                            style={{
+                                width: "100%",
+                                height: "auto",
+                                filter: cycleState.isDaytime
+                                    ? "drop-shadow(0 0 10px yellow)"
+                                    : "drop-shadow(0 0 10px lightblue)",
+                            }}
+                            width={cycleState.isDaytime ? SUN_SIZE : MOON_SIZE}
+                            height={cycleState.isDaytime ? SUN_SIZE : MOON_SIZE}
+                        />
+                    )}
                 </div>
             </div>
         </div>

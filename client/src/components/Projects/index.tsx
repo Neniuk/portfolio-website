@@ -54,7 +54,7 @@ const ProjectsBody: React.FC = () => {
                 >
                     <div className="mb-2 flex flex-row gap-4">
                         <img
-                            className="h-6 w-6"
+                            className="h-6 w-6 select-none"
                             src={starAnimation}
                             alt="Star animation"
                             width="24"
@@ -66,7 +66,7 @@ const ProjectsBody: React.FC = () => {
                             </h3>
                         </a>
                         <img
-                            className="h-6 w-6"
+                            className="h-6 w-6 select-none"
                             src={starAnimation}
                             alt="Star animation"
                             width="24"
