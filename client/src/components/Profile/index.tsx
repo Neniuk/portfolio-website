@@ -60,18 +60,28 @@ const SocialLinks: React.FC = () => {
 
     return (
         <div className="flex flex-row gap-4">
-            <a href={githubLink} target="_blank" rel="noopener noreferrer">
+            <a
+                className="select-none"
+                href={githubLink}
+                target="_blank"
+                rel="noopener noreferrer"
+            >
                 <img
-                    className="w-32px h-auto hover:animate-spin hover:brightness-75"
+                    className="w-32px hover:animate-spin-slow h-auto hover:brightness-75"
                     src={githubLogo}
                     alt="Github logo"
                     width="32"
                     height="32"
                 />
             </a>
-            <a href={linkedInLink} target="_blank" rel="noopener noreferrer">
+            <a
+                className="select-none"
+                href={linkedInLink}
+                target="_blank"
+                rel="noopener noreferrer"
+            >
                 <img
-                    className="w-32px h-auto hover:animate-spin hover:brightness-75"
+                    className="w-32px hover:animate-spin-slow h-auto hover:brightness-75"
                     src={linkedInLogo}
                     alt="LinkedIn logo"
                     width="32"
@@ -85,7 +95,7 @@ const SocialLinks: React.FC = () => {
                     onClick={handleEmailClick}
                 >
                     <img
-                        className="w-32px h-auto hover:animate-spin hover:brightness-75"
+                        className="w-32px hover:animate-spin-slow h-auto hover:brightness-75"
                         src={emailLogo}
                         alt="Email logo"
                         width="32"

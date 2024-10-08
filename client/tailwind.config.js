@@ -44,6 +44,14 @@ export default {
                 mirrorX: "var(--translate-mirror-x)",
                 mirrorY: "var(--translate-mirror-y)",
             },
+            animation: {
+                "spin-slow": "spin 2s linear infinite",
+            },
+        },
+    },
+    variants: {
+        extend: {
+            animation: ["hover"],
         },
     },
     plugins: [],
