@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, Suspense, lazy } from "react";
 import Draggable from "react-draggable";
 import "./styles.css";
 
@@ -6,8 +6,7 @@ import "./styles.css";
 import controllerImage from "../../assets/controller.png";
 
 // Games
-import PongGame from "./Games/Pong";
-// test
+const PongGame = lazy(() => import("./Games/Pong"));
 
 const MyArcade: React.FC = () => {
     const [gameActive, setGameActive] = useState(false);
@@ -43,6 +42,7 @@ const MyArcade: React.FC = () => {
                         className="h-[105px] w-[165px] select-none"
                         width="165"
                         height="105"
+                        loading="lazy"
                     />
                 </button>
             </div>
@@ -79,7 +79,9 @@ const MyArcade: React.FC = () => {
                             {/* <p className="text-lg">
                                 The arcade is currently unavailable
                             </p> */}
-                            <PongGame />
+                            <Suspense fallback={<div>Loading...</div>}>
+                                <PongGame />
+                            </Suspense>
                         </div>
                     </div>
                 </Draggable>
