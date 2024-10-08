@@ -42,7 +42,7 @@ const ProfilePicture: React.FC = () => {
 };
 
 const ProfileTitle: React.FC = () => (
-    <div className="flex flex-col justify-center gap-1">
+    <div className="flex flex-col items-center justify-center gap-1 md:items-start">
         <h1 className="text-6xl">Mattias</h1>
         <div className="flex flex-row items-center gap-2">
             <img
