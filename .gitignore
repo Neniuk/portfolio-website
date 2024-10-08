@@ -133,3 +133,7 @@ server/dist/
 server/build/
 client/dist/
 client/build/
+
+# Reports and test results
+reports
+coverage
