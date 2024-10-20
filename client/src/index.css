@@ -61,14 +61,23 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-    font-weight: 500;
-    color: #646cff;
-    text-decoration: inherit;
+body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    color: var(--color-text-light);
 }
 
-a:hover {
-    color: #535bf2;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Press Start 2P", cursive; /* Use Press Start 2P for headers */
+    color: var(--color-title-primary);
 }
 
 * {
@@ -94,23 +103,14 @@ a:hover {
     background-color: var(--dark);
 }
 
-body,
-html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    width: 100%;
-    color: var(--color-text-light);
+a {
+    font-weight: 500;
+    color: #646cff;
+    text-decoration: inherit;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-family: "Press Start 2P", cursive; /* Use Press Start 2P for headers */
-    color: var(--color-title-primary);
+a:hover {
+    color: #535bf2;
 }
 
 button {
