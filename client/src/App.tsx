@@ -31,7 +31,6 @@ if (ENVIRONMENT === "development") {
     console.log("Connecting to development server...");
 } else if (ENVIRONMENT === "production") {
     SERVER_ADDRESS = PROD_ADDRESS;
-    console.log("Connecting to production server...");
 } else {
     console.error("Invalid environment, unable to connect to server");
 }
@@ -74,7 +73,11 @@ const App = () => {
         window.addEventListener("beforeunload", handleBeforeUnload);
 
         socket.on("connect", () => {
-            console.log("Connected to chat server");
+            console.log(
+                `### Connected to chat server ${
+                    ENVIRONMENT === "development" ? "(DEV)" : ""
+                } ###`
+            );
             setIsConnected(true);
 
             // Reset the reconnect delay

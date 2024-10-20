@@ -78,5 +78,4 @@ const Starfield: React.FC = () => {
     );
 };
 
-const MemoizedStarfield = React.memo(Starfield);
-export default MemoizedStarfield;
+export default Starfield;
