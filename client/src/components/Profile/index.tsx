@@ -10,7 +10,7 @@ import contentCopy from "../../assets/content-copy.svg";
 
 const githubLink = "https://github.com/Neniuk";
 const linkedInLink = "https://www.linkedin.com/in/mattiasvslotte/";
-const emailAddress = "mattias@neniuk.dev";
+const emailAddress = "contact@neniuk.dev";
 
 const ProfilePicture: React.FC = () => {
     const [isLoading, setIsLoading] = useState(true);
@@ -60,9 +60,9 @@ const ProfileTitle: React.FC = () => (
 const ProfileSummary: React.FC = () => (
     <div>
         <p>
-            Hi, I'm Mattias, a final-year bachelor's student in software
-            engineering. If you have any questions, feel free to contact me via
-            email or LinkedIn.
+            Hi, I'm a final-year bachelor's student in software engineering. If
+            you have any questions, feel free to contact me via email or
+            LinkedIn.
         </p>
     </div>
 );
@@ -157,7 +157,7 @@ const SocialLinks: React.FC = () => {
                             {emailAddress}
                         </div>
                         <button
-                            className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-lg border-2 border-gray-400 bg-transparent p-0"
+                            className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-lg border-2 border-gray-400 bg-transparent p-0 hover:border-white"
                             onClick={copyEmailToClipboard}
                         >
                             <img

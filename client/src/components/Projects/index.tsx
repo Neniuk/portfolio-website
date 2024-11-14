@@ -1,53 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 
 import starAnimation from "../../assets/star-animation.gif";
 import {
-    hackathon,
+    hackathon2023,
+    hackathon2024,
     portfolio,
     arcade,
     spotifyDownloader,
     kmcPaletteGenerator,
 } from "./projectInformation";
 import Pill from "../Pill";
-// import Carousel from "../Carousel";
-
-// const ProjectSuggestions: React.FC = () => (
-//     <div className="bg-secondaryColor border-innerBorderColor flex flex-row items-center justify-center border-2 border-solid p-10">
-//         <img
-//             className="h-6 w-6"
-//             src={starAnimation}
-//             alt="Star animation"
-//             width="24"
-//             height="24"
-//         />
-//         <div className="mx-6 flex flex-col items-center text-center font-bold">
-//             <h3 className="text-titleColorSecondary">
-//                 Click to suggest project ideas
-//             </h3>
-//             <h3 className="text-titleColorSecondary">(Under construction)</h3>
-//         </div>
-//         <img
-//             className="h-6 w-6"
-//             src={starAnimation}
-//             alt="Star animation"
-//             width="24"
-//             height="24"
-//         />
-//     </div>
-// );
 
 const ProjectsBody: React.FC = () => {
+    const [isExpanded, setIsExpanded] = useState(false);
     const projects = [
         portfolio,
         spotifyDownloader,
         kmcPaletteGenerator,
-        hackathon,
+        hackathon2024,
+        hackathon2023,
         arcade,
     ];
+
+    const visibleProjects = isExpanded ? projects : projects.slice(0, 4);
+
     return (
         <div className="flex flex-col gap-3">
-            {/* <Carousel projects={projects} /> */}
-            {projects.map((project) => (
+            {visibleProjects.map((project) => (
                 <div
                     key={project.title}
                     className="bg-secondaryColor border-innerBorderColor flex flex-col gap-2 rounded-md border-2 border-solid p-6"
@@ -83,7 +62,12 @@ const ProjectsBody: React.FC = () => {
                     </div>
                 </div>
             ))}
-            {/* <ProjectSuggestions /> */}
+            <button
+                className="bg-primaryColor border-outerBorderColor mt-4 rounded-md border-2 border-solid p-2 hover:border-white"
+                onClick={() => setIsExpanded(!isExpanded)}
+            >
+                {isExpanded ? "Show Less" : "Show More"}
+            </button>
         </div>
     );
 };

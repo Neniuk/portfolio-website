@@ -14,7 +14,7 @@ const exampleProject: Project = {
     technologies: ["React", "TypeScript", "Tailwind"],
 };
 
-const hackathon: Project = {
+const hackathon2023: Project = {
     title: "Junction Hackathon 2023",
     link: "https://github.com/Neniuk/junction-hackathon-2023",
     description: (
@@ -25,6 +25,21 @@ const hackathon: Project = {
         </p>
     ),
     technologies: ["JavaScript", "Node", "Express", "Ollama.ai"],
+};
+
+const hackathon2024: Project = {
+    title: "Junction Hackathon 2024",
+    link: "https://github.com/DucLUT/Junction_2024",
+    description: (
+        <p>
+            A tool to semi-automatically create 3D-models, building information
+            models (BIM), out of 2D building floor plans. Uses React and
+            Three.js for the front-end to construct, display and manipulate the
+            BIMs, as well as Python and OpenCV for the back-end, to extract
+            walls from the floor plan.
+        </p>
+    ),
+    technologies: ["TypeScript", "React", "Three.js", "Python", "OpenCV"],
 };
 
 const portfolio: Project = {
@@ -78,7 +93,8 @@ const kmcPaletteGenerator: Project = {
 
 export {
     exampleProject,
-    hackathon,
+    hackathon2023,
+    hackathon2024,
     portfolio,
     arcade,
     spotifyDownloader,
