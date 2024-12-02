@@ -34,6 +34,7 @@ const MyChat: React.FC<ChatProps> = ({
         sender: senderName,
         message: "",
     });
+    const [chatHidden, setChatHidden] = useState(false);
 
     const handleChatSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -113,18 +114,26 @@ const MyChat: React.FC<ChatProps> = ({
         setChatMessage({ sender: senderName, message: e.target.value });
     };
 
+    const toggleChatVisibility = () => {
+        setChatHidden(!chatHidden);
+    };
+
     return (
         <div className="bg-primaryColor border-outerBorderColor flex w-[95%] flex-col gap-4 rounded-md border-2 border-solid p-6 md:w-[600px] lg:w-[350px]">
             <ChatHeader
                 isConnected={isConnected}
                 connectedUsers={connectedUsers}
+                toggleChatVisibility={toggleChatVisibility}
+                chatHidden={chatHidden}
             />
-            <ChatBody
-                handleChatSubmit={handleChatSubmit}
-                handleMessageChange={handleMessageChange}
-                chatMessage={chatMessage}
-                messages={messages}
-            />
+            {!chatHidden && (
+                <ChatBody
+                    handleChatSubmit={handleChatSubmit}
+                    handleMessageChange={handleMessageChange}
+                    chatMessage={chatMessage}
+                    messages={messages}
+                />
+            )}
         </div>
     );
 };

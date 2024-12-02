@@ -4,7 +4,6 @@ import React, { useEffect, useRef } from "react";
 const STAR_COUNT = 1000;
 const STAR_SIZE_MAX = 2;
 const STAR_SPEED_MIN = 0.00025;
-// (max - min)
 const STAR_SPEED_RANGE = 0.001;
 
 const Starfield: React.FC = () => {
@@ -73,7 +72,7 @@ const Starfield: React.FC = () => {
     return (
         <canvas
             ref={canvasRef}
-            className="z-bottom absolute left-0 top-0 m-0 block h-full w-full bg-black p-0"
+            className="z-bottom fixed left-0 top-0 m-0 block h-full w-full bg-black p-0"
         ></canvas>
     );
 };

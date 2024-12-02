@@ -10,6 +10,7 @@ import { default as Chat } from "./components/Chat";
 import { default as Starfield } from "./components/Starfield";
 import { default as SunMoonCycle } from "./components/SunMoonCycle";
 import { default as Arcade } from "./components/Arcade";
+import { default as Experience } from "./components/Experience";
 
 // Types
 import MessageWithSender from "./models/MessageWithSender";
@@ -120,7 +121,7 @@ const App = () => {
     }, [handleConnectError]);
 
     return (
-        <div className="App flex h-full w-full flex-col items-center justify-center">
+        <div className="App mb-8 flex h-full w-full flex-col items-center justify-center">
             {/* {isWinter ? <Snow /> : <Starfield />} */}
             <Starfield />
             <MainTitle />
@@ -128,6 +129,7 @@ const App = () => {
                 <div className="left-column"></div>
                 <div className="flex flex-col items-center justify-center gap-6">
                     <Profile />
+                    <Experience />
                     <Projects />
                     <SunMoonCycle />
                 </div>
