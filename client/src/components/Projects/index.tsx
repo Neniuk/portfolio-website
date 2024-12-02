@@ -5,7 +5,6 @@ import {
     hackathon2023,
     hackathon2024,
     portfolio,
-    arcade,
     spotifyDownloader,
     kmcPaletteGenerator,
 } from "./projectInformation";
@@ -19,7 +18,6 @@ const ProjectsBody: React.FC = () => {
         kmcPaletteGenerator,
         hackathon2024,
         hackathon2023,
-        arcade,
     ];
 
     const visibleProjects = isExpanded ? projects : projects.slice(0, 4);
