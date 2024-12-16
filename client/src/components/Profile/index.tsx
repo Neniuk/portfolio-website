@@ -4,7 +4,7 @@ import "./styles.css";
 import profilePicture from "../../assets/profile-picture-2.png";
 import githubLogo from "../../assets/github-logo.png";
 import linkedInLogo from "../../assets/linkedin-logo.png";
-import emailLogo from "../../assets/email-logo.png";
+import emailLogo from "../../assets/email-logo-2.png";
 import locationPin from "../../assets/location-pin.png";
 import contentCopy from "../../assets/content-copy.svg";
 
