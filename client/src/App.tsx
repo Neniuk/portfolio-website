@@ -40,6 +40,7 @@ if (SERVER_ADDRESS === "") {
     throw new Error("Invalid server address");
 }
 
+// TODO: Add chat rooms for connecting to duc's portfolio chat server, and my portfolio chat server
 const socket = io(SERVER_ADDRESS, { transports: ["websocket"] });
 
 const App = () => {

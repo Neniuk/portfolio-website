@@ -33,10 +33,10 @@ if (ENVIRONMENT === "development") {
         "https://neniuk.dev",
         "https://www.neniuk.dev",
         "https://portfolio-website-45f1e0d390b7.herokuapp.com",
-        // Duc's :)
-        "https://portfolio-duc-app-39771e993c9d.herokuapp.com/",
-        "https://www.ducduong.dev/",
-        "https://ducduong.dev/",
+        // Duc's portfolio :)
+        // "https://portfolio-duc-app-39771e993c9d.herokuapp.com/",
+        // "https://www.ducduong.dev/",
+        // "https://ducduong.dev/",
     ];
 } else {
     throw new Error("Invalid environment");
