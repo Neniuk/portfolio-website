@@ -4,8 +4,8 @@
     "description": "",
     "main": "index.js",
     "engines": {
-        "node": "22.3.0",
-        "npm": "10.9.0"
+        "node": "22.13.1",
+        "npm": "11.1.0"
     },
     "scripts": {
         "install": "cd client && npm install --include=dev && cd ../server && npm install --include=dev",
