@@ -126,7 +126,7 @@ const App = () => {
             {/* {isWinter ? <Snow /> : <Starfield />} */}
             <Starfield />
             <MainTitle />
-            <div className="flex w-full flex-col justify-center gap-6 lg:flex-row">
+            <div className="mb-10 flex w-full flex-col justify-center gap-6 lg:flex-row">
                 <div className="left-column"></div>
                 <div className="flex flex-col items-center justify-center gap-6">
                     <Profile />
