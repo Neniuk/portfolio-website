@@ -15,7 +15,10 @@ import { default as Experience } from "./components/Experience";
 // Types
 import MessageWithSender from "./models/MessageWithSender";
 
-const ENVIRONMENT = process.env.NODE_ENV;
+// Use import.meta.env for Vite/CRA or modern React apps
+const ENVIRONMENT = import.meta.env.MODE || "development";
+
+console.log(`Environment: ${ENVIRONMENT}`);
 
 const MIN_RECONNECT_DELAY: number = 500;
 const MAX_RECONNECT_DELAY: number = 5000;
