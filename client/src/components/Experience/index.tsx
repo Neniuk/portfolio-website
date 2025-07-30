@@ -1,20 +1,10 @@
 import React, { useState } from "react";
 import Pill from "../Pill";
 
-import {
-    databaseDesignIntern,
-    cloudSoftwareTrainee,
-    databaseDesignInternAdvisor,
-} from "./experienceInformation";
+import { experience } from "./experienceInformation";
 
 const ExperienceBody: React.FC = () => {
     const [isExpanded, setIsExpanded] = useState(false);
-    const experience = [
-        cloudSoftwareTrainee,
-        databaseDesignIntern,
-        databaseDesignInternAdvisor,
-    ];
-
     const visibleExperience = isExpanded ? experience : experience.slice(0, 2);
 
     return (
@@ -44,7 +34,7 @@ const ExperienceBody: React.FC = () => {
                 className="bg-primaryColor border-outerBorderColor mt-4 rounded-md border-2 border-solid p-2 hover:border-white"
                 onClick={() => setIsExpanded(!isExpanded)}
             >
-                {isExpanded ? "Show Less" : "Show More"}
+                {isExpanded ? "⮝ Show Less ⮝" : "⮟ Show More ⮟"}
             </button>
         </div>
     );

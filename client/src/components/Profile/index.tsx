@@ -4,13 +4,10 @@ import "./styles.css";
 import profilePicture from "../../assets/profile-picture-2.png";
 import githubLogo from "../../assets/github-logo.png";
 import linkedInLogo from "../../assets/linkedin-logo.png";
-import emailLogo from "../../assets/email-logo-2.png";
 import locationPin from "../../assets/location-pin.png";
-import contentCopy from "../../assets/content-copy.svg";
 
 const githubLink = "https://github.com/Neniuk";
 const linkedInLink = "https://www.linkedin.com/in/mattiasvslotte/";
-const emailAddress = "contact@neniuk.dev";
 
 const ProfilePicture: React.FC = () => {
     const [isLoading, setIsLoading] = useState(true);
@@ -60,9 +57,8 @@ const ProfileTitle: React.FC = () => (
 const ProfileSummary: React.FC = () => (
     <div>
         <p>
-            Hi, I'm a final-year bachelor's student in software engineering. If
-            you have any questions, feel free to contact me via email or
-            LinkedIn.
+            Hi, I'm a master's student in computer science. If you have any
+            questions, feel free to contact me via LinkedIn.
         </p>
     </div>
 );
@@ -70,8 +66,6 @@ const ProfileSummary: React.FC = () => (
 const SocialLinks: React.FC = () => {
     const [githubLoading, setGithubLoading] = useState(true);
     const [linkedInLoading, setLinkedInLoading] = useState(true);
-    const [emailLoading, setEmailLoading] = useState(true);
-    const [showEmail, setShowEmail] = useState(false);
 
     useEffect(() => {
         const githubImg = new Image();
@@ -81,19 +75,7 @@ const SocialLinks: React.FC = () => {
         const linkedInImg = new Image();
         linkedInImg.src = linkedInLogo;
         linkedInImg.onload = () => setLinkedInLoading(false);
-
-        const emailImg = new Image();
-        emailImg.src = emailLogo;
-        emailImg.onload = () => setEmailLoading(false);
     }, []);
-
-    const handleEmailClick = () => {
-        setShowEmail(!showEmail);
-    };
-
-    const copyEmailToClipboard = () => {
-        navigator.clipboard.writeText(emailAddress);
-    };
 
     return (
         <div className="flex flex-row gap-4">
@@ -133,44 +115,6 @@ const SocialLinks: React.FC = () => {
                     />
                 )}
             </a>
-            {/* Email button -> reveal email */}
-            <div className="flex flex-row justify-center gap-4">
-                <button
-                    className="h-auto w-[32px] cursor-pointer rounded-none border-none bg-transparent p-0"
-                    onClick={handleEmailClick}
-                >
-                    {emailLoading ? (
-                        <div className="w-32px h-32px rounded-full bg-gray-200"></div>
-                    ) : (
-                        <img
-                            className="w-32px hover:animate-spin-slow h-auto hover:brightness-75"
-                            src={emailLogo}
-                            alt="Email logo"
-                            width="32"
-                            height="32"
-                        />
-                    )}
-                </button>
-                {showEmail && (
-                    <div className="flex flex-row items-center justify-center gap-4 text-center">
-                        <div className="flex flex-col justify-center text-lg text-gray-400">
-                            {emailAddress}
-                        </div>
-                        <button
-                            className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-lg border-2 border-gray-400 bg-transparent p-0 hover:border-white"
-                            onClick={copyEmailToClipboard}
-                        >
-                            <img
-                                className="h-auto w-[16px] select-none"
-                                src={contentCopy}
-                                alt="Copy email to clipboard"
-                                width="16"
-                                height="16"
-                            />
-                        </button>
-                    </div>
-                )}
-            </div>
         </div>
     );
 };

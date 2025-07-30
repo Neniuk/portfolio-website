@@ -134,6 +134,12 @@ const App = () => {
                     <Experience />
                     <Projects />
                     <SunMoonCycle />
+                    <p>
+                        Version archived on{" "}
+                        <span className="font-extrabold">
+                            * Wed 30 Jul 2025 *
+                        </span>
+                    </p>
                 </div>
                 <div className="right-column mb-10 flex flex-col items-center justify-center gap-6 lg:mb-0 lg:items-start lg:justify-start">
                     <Chat

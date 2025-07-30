@@ -64,7 +64,7 @@ const ProjectsBody: React.FC = () => {
                 className="bg-primaryColor border-outerBorderColor mt-4 rounded-md border-2 border-solid p-2 hover:border-white"
                 onClick={() => setIsExpanded(!isExpanded)}
             >
-                {isExpanded ? "Show Less" : "Show More"}
+                {isExpanded ? "⮝ Show Less ⮝" : "⮟ Show More ⮟"}
             </button>
         </div>
     );
