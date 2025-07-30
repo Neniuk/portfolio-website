@@ -18,8 +18,6 @@ import MessageWithSender from "./models/MessageWithSender";
 // Use import.meta.env for Vite/CRA or modern React apps
 const ENVIRONMENT = import.meta.env.MODE || "development";
 
-console.log(`Environment: ${ENVIRONMENT}`);
-
 const MIN_RECONNECT_DELAY: number = 500;
 const MAX_RECONNECT_DELAY: number = 5000;
 let reconnectDelay: number = MIN_RECONNECT_DELAY;
