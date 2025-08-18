@@ -84,7 +84,8 @@ h6 {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Roboto Mono", monospace; /* Use Roboto Mono for all elements */
+    font-family:
+        "Roboto Mono", monospace; /* Use Roboto Mono for all elements */
     font-size: 12px;
     line-height: 1.4;
     scrollbar-width: thin;

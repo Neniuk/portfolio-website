@@ -39,7 +39,7 @@ const getMessageContentStyle = (sender: string): string => {
 
 const ChatContent: React.FC<ChatContentProps> = ({ messages }) => {
     return (
-        <div className="bg-secondaryColor border-innerBorderColor flex max-h-[300px] min-h-[300px] w-full flex-col items-start gap-1 overflow-y-auto whitespace-pre-wrap break-all rounded-md border-2 border-solid p-6">
+        <div className="bg-secondaryColor border-innerBorderColor flex max-h-[300px] min-h-[300px] w-full flex-col items-start gap-1 overflow-y-auto rounded-md border-2 border-solid p-6 break-all whitespace-pre-wrap">
             {messages.map((message, index) => (
                 <div key={index}>
                     <p>

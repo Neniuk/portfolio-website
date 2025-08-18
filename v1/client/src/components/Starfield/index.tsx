@@ -72,7 +72,7 @@ const Starfield: React.FC = () => {
     return (
         <canvas
             ref={canvasRef}
-            className="z-bottom fixed left-0 top-0 m-0 block h-full w-full bg-black p-0"
+            className="z-bottom fixed top-0 left-0 m-0 block h-full w-full bg-black p-0"
         ></canvas>
     );
 };

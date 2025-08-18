@@ -24,7 +24,7 @@ const ProfilePicture: React.FC = () => {
                 <div className="h-full w-full rounded-3xl bg-gray-800"></div>
             ) : (
                 <img
-                    className="h-full w-full select-none rounded-3xl object-cover"
+                    className="h-full w-full rounded-3xl object-cover select-none"
                     style={{
                         filter: "contrast(0.9) saturate(1.5) sepia(0.3) brightness(0.9)",
                     }}

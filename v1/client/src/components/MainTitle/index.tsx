@@ -12,12 +12,12 @@ const MainTitle: React.FC = () => {
     }, []);
 
     return (
-        <div className="mb-0 mt-6 flex w-[95%] flex-row items-center justify-center gap-8 overflow-hidden md:mb-6 md:w-full">
+        <div className="mt-6 mb-0 flex w-[95%] flex-row items-center justify-center gap-8 overflow-hidden md:mb-6 md:w-full">
             {mainTitleIsLoading ? (
                 <div className="h-[32px] w-[320px]"></div>
             ) : (
                 <img
-                    className="main-title-decoration h-[32px] w-auto max-w-full flex-shrink-0 select-none object-contain brightness-50"
+                    className="main-title-decoration h-[32px] w-auto max-w-full flex-shrink-0 object-contain brightness-50 select-none"
                     src={mainTitleDecorationBlue}
                     alt="Main title decoration"
                     width="320"
@@ -31,7 +31,7 @@ const MainTitle: React.FC = () => {
                 <div className="h-[32px] w-[320px]"></div>
             ) : (
                 <img
-                    className="main-title-decoration h-[32px] w-auto max-w-full flex-shrink-0 rotate-180 select-none object-contain brightness-50"
+                    className="main-title-decoration h-[32px] w-auto max-w-full flex-shrink-0 rotate-180 object-contain brightness-50 select-none"
                     src={mainTitleDecorationBlue}
                     alt="Main title decoration"
                     width="320"

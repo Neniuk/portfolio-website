@@ -48,7 +48,7 @@ const Pill: React.FC<PillProps> = ({ text, type }) => {
                         : "none",
             }}
         >
-            <span className="font-bold leading-snug">{text}</span>
+            <span className="leading-snug font-bold">{text}</span>
         </div>
     );
 };
