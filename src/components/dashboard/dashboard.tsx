@@ -13,40 +13,10 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 function Dashbaord() {
     return (
-        <div className="w-full max-w-4xl rounded-lg p-6 shadow-md">
-            {/* Introduction card with avatar, description of me, location, title, etc */}
-            <Card className="mb-6">
+        <div className="grid grid-cols-3 gap-6 p-6">
+            <Card>
                 <CardHeader>
                     <CardTitle>
-                        <div className="flex flex-row items-center justify-center space-x-4 text-center">
-                            <Avatar>
-                                <AvatarImage src="https://github.com/shadcn.png" />
-                                <AvatarFallback>CN</AvatarFallback>
-                            </Avatar>
-                            <span>Mattias Slotte</span>
-                        </div>
-                    </CardTitle>
-                    <CardDescription>
-                        Master's Student in Computer Science - Cloud Software
-                        Engineer Trainee.
-                    </CardDescription>
-                    <CardAction>GitHub</CardAction>
-                </CardHeader>
-                <CardContent>
-                    <p>
-                        Location: [Your Location] <br />
-                        Title: [Your Title]
-                    </p>
-                </CardContent>
-                <CardFooter>
-                    <CardAction>Edit Profile</CardAction>
-                </CardFooter>
-            </Card>
-
-            <Card className="w-full max-w-sm">
-                <CardHeader>
-                    <CardTitle>
-                        {" "}
                         <div className="flex flex-row items-center justify-start space-x-4 text-start">
                             <Avatar>
                                 <AvatarImage src="https://github.com/shadcn.png" />
@@ -56,7 +26,7 @@ function Dashbaord() {
                         </div>
                     </CardTitle>
                     <CardDescription className="text-start">
-                        Master's Student in Computer Science - Cloud Software
+                        M.Sc. Student in Computer Science - Cloud Software
                         Engineer Trainee.
                     </CardDescription>
                     <CardAction>
@@ -78,7 +48,7 @@ function Dashbaord() {
                 </CardHeader>
             </Card>
 
-            <Card className="mb-6">
+            <Card className="col-span-2">
                 <CardHeader>
                     <CardTitle>Recent Activity</CardTitle>
                     <CardDescription>
@@ -93,23 +63,37 @@ function Dashbaord() {
                 </CardFooter>
             </Card>
 
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-                {/* Example Card */}
-                <Card className="rounded-lg p-4 shadow-lg">
-                    <CardHeader>
-                        <CardTitle>Project Title</CardTitle>
-                        <CardDescription>
-                            Brief description of the project.
-                        </CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                        <p>Technologies used: React, Node.js, etc.</p>
-                    </CardContent>
-                    <CardFooter>
-                        <CardAction>View Project</CardAction>
-                    </CardFooter>
-                </Card>
-            </div>
+            <Card className="col-span-2">
+                <CardHeader>
+                    <CardTitle>Graph</CardTitle>
+                    <CardDescription>
+                        Visual representation of...
+                    </CardDescription>
+                </CardHeader>
+                <CardContent>
+                    <p>Graph will be displayed here.</p>
+                </CardContent>
+                <CardFooter>
+                    <p className="text-sm">
+                        Updated {new Date().toLocaleDateString()}
+                    </p>
+                </CardFooter>
+            </Card>
+
+            <Card>
+                <CardHeader>
+                    <CardTitle>Project Title</CardTitle>
+                    <CardDescription>
+                        Brief description of the project.
+                    </CardDescription>
+                </CardHeader>
+                <CardContent>
+                    <p>Technologies used: React, Node.js, etc.</p>
+                </CardContent>
+                <CardFooter>
+                    <CardAction>View Project</CardAction>
+                </CardFooter>
+            </Card>
         </div>
     );
 }
