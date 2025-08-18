@@ -1,9 +1,9 @@
-import { Dashbaord } from "./components/dashboard/dashboard";
+import { Dashboard } from "./components/dashboard/dashboard";
 
 function App() {
     return (
         <div className="dark h-full w-full">
-            <Dashbaord />
+            <Dashboard />
         </div>
     );
 }

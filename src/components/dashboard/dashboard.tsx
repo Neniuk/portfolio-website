@@ -11,10 +11,10 @@ import {
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
-function Dashbaord() {
+function Dashboard() {
     return (
         <div className="grid grid-cols-3 gap-6 p-6">
-            <Card>
+            <Card className="card">
                 <CardHeader>
                     <CardTitle>
                         <div className="flex flex-row items-center justify-start space-x-4 text-start">
@@ -98,4 +98,4 @@ function Dashbaord() {
     );
 }
 
-export { Dashbaord };
+export { Dashboard };
