@@ -1,0 +1,28 @@
+{
+    "name": "portfolio-website",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "engines": {
+        "node": "24.x.x",
+        "npm": "11.x.x"
+    },
+    "scripts": {
+        "install": "cd client && npm install --include=dev && cd ../server && npm install --include=dev",
+        "build": "cd client && npm run build:to:server && cd ../server && npm run build",
+        "start": "cd server && npm start",
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "prepare": "husky"
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "@eslint/js": "^9.8.0",
+        "eslint": "^9.8.0",
+        "globals": "^15.9.0",
+        "husky": "^9.1.4",
+        "lint-staged": "^15.2.7",
+        "prettier-plugin-tailwindcss": "^0.6.5",
+        "typescript-eslint": "^8.0.0"
+    }
+}
