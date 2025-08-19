@@ -10,11 +10,68 @@ import {
 } from "@/components/ui/card";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { PolarAngleAxis, PolarGrid, Radar, RadarChart } from "recharts";
+import {
+    type ChartConfig,
+    ChartContainer,
+    ChartTooltip,
+    ChartTooltipContent,
+} from "@/components/ui/chart";
+
+const chartData = [
+    { month: "Happy", mood: 300 },
+    { month: "Sleepy", mood: 350 },
+    { month: "Sad", mood: 50 },
+    { month: "Angry", mood: 10 },
+    { month: "Alert", mood: 0 },
+];
+
+const chartConfig = {
+    mood: {
+        label: "Mood",
+        color: "var(--chart-1)",
+    },
+} satisfies ChartConfig;
+
+function MoodRadarChart({ className }: { className?: string }) {
+    return (
+        <Card className={className}>
+            <CardContent className="pb-0">
+                <ChartContainer
+                    config={chartConfig}
+                    className="mx-auto aspect-square max-h-[250px] p-2"
+                >
+                    <RadarChart data={chartData}>
+                        <ChartTooltip
+                            cursor={false}
+                            content={<ChartTooltipContent />}
+                        />
+                        <PolarAngleAxis dataKey="month" />
+                        <PolarGrid />
+                        <Radar
+                            dataKey="mood"
+                            fill="var(--color-desktop)"
+                            fillOpacity={0.6}
+                        />
+                    </RadarChart>
+                </ChartContainer>
+            </CardContent>
+            <CardFooter className="flex-col text-sm">
+                <div className="text-muted-foreground flex flex-row items-center gap-2 leading-none">
+                    <span>Last updated:</span>
+                    <span className="font-medium">
+                        {new Date().toLocaleDateString()}
+                    </span>
+                </div>
+            </CardFooter>
+        </Card>
+    );
+}
 
 function Dashboard() {
     return (
-        <div className="grid grid-cols-3 gap-6 p-6">
-            <Card className="card">
+        <div className="grid grid-flow-row grid-cols-3 gap-6 p-6">
+            <Card className="col-span-1 row-span-2 max-h-[300px]">
                 <CardHeader>
                     <CardTitle>
                         <div className="flex flex-row items-center justify-start space-x-4 text-start">
@@ -33,13 +90,7 @@ function Dashboard() {
                         <Button
                             variant="outline"
                             size="sm"
-                            className="flex flex-row items-center justify-center text-center"
-                            // acrylic style
-                            style={{
-                                backgroundColor: "rgba(255, 255, 255, 0.1)",
-                                backdropFilter: "blur(10px)",
-                                border: "1px solid rgba(255, 255, 255, 0.2)",
-                            }}
+                            className="acrylic flex flex-row items-center justify-center text-center"
                         >
                             <span>GitHub</span>
                             <OpenInNewIcon />
@@ -48,7 +99,7 @@ function Dashboard() {
                 </CardHeader>
             </Card>
 
-            <Card className="col-span-2">
+            <Card className="col-span-2 row-span-1">
                 <CardHeader>
                     <CardTitle>Recent Activity</CardTitle>
                     <CardDescription>
@@ -63,7 +114,9 @@ function Dashboard() {
                 </CardFooter>
             </Card>
 
-            <Card className="col-span-2">
+            <MoodRadarChart className="col-span-1 row-span-1" />
+
+            {/* <Card className="col-span-2 row-span-2">
                 <CardHeader>
                     <CardTitle>Graph</CardTitle>
                     <CardDescription>
@@ -78,7 +131,7 @@ function Dashboard() {
                         Updated {new Date().toLocaleDateString()}
                     </p>
                 </CardFooter>
-            </Card>
+            </Card> */}
 
             <Card>
                 <CardHeader>
