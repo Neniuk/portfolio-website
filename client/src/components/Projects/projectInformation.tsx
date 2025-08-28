@@ -16,7 +16,7 @@ const exampleProject: Project = {
 
 const hackathon2023: Project = {
     title: "Junction Hackathon 2023",
-    link: "https://github.com/Neniuk/junction-hackathon-2023",
+    link: "https://github.com/neniuk/junction-hackathon-2023",
     description: (
         <p>
             Dashboard tool with cards of varying information, from summarized
@@ -44,7 +44,7 @@ const hackathon2024: Project = {
 
 const portfolio: Project = {
     title: "Portfolio Website",
-    link: "https://github.com/Neniuk/portfolio-website",
+    link: "https://github.com/neniuk/portfolio-website",
     description: (
         <p>
             A personal portfolio website showcasing projects and skills, with a
@@ -63,7 +63,7 @@ const portfolio: Project = {
 
 const arcade: Project = {
     title: "Arcade (Under construction)",
-    link: "https://github.com/Neniuk/arcade",
+    link: "https://github.com/neniuk/arcade",
     description: (
         <p>Collection of games built using various web technologies.</p>
     ),
@@ -72,7 +72,7 @@ const arcade: Project = {
 
 const spotifyDownloader: Project = {
     title: "Playlist Downloader (CLI)",
-    link: "https://github.com/Neniuk/download-playlist",
+    link: "https://github.com/neniuk/download-playlist",
     description: (
         <p>
             A simple CLI-tool that fetches the user's playlists and the song
@@ -84,7 +84,7 @@ const spotifyDownloader: Project = {
 
 const kmcPaletteGenerator: Project = {
     title: "KMC Palette Generator",
-    link: "https://github.com/Neniuk/kmc-palette",
+    link: "https://github.com/neniuk/kmc-palette",
     description: (
         <p>Generates a color palette from an image using K-Means Clustering.</p>
     ),

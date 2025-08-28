@@ -6,7 +6,7 @@ import githubLogo from "../../assets/github-logo.png";
 import linkedInLogo from "../../assets/linkedin-logo.png";
 import locationPin from "../../assets/location-pin.png";
 
-const githubLink = "https://github.com/Neniuk";
+const githubLink = "https://github.com/neniuk";
 const linkedInLink = "https://www.linkedin.com/in/mattiasvslotte/";
 
 const ProfilePicture: React.FC = () => {
