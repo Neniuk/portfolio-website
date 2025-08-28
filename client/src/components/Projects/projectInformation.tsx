@@ -44,7 +44,7 @@ const hackathon2024: Project = {
 
 const portfolio: Project = {
     title: "Portfolio Website",
-    link: "https://github.com/neniuk/portfolio-website",
+    link: "https://github.com/neniuk/portfolio",
     description: (
         <p>
             A personal portfolio website showcasing projects and skills, with a
